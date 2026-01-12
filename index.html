@@ -2,135 +2,197 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>신후레미콘 | 레미콘 · 콘크리트 제조 전문 기업</title>
   <meta name="description" content="신후레미콘은 레미콘 및 콘크리트 제조와 공급을 전문으로 하는 기업입니다.">
-  <meta name="naver-site-verification" content="네이버_서치어드바이저_코드">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- 스타일 (간단한 CSS) -->
+  <!-- 네이버 서치어드바이저 -->
+  <meta name="naver-site-verification" content="여기에_네이버_코드">
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: "Noto Sans KR", Arial, sans-serif;
       color: #333;
     }
-    header {
-      background: #004c97;
-      padding: 20px;
-      color: #fff;
-      text-align: center;
+
+    /* ================== Header ================== */
+    .site-header {
+      background: linear-gradient(to bottom, #ffffff, #f0f7fb);
+      border-bottom: 1px solid #dbe3ea;
     }
-    nav a {
-      margin: 0 12px;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .hero {
-      background: url("https://via.placeholder.com/1200x400") center/cover no-repeat;
-      height: 400px;
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
       display: flex;
-      justify-content: center;
       align-items: center;
-      color: #fff;
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
-    }
-    .hero h1 {
-      font-size: 2.8rem;
-    }
-    .section {
-      padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
       justify-content: space-between;
     }
+
+    .logo-text {
+      font-size: 26px;
+      font-weight: 800;
+      color: #f57c00;
+      letter-spacing: -1px;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 36px;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .main-nav a:hover {
+      color: #f57c00;
+    }
+
+    /* ================== Main banner ================== */
+    .main {
+      width: 100%;
+      height: 420px;
+      background: url("./images/main.png") center center / cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .main::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .main-text {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      color: #fff;
+    }
+
+    .main-text h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+      font-weight: 800;
+    }
+
+    .main-text p {
+      font-size: 20px;
+      opacity: 0.9;
+    }
+
+    /* ================== Section ================== */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    /* ================== Cards ================== */
+    .cards {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
     .card {
-      flex: 1 1 30%;
+      flex: 1;
       min-width: 240px;
       border: 1px solid #eee;
-      padding: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      background: #fff;
     }
-    .card img {
-      width: 100%;
-      margin-bottom: 12px;
-    }
+
+    /* ================== Footer ================== */
     footer {
-      text-align: center;
-      padding: 24px 12px;
       background: #f4f4f4;
+      text-align: center;
+      padding: 40px 20px;
       font-size: 14px;
-      color: #555;
+      color: #777;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div style="font-size: 1.6rem; font-weight: bold;">신후레미콘</div>
-    <nav>
-      <a href="#about">회사소개</a>
-      <a href="#services">사업영역</a>
-      <a href="#contact">연락처</a>
-    </nav>
+  <!-- ================== Header ================== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-text">신후레미콘</div>
+
+      <nav class="main-nav">
+        <a href="#about">회사소개</a>
+        <a href="#services">주요사업</a>
+        <a href="#contact">고객지원</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <h1>믿을 수 있는 레미콘, 콘크리트 공급</h1>
+  <!-- ================== Main banner ================== -->
+  <section class="main">
+    <div class="main-text">
+      <h1>믿을 수 있는 레미콘 · 콘크리트 공급</h1>
+      <p>신후레미콘은 건설과 토목 현장을 위한 고품질 레미콘을 제공합니다.</p>
+    </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ================== About ================== -->
   <section id="about" class="section">
     <h2>회사 소개</h2>
     <p>
-      신후레미콘은 레미콘과 콘크리트 제조 및 납품을 전문으로 하는 기업입니다.  
-      건설·토목 현장에서 필요한 고품질 자재를 안정적으로 공급합니다.
+      신후레미콘은 레미콘과 콘크리트 제조 및 납품을 전문으로 하는 기업입니다.
+      철저한 품질 관리와 신속한 납품을 통해 현장의 신뢰를 쌓아왔습니다.
     </p>
   </section>
 
-  <!-- SERVICES -->
+  <!-- ================== Services ================== -->
   <section id="services" class="section">
-    <h2>사업 영역</h2>
+    <h2>주요 사업</h2>
     <div class="cards">
       <div class="card">
-        <img src="https://via.placeholder.com/300x180" alt="레미콘 생산">
-        <h3>레미콘 생산</h3>
-        <p>고품질 레미콘을 최신 설비로 제조합니다.</p>
+        <h3>레미콘 제조</h3>
+        <p>현장 조건에 최적화된 레미콘을 생산합니다.</p>
       </div>
       <div class="card">
-        <img src="https://via.placeholder.com/300x180" alt="콘크리트 공급">
         <h3>콘크리트 공급</h3>
-        <p>건설 현장에 빠르고 전문적으로 공급합니다.</p>
+        <p>대형 및 소형 현장에 안정적으로 공급합니다.</p>
       </div>
       <div class="card">
-        <img src="https://via.placeholder.com/300x180" alt="특수 배합 서비스">
-        <h3>특수 배합 서비스</h3>
-        <p>현장 조건에 최적화된 배합 기술을 제공합니다.</p>
+        <h3>특수 배합</h3>
+        <p>특수 공법과 구조물에 맞춘 배합 기술을 제공합니다.</p>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- ================== Contact ================== -->
   <section id="contact" class="section">
-    <h2>연락처</h2>
+    <h2>고객 지원</h2>
     <p>회사명: 신후레미콘</p>
     <p>주소: (회사 주소 입력)</p>
     <p>전화: (대표번호 입력)</p>
     <p>이메일: (이메일 입력)</p>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ================== Footer ================== -->
   <footer>
-    © 2026 신후레미콘. All Rights Reserved.
+    © 2026 신후레미콘. All rights reserved.
   </footer>
 
 </body>
