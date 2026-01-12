@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>신우레미콘 | 레미콘 · 콘크리트 제조 전문 기업</title>
-  <meta name="description" content="신우레미콘은 레미콘 및 콘크리트 제조와 공급을 전문으로 하는 기업입니다.">
+  <title>신우그룹 | 레미콘 · 콘크리트 · 건설자재 종합기업</title>
+  <meta name="description" content="신우그룹은 레미콘, 콘크리트, 아스콘, 건설자재, 물류/환경 등 건설산업 전반의 제조·공급을 수행하는 기업그룹입니다.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- 네이버 서치어드바이저 -->
@@ -13,10 +13,13 @@
     body {
       margin: 0;
       font-family: "Noto Sans KR", Arial, sans-serif;
-      color: #333;
+      color: #222;
+      background: #fff;
     }
 
-    /* ================== Header ================== */
+    a { color: inherit; }
+
+    /* ================== Header (HC 느낌) ================== */
     .site-header {
       background: linear-gradient(to bottom, #ffffff, #f0f7fb);
       border-bottom: 1px solid #dbe3ea;
@@ -29,24 +32,40 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      white-space: nowrap;
     }
 
     .logo-text {
       font-size: 26px;
       font-weight: 800;
-      color: #f57c00;
+      color: #f57c00; /* 오렌지 포인트 */
       letter-spacing: -1px;
+    }
+
+    .logo-sub {
+      font-size: 14px;
+      color: #666;
+      font-weight: 600;
     }
 
     .main-nav {
       display: flex;
-      gap: 36px;
+      gap: 34px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .main-nav a {
       text-decoration: none;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 700;
       color: #333;
     }
 
@@ -82,50 +101,198 @@
 
     .main-text h1 {
       font-size: 42px;
-      margin-bottom: 12px;
-      font-weight: 800;
+      margin: 0 0 10px 0;
+      font-weight: 900;
+      letter-spacing: -0.5px;
     }
 
     .main-text p {
-      font-size: 20px;
-      opacity: 0.9;
+      font-size: 18px;
+      margin: 0;
+      opacity: 0.92;
+      line-height: 1.5;
+      max-width: 820px;
     }
 
     /* ================== Section ================== */
     .section {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 24px;
+      padding: 70px 24px;
     }
 
-    .section h2 {
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-
-    /* ================== Cards ================== */
-    .cards {
+    .section-title {
       display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
     }
 
-    .card {
-      flex: 1;
-      min-width: 240px;
+    .section-title h2 {
+      font-size: 28px;
+      margin: 0;
+      letter-spacing: -0.3px;
+    }
+
+    .section-title .desc {
+      font-size: 14px;
+      color: #777;
+      margin: 0;
+    }
+
+    .divider {
+      height: 1px;
+      background: #eee;
+      margin: 0;
+    }
+
+    /* ================== About ================== */
+    .about-box {
       border: 1px solid #eee;
-      padding: 24px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      background: #fafafa;
+      padding: 22px;
+      line-height: 1.8;
+      color: #333;
+    }
+
+    /* ================== Subsidiaries (계열사 카드) ================== */
+    .subsidiaries {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .subsidiary {
+      border: 1px solid #e5e5e5;
       background: #fff;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1fr 120px;
+      gap: 14px;
+      align-items: center;
+      min-height: 100px;
+    }
+
+    .subsidiary .info h3 {
+      margin: 0 0 6px 0;
+      font-size: 18px;
+      color: #222;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+    }
+
+    .subsidiary .info p {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .subsidiary .thumb {
+      width: 120px;
+      height: 70px;
+      border: 1px solid #eee;
+      background: linear-gradient(135deg, #f7f7f7, #efefef);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #999;
+      overflow: hidden;
+    }
+
+    /* ===== HC 레퍼런스 느낌: 카드 전체 hover ===== */
+    .subsidiary:hover {
+      border-color: #f1c08b;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
+      transition: 0.18s ease;
+    }
+
+    /* ================== Services (주요사업) ================== */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .service {
+      border: 1px solid #eee;
+      padding: 20px;
+      background: #fff;
+    }
+
+    .service h3 {
+      margin: 0 0 10px 0;
+      font-size: 18px;
+      font-weight: 900;
+      color: #f57c00;
+    }
+
+    .service p {
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* ================== Contact ================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .contact-card {
+      border: 1px solid #eee;
+      padding: 20px;
+      background: #fafafa;
+      line-height: 1.8;
+      font-size: 14px;
+      color: #444;
     }
 
     /* ================== Footer ================== */
     footer {
       background: #f4f4f4;
+      border-top: 1px solid #e9e9e9;
       text-align: center;
       padding: 40px 20px;
       font-size: 14px;
       color: #777;
+    }
+
+    /* ================== Responsive ================== */
+    @media (max-width: 720px) {
+      .main { height: 320px; }
+      .main-text h1 { font-size: 30px; }
+      .main-text p { font-size: 15px; }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .main-nav {
+        gap: 16px;
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .subsidiary {
+        grid-template-columns: 1fr;
+      }
+      .subsidiary .thumb {
+        width: 100%;
+        height: 90px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -135,10 +302,14 @@
   <!-- ================== Header ================== -->
   <header class="site-header">
     <div class="header-inner">
-      <div class="logo-text">신우레미콘</div>
+      <div class="logo">
+        <div class="logo-text">신우그룹</div>
+        <div class="logo-sub">건설자재·제조·공급 기업그룹</div>
+      </div>
 
       <nav class="main-nav">
-        <a href="#about">회사소개</a>
+        <a href="#about">그룹소개</a>
+        <a href="#subsidiaries">계열사소개</a>
         <a href="#services">주요사업</a>
         <a href="#contact">고객지원</a>
       </nav>
@@ -148,51 +319,150 @@
   <!-- ================== Main banner ================== -->
   <section class="main">
     <div class="main-text">
-      <h1>믿을 수 있는 레미콘 · 콘크리트 공급</h1>
-      <p>신우레미콘은 건설과 토목 현장을 위한 고품질 레미콘을 제공합니다.</p>
+      <h1>신우그룹</h1>
+      <p>
+        레미콘 · 콘크리트 · 아스콘 · 건설자재 등 건설산업 전반의 제조·공급을 수행하는
+        신뢰할 수 있는 기업그룹입니다.
+      </p>
     </div>
   </section>
+
+  <hr class="divider">
 
   <!-- ================== About ================== -->
   <section id="about" class="section">
-    <h2>회사 소개</h2>
-    <p>
-      신우레미콘은 레미콘과 콘크리트 제조 및 납품을 전문으로 하는 기업입니다.
-      철저한 품질 관리와 신속한 납품을 통해 현장의 신뢰를 쌓아왔습니다.
-    </p>
+    <div class="section-title">
+      <h2>그룹 소개</h2>
+      <p class="desc">기업 개요 및 운영 방향</p>
+    </div>
+
+    <div class="about-box">
+      신우그룹은 레미콘 및 콘크리트, 아스콘, 건설자재 공급 등 건설 현장에 필요한
+      제품과 서비스를 안정적으로 제공하기 위해 설립되었습니다.<br>
+      철저한 품질 관리와 신속한 납품, 고객 중심의 운영을 통해 현장의 신뢰를 쌓아가고 있습니다.
+    </div>
   </section>
 
-  <!-- ================== Services ================== -->
-  <section id="services" class="section">
-    <h2>주요 사업</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>레미콘 제조</h3>
-        <p>현장 조건에 최적화된 레미콘을 생산합니다.</p>
+  <hr class="divider">
+
+  <!-- ================== Subsidiaries ================== -->
+  <section id="subsidiaries" class="section">
+    <div class="section-title">
+      <h2>계열사 안내</h2>
+      <p class="desc">그룹 내 계열사 및 주요 사업 분야</p>
+    </div>
+
+    <div class="subsidiaries">
+      <div class="subsidiary">
+        <div class="info">
+          <h3>신우레미콘</h3>
+          <p>레미콘 및 콘크리트 제조 · 공급</p>
+        </div>
+        <div class="thumb">이미지</div>
       </div>
-      <div class="card">
-        <h3>콘크리트 공급</h3>
-        <p>대형 및 소형 현장에 안정적으로 공급합니다.</p>
+
+      <div class="subsidiary">
+        <div class="info">
+          <h3>신우아스콘</h3>
+          <p>아스팔트 콘크리트 생산 · 납품</p>
+        </div>
+        <div class="thumb">이미지</div>
       </div>
-      <div class="card">
-        <h3>특수 배합</h3>
-        <p>특수 공법과 구조물에 맞춘 배합 기술을 제공합니다.</p>
+
+      <div class="subsidiary">
+        <div class="info">
+          <h3>신우건설자재</h3>
+          <p>건설자재 유통 · 현장 공급</p>
+        </div>
+        <div class="thumb">이미지</div>
+      </div>
+
+      <div class="subsidiary">
+        <div class="info">
+          <h3>신우환경(예시)</h3>
+          <p>순환자원 처리 · 건설 폐기물 관련</p>
+        </div>
+        <div class="thumb">이미지</div>
+      </div>
+
+      <div class="subsidiary">
+        <div class="info">
+          <h3>신우물류(예시)</h3>
+          <p>운송 · 물류 지원</p>
+        </div>
+        <div class="thumb">이미지</div>
+      </div>
+
+      <div class="subsidiary">
+        <div class="info">
+          <h3>기타 계열사(예시)</h3>
+          <p>추가 계열사 설명</p>
+        </div>
+        <div class="thumb">이미지</div>
       </div>
     </div>
   </section>
 
+  <hr class="divider">
+
+  <!-- ================== Services ================== -->
+  <section id="services" class="section">
+    <div class="section-title">
+      <h2>주요 사업</h2>
+      <p class="desc">생산 · 공급 · 기술지원</p>
+    </div>
+
+    <div class="services">
+      <div class="service">
+        <h3>레미콘 제조</h3>
+        <p>현장 조건에 맞춘 배합과 품질 관리로 안정적인 레미콘을 공급합니다.</p>
+      </div>
+      <div class="service">
+        <h3>콘크리트 공급</h3>
+        <p>대형·소형 현장에 신속하게 공급하여 공정 지연을 최소화합니다.</p>
+      </div>
+      <div class="service">
+        <h3>아스콘 생산</h3>
+        <p>도로·토목 현장에 최적화된 아스팔트 콘크리트를 생산합니다.</p>
+      </div>
+      <div class="service">
+        <h3>건설자재 유통</h3>
+        <p>현장에 필요한 자재를 효율적으로 공급하고 관리합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
   <!-- ================== Contact ================== -->
   <section id="contact" class="section">
-    <h2>고객 지원</h2>
-    <p>회사명: 신우레미콘</p>
-    <p>주소: (회사 주소 입력)</p>
-    <p>전화: (대표번호 입력)</p>
-    <p>이메일: (이메일 입력)</p>
+    <div class="section-title">
+      <h2>고객 지원</h2>
+      <p class="desc">문의 및 오시는 길</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <strong>그룹 본사</strong><br>
+        회사명: 신우그룹<br>
+        주소: (회사 주소 입력)<br>
+        전화: (대표번호 입력)<br>
+        이메일: (이메일 입력)
+      </div>
+
+      <div class="contact-card">
+        <strong>영업/납품 문의</strong><br>
+        레미콘/콘크리트: (연락처)<br>
+        아스콘: (연락처)<br>
+        자재/기타: (연락처)<br>
+        운영시간: (예: 09:00~18:00)
+      </div>
+    </div>
   </section>
 
   <!-- ================== Footer ================== -->
   <footer>
-    © 2026 신우레미콘. All rights reserved.
+    © 2026 신우그룹. All rights reserved.
   </footer>
 
 </body>
