@@ -45,7 +45,7 @@
     .logo-text {
       font-size: 26px;
       font-weight: 800;
-      color: #f57c00; /* 오렌지 포인트 */
+      color: #f57c00;
       letter-spacing: -1px;
     }
 
@@ -69,9 +69,7 @@
       color: #333;
     }
 
-    .main-nav a:hover {
-      color: #f57c00;
-    }
+    .main-nav a:hover { color: #f57c00; }
 
     /* ================== Main banner ================== */
     .main {
@@ -156,59 +154,94 @@
       color: #333;
     }
 
-    /* ================== Subsidiaries (계열사 카드) ================== */
-    .subsidiaries {
+    /* ================== Site List (요청한 리스트 화면) ================== */
+    .site-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
       margin-top: 22px;
     }
 
-    .subsidiary {
+    .site-card {
+      display: block;
+      text-decoration: none;
       border: 1px solid #e5e5e5;
       background: #fff;
-      padding: 18px;
-      display: grid;
-      grid-template-columns: 1fr 120px;
-      gap: 14px;
-      align-items: center;
-      min-height: 100px;
+      overflow: hidden;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+      transform: translateY(0);
+      transition: 0.18s ease;
     }
 
-    .subsidiary .info h3 {
-      margin: 0 0 6px 0;
-      font-size: 18px;
-      color: #222;
-      font-weight: 900;
-      letter-spacing: -0.2px;
+    .site-card:hover {
+      border-color: #f1c08b;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
     }
 
-    .subsidiary .info p {
-      margin: 0;
-      font-size: 14px;
-      color: #666;
-      line-height: 1.5;
-    }
-
-    .subsidiary .thumb {
-      width: 120px;
-      height: 70px;
-      border: 1px solid #eee;
+    .site-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
       background: linear-gradient(135deg, #f7f7f7, #efefef);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: #999;
+      position: relative;
       overflow: hidden;
     }
 
-    /* ===== HC 레퍼런스 느낌: 카드 전체 hover ===== */
-    .subsidiary:hover {
+    .site-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .site-body {
+      padding: 18px 18px 14px 18px;
+      position: relative;
+      min-height: 142px;
+    }
+
+    .site-name {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      margin: 0 0 14px 0;
+      color: #111;
+    }
+
+    .site-label {
+      font-size: 14px;
+      font-weight: 900;
+      color: #111;
+      margin: 0 0 6px 0;
+    }
+
+    .site-address {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.55;
+      margin: 0;
+      padding-right: 44px; /* 화살표 공간 확보 */
+      word-break: keep-all;
+    }
+
+    .site-arrow {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid #eee;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .site-card:hover .site-arrow {
       border-color: #f1c08b;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-      transform: translateY(-1px);
-      transition: 0.18s ease;
     }
 
     /* ================== Services (주요사업) ================== */
@@ -267,6 +300,10 @@
     }
 
     /* ================== Responsive ================== */
+    @media (max-width: 980px) {
+      .site-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
     @media (max-width: 720px) {
       .main { height: 320px; }
       .main-text h1 { font-size: 30px; }
@@ -276,23 +313,16 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
       .main-nav {
         gap: 16px;
         width: 100%;
         justify-content: flex-start;
       }
 
-      .subsidiary {
-        grid-template-columns: 1fr;
-      }
-      .subsidiary .thumb {
-        width: 100%;
-        height: 90px;
-      }
+      .site-list { grid-template-columns: 1fr; }
 
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
+      .contact-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -309,7 +339,7 @@
 
       <nav class="main-nav">
         <a href="#about">그룹소개</a>
-        <a href="#subsidiaries">계열사소개</a>
+        <a href="#sites">사업소안내</a>
         <a href="#services">주요사업</a>
         <a href="#contact">고객지원</a>
       </nav>
@@ -345,61 +375,91 @@
 
   <hr class="divider">
 
-  <!-- ================== Subsidiaries ================== -->
-  <section id="subsidiaries" class="section">
+  <!-- ================== Sites List (요청 스타일) ================== -->
+  <section id="sites" class="section">
     <div class="section-title">
-      <h2>계열사 안내</h2>
-      <p class="desc">그룹 내 계열사 및 주요 사업 분야</p>
+      <h2>사업소 안내</h2>
+      <p class="desc">사업소 위치 및 주소</p>
     </div>
 
-    <div class="subsidiaries">
-      <div class="subsidiary">
-        <div class="info">
-          <h3>신우레미콘</h3>
-          <p>레미콘 및 콘크리트 제조 · 공급</p>
+    <div class="site-list">
+      <!-- 카드 1 -->
+      <a class="site-card" href="#contact" aria-label="부천사업소 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/sites/bucheon.jpg" alt="부천사업소 전경" onerror="this.remove();">
         </div>
-        <div class="thumb">이미지</div>
-      </div>
+        <div class="site-body">
+          <h3 class="site-name">부천사업소</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">경기 부천시 석천로 465</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
 
-      <div class="subsidiary">
-        <div class="info">
-          <h3>신우아스콘</h3>
-          <p>아스팔트 콘크리트 생산 · 납품</p>
+      <!-- 카드 2 -->
+      <a class="site-card" href="#contact" aria-label="인천사업소 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/sites/incheon.jpg" alt="인천사업소 전경" onerror="this.remove();">
         </div>
-        <div class="thumb">이미지</div>
-      </div>
+        <div class="site-body">
+          <h3 class="site-name">인천사업소</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">인천 중구 서해대로93번길 26</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
 
-      <div class="subsidiary">
-        <div class="info">
-          <h3>신우건설자재</h3>
-          <p>건설자재 유통 · 현장 공급</p>
+      <!-- 카드 3 -->
+      <a class="site-card" href="#contact" aria-label="파주사업소 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/sites/paju.jpg" alt="파주사업소 전경" onerror="this.remove();">
         </div>
-        <div class="thumb">이미지</div>
-      </div>
+        <div class="site-body">
+          <h3 class="site-name">파주사업소</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">경기 파주시 천정구로 155</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
 
-      <div class="subsidiary">
-        <div class="info">
-          <h3>신우환경(예시)</h3>
-          <p>순환자원 처리 · 건설 폐기물 관련</p>
+      <!-- 카드 4 -->
+      <a class="site-card" href="#contact" aria-label="영종도사업소 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/sites/yeongjong.jpg" alt="영종도사업소 전경" onerror="this.remove();">
         </div>
-        <div class="thumb">이미지</div>
-      </div>
+        <div class="site-body">
+          <h3 class="site-name">영종도사업소</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">인천 중구 영종해안북로702번길 115-96</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
 
-      <div class="subsidiary">
-        <div class="info">
-          <h3>신우물류(예시)</h3>
-          <p>운송 · 물류 지원</p>
+      <!-- 카드 5 -->
+      <a class="site-card" href="#contact" aria-label="성남사업소 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/sites/seongnam.jpg" alt="성남사업소 전경" onerror="this.remove();">
         </div>
-        <div class="thumb">이미지</div>
-      </div>
+        <div class="site-body">
+          <h3 class="site-name">성남사업소</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">경기 성남시 중원구 둔촌대로457번길 40</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
 
-      <div class="subsidiary">
-        <div class="info">
-          <h3>기타 계열사(예시)</h3>
-          <p>추가 계열사 설명</p>
+      <!-- 카드 6 -->
+      <a class="site-card" href="#contact" aria-label="광주사업소(경기) 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/sites/gwangju.jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
         </div>
-        <div class="thumb">이미지</div>
-      </div>
+        <div class="site-body">
+          <h3 class="site-name">광주사업소(경기)</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">경기 광주시 오포읍 오포로 738-10</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
     </div>
   </section>
 
