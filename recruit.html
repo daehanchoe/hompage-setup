@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>상시채용 | 신우레미콘그룹</title>
+
+  <!-- 공통 CSS (헤더/푸터 포함) -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <style>
+    :root{
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --soft:#f8fafc;
+      --brand:#0b4ea2;
+      --hl:#bcd8ff;
+    }
+
+    /* ===== Page Hero ===== */
+    .page-hero{
+      padding: 56px 24px 34px;
+      background:
+        radial-gradient(1200px 420px at 70% -10%, rgba(11,78,162,.16), transparent 60%),
+        linear-gradient(to bottom, #ffffff, #f6f8fb);
+      border-bottom: 1px solid var(--line);
+    }
+    .page-hero-inner{
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .breadcrumb{
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .breadcrumb b{ color: var(--ink); font-weight: 900; }
+
+    .page-title{
+      margin: 0 0 10px;
+      font-size: 44px;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      color: var(--ink);
+    }
+    .page-sub{
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.75;
+      max-width: 920px;
+    }
+
+    /* ===== Layout ===== */
+    .wrap{
+      padding: 36px 24px 90px;
+      background:#fff;
+    }
+    .inner{
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .lead-box{
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 14px;
+      padding: 18px 18px;
+      display:flex;
+      gap: 14px;
+      align-items:flex-start;
+      box-shadow: 0 10px 26px rgba(15,23,42,.06);
+      margin-bottom: 18px;
+    }
+    .lead-badge{
+      min-width: 82px;
+      font-weight: 900;
+      color: var(--brand);
+      background: rgba(11,78,162,.08);
+      border: 1px solid rgba(11,78,162,.18);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      text-align:center;
+    }
+    .lead-text{
+      margin: 0;
+      color: #334155;
+      font-size: 14px;
+      line-height: 1.85;
+      font-weight: 650;
+    }
+    .lead-text strong{ color: var(--brand); font-weight: 900; }
+
+    /* ===== Table ===== */
+    .section{
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+    }
+    .section-title{
+      margin: 0 0 12px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      color: var(--ink);
+    }
+    .section-desc{
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .table-wrap{
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background:#fff;
+    }
+    table{
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead th{
+      background: #f3f6fb;
+      color: #334155;
+      font-size: 13px;
+      font-weight: 900;
+      text-align: left;
+      padding: 14px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+    tbody td{
+      padding: 14px 14px;
+      border-bottom: 1px solid var(--line);
+      color: #334155;
+      font-weight: 650;
+      font-size: 14px;
+      vertical-align: top;
+      line-height: 1.7;
+    }
+    tbody tr:last-child td{ border-bottom: 0; }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      height: 24px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 900;
+      border: 1px solid rgba(11,78,162,.18);
+      color: var(--brand);
+      background: rgba(11,78,162,.06);
+      white-space: nowrap;
+    }
+
+    /* ===== Info Grid ===== */
+    .info-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .card{
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      padding: 18px;
+      box-shadow: 0 10px 26px rgba(15,23,42,.06);
+    }
+    .card h3{
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--ink);
+      letter-spacing: -0.2px;
+    }
+    .card p{
+      margin: 0;
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.85;
+      font-weight: 650;
+    }
+    .bullets{
+      margin: 0;
+      padding-left: 18px;
+      color: #475569;
+      font-size: 14px;
+      line-height: 1.85;
+      font-weight: 650;
+    }
+    .bullets li{ margin: 6px 0; }
+
+    /* ===== Process (steps) ===== */
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .step{
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      padding: 14px 14px;
+      position: relative;
+      min-height: 78px;
+    }
+    .step .num{
+      font-size: 12px;
+      font-weight: 900;
+      color: var(--brand);
+      background: rgba(11,78,162,.08);
+      border: 1px solid rgba(11,78,162,.18);
+      display:inline-flex;
+      align-items:center;
+      height: 24px;
+      padding: 0 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+    .step .txt{
+      margin: 0;
+      font-size: 14px;
+      font-weight: 900;
+      color: #334155;
+      letter-spacing: -0.2px;
+      line-height: 1.35;
+    }
+
+    /* ===== Downloads / Contact ===== */
+    .actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      height: 40px;
+      padding: 0 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #334155;
+      font-weight: 900;
+      font-size: 13px;
+    }
+    .btn:hover{ border-color: rgba(11,78,162,.28); }
+    .btn.primary{
+      background: var(--brand);
+      border-color: var(--brand);
+      color: #fff;
+    }
+
+    .kv{
+      display:grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .kv-row{
+      display:flex;
+      gap: 12px;
+      align-items: baseline;
+      line-height: 1.8;
+    }
+    .k{
+      min-width: 88px;
+      font-weight: 900;
+      color: rgba(31,41,55,.72);
+    }
+    .v{
+      color:#334155;
+      font-weight: 750;
+      word-break: break-word;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .page-title{ font-size: 34px; }
+      .info-grid{ grid-template-columns: 1fr; }
+      .steps{ grid-template-columns: 1fr; }
+      .lead-box{ flex-direction: column; }
+      .lead-badge{ width: fit-content; }
+      thead{ display:none; }
+      table, tbody, tr, td{ display:block; width:100%; }
+      tbody td{
+        border-bottom: 0;
+        padding: 12px 14px;
+      }
+      tbody tr{
+        border-bottom: 1px solid var(--line);
+      }
+      tbody tr:last-child{ border-bottom: 0; }
+      tbody td::before{
+        content: attr(data-label);
+        display:block;
+        font-size: 12px;
+        font-weight: 900;
+        color: rgba(31,41,55,.6);
+        margin-bottom: 6px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="./index.html" class="logo-text">신우래미콘그룹</a>
+        <div class="logo-sub">건설자재·제조·공급 기업그룹</div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="./philosophy.html">경영이념</a>
+        <a href="./year.html">연혁</a>
+        <a href="./product.html">제품정보</a>
+        <a href="./recruit.html">채용안내</a>
+        <a href="./ceo.html">CEO 소개</a>
+        <a href="./index.html#sites">사업소안내</a>
+        <a href="./index.html#services">주요사업</a>
+        <a href="./index.html#contact">고객지원</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">인재채용 <span style="opacity:.6;">/</span> <b>상시채용</b></div>
+      <h1 class="page-title">상시채용</h1>
+      <p class="page-sub">
+        신우레미콘그룹은 도전정신과 열정을 겸비한 인재를 기다립니다.
+        상시채용은 필요 인력 발생 시 수시로 검토하여 개별 연락드립니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= CONTENT ================= -->
+  <main class="wrap">
+    <div class="inner">
+
+      <div class="lead-box">
+        <div class="lead-badge">안내</div>
+        <p class="lead-text">
+          아래 모집 분야 중 관심 직무로 지원해 주세요. <strong>신입/경력</strong> 모두 지원 가능하며,
+          제출 서류는 채용 단계에 따라 추가 요청될 수 있습니다.
+        </p>
+      </div>
+
+      <!-- 지원부문 -->
+      <section class="section" aria-labelledby="sec-jobs">
+        <h2 class="section-title" id="sec-jobs">지원부문</h2>
+        <p class="section-desc">지원부문 / 상세업무 / 근무지역 / 비고</p>
+
+        <div class="table-wrap" role="region" aria-label="상시채용 지원부문 표">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:20%;">지원부문</th>
+                <th>상세업무</th>
+                <th style="width:20%;">근무지역</th>
+                <th style="width:18%;">비고</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="지원부문"><b>관리직</b></td>
+                <td data-label="상세업무">기획 · 재무 · 인사 · 총무</td>
+                <td data-label="근무지역">본사 및 전국 사업장</td>
+                <td data-label="비고"><span class="tag">신입/경력</span></td>
+              </tr>
+
+              <tr>
+                <td data-label="지원부문"><b>영업직</b></td>
+                <td data-label="상세업무">레미콘 영업 · 건자재 영업</td>
+                <td data-label="근무지역">전국</td>
+                <td data-label="비고"><span class="tag">경력 우대</span></td>
+              </tr>
+
+              <tr>
+                <td data-label="지원부문"><b>품질관리직</b></td>
+                <td data-label="상세업무">레미콘 품질관리 · 원자재/공정 품질관리</td>
+                <td data-label="근무지역">전국 사업장</td>
+                <td data-label="비고"><span class="tag">신입/경력</span></td>
+              </tr>
+
+              <tr>
+                <td data-label="지원부문"><b>공무직</b></td>
+                <td data-label="상세업무">제조 설비 관리 · 유지보수 · 안전 점검</td>
+                <td data-label="근무지역">전국 사업장</td>
+                <td data-label="비고"><span class="tag">경력 우대</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 지원자격 / 전형방법 -->
+      <section class="section" aria-label="지원 자격 및 전형 방법">
+        <div class="info-grid">
+
+          <article class="card">
+            <h3>지원자격</h3>
+            <ul class="bullets">
+              <li>병역을 필하였거나 면제된 자</li>
+              <li>해외여행에 결격사유가 없는 자</li>
+              <li>직무 관련 자격/경험 보유자 우대</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>전형방법</h3>
+            <div class="steps" aria-label="전형 단계">
+              <div class="step">
+                <div class="num">STEP 01</div>
+                <p class="txt">서류전형</p>
+              </div>
+              <div class="step">
+                <div class="num">STEP 02</div>
+                <p class="txt">인적성전형<br>(필요 시)</p>
+              </div>
+              <div class="step">
+                <div class="num">STEP 03</div>
+                <p class="txt">면접전형</p>
+              </div>
+              <div class="step">
+                <div class="num">STEP 04</div>
+                <p class="txt">건강검진</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- 제출서류 / 접수방법 / 문의 -->
+      <section class="section" aria-label="제출서류 및 접수 안내">
+        <div class="info-grid">
+
+          <article class="card">
+            <h3>제출서류</h3>
+            <ul class="bullets">
+              <li>입사지원서 및 자기소개서 (신입/경력)</li>
+              <li>최종학력 성적증명서 (석사학위자는 학사 성적 포함)</li>
+              <li>서류전형 합격자에 한해 추가 서류(졸업/성적 원본, 경력증명서, 자격증 사본 등) 요청</li>
+            </ul>
+
+            <div class="actions" aria-label="지원서 다운로드">
+              <!-- 실제 파일 경로로 바꾸세요 -->
+              <a class="btn" href="./downloads/apply_new.xlsx" download>신입 지원서 다운로드</a>
+              <a class="btn" href="./downloads/apply_career.xlsx" download>경력 지원서 다운로드</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>접수방법 / 문의</h3>
+
+            <div class="kv">
+              <div class="kv-row">
+                <div class="k">접수방법</div>
+                <div class="v">이메일 접수</div>
+              </div>
+              <div class="kv-row">
+                <div class="k">이메일</div>
+                <div class="v"><a href="mailto:recruit@shinwoo-group.co.kr">recruit@shinwoo-group.co.kr</a></div>
+              </div>
+              <div class="kv-row">
+                <div class="k">문의처</div>
+                <div class="v">신우레미콘그룹 인사총무팀</div>
+              </div>
+              <div class="kv-row">
+                <div class="k">전화</div>
+                <div class="v"><a href="tel:052-249-0752">052-249-0752</a></div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="btn primary" href="mailto:recruit@shinwoo-group.co.kr?subject=%5B%EC%83%81%EC%8B%9C%EC%B1%84%EC%9A%A9%5D%20%EC%A7%80%EC%9B%90%20%EB%AC%B8%EC%9D%98">이메일 문의</a>
+              <a class="btn" href="./index.html#contact">고객지원으로 이동</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">신우레미콘그룹</div>
+          <div class="footer-desc">건설자재·제조·공급 기업그룹</div>
+        </div>
+
+        <nav class="footer-nav" aria-label="푸터 네비게이션">
+          <a href="./index.html#about">그룹소개</a>
+          <a href="./index.html#sites">사업소안내</a>
+          <a href="./index.html#services">주요사업</a>
+          <a href="./index.html#contact">고객지원</a>
+        </nav>
+      </div>
+
+      <div class="footer-mid">
+        <div class="footer-info">
+          <div class="info-row">
+            <span class="info-label">본사</span>
+            <span class="info-value">울산광역시 울주군 웅촌면 웅촌로 607-31</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">대표전화</span>
+            <span class="info-value">052-249-0752</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">팩스</span>
+            <span class="info-value">052-249-0757</span>
+          </div>
+        </div>
+
+        <div class="footer-cta">
+          <div class="cta-title">고객지원</div>
+          <div class="cta-desc">문의사항이 있으시면 편하게 연락주세요.</div>
+          <a class="cta-btn" href="./index.html#contact">문의하기</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Copyright ⓒ 2026 SHINWOO REMICON GROUP. All Rights Reserved.
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>
