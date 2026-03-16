@@ -51,6 +51,14 @@
       font-weight: 600;
     }
 
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
     .main-nav {
       display: flex;
       gap: 34px;
@@ -246,15 +254,27 @@
     }
 
     /* ================== Responsive ================== */
-    @media (max-width: 720px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
+    @media (max-width: 1066px) {
+      .menu-toggle {
+        display: block;
       }
+
+      .header-inner {
+        flex-wrap: wrap;
+      }
+
       .main-nav {
-        gap: 16px;
+        display: none;
+        flex-direction: column;
         width: 100%;
-        justify-content: flex-start;
+        margin-top: 12px;
+        border-top: 1px solid #eee;
+        padding-top: 12px;
+        gap: 16px;
+      }
+
+      .main-nav.active {
+        display: flex;
       }
 
       .detail-list li,
@@ -266,7 +286,9 @@
         grid-template-columns: 1fr;
       }
 
-      .actions { justify-content: flex-start; }
+      .actions {
+        justify-content: flex-start;
+      }
     }
   </style>
 </head>
@@ -280,6 +302,11 @@
         <a href="./index.html" class="logo-text">신우래미콘그룹</a>
         <div class="logo-sub">건설자재·제조·공급 기업그룹</div>
       </div>
+
+       <!-- 햄버거 버튼 -->
+      <button class="menu-toggle" onclick="toggleMenu()">
+        ☰
+      </button>
 
       <nav class="main-nav">
         <a href="./philosophy.html">경영이념</a>
@@ -318,7 +345,7 @@
       <ul class="detail-list">
         <li>
           <div class="detail-k">소재지</div>
-          <div class="detail-v">경기 부천시 석천로 465</div>
+          <div class="detail-v">경상북도 경주시 외동읍 관문로 957-21</div>
         </li>
         <li>
           <div class="detail-k">공장가동</div>
@@ -327,17 +354,16 @@
         <li>
           <div class="detail-k">생산설비</div>
           <div class="detail-v">
-            B/P: 360㎥/h×1, 180㎥/h×1<br>
-            Cement Silo: 1,500t×1<br>
-            슬라그파우더 Silo: 300t×1<br>
-            F/A Silo: 200t×1<br>
-            특수 Cement Silo: 100t×1<br>
-            R/T: 65대
+            B/P *1 믹서트럭 차량수 : 22대<br>
+            사일로 톤수 포틀랜트시멘트: 450t<br>
+            슬래그: 350t<br>
+            특수시멘트: 350t<br>
+            플라이애시: 250t  <br>
           </div>
         </li>
         <li>
           <div class="detail-k">생산능력</div>
-          <div class="detail-v">4,320㎥/일(8시간기준)</div>
+          <div class="detail-v">210 ㎥/h</div>
         </li>
       </ul>
     </section>
@@ -364,19 +390,15 @@
       <div class="contact-box">
         <div class="contact-row">
           <div class="contact-k">영업</div>
-          <div class="contact-v">032-677-4254~6</div>
-        </div>
-        <div class="contact-row">
-          <div class="contact-k">품질</div>
-          <div class="contact-v">032-682-6035</div>
+          <div class="contact-v">054)775-9151</div>
         </div>
         <div class="contact-row">
           <div class="contact-k">출하</div>
-          <div class="contact-v">032-673-8945, 032-682-8208</div>
+          <div class="contact-v">052)968-8803 </div>
         </div>
         <div class="contact-row">
           <div class="contact-k">팩스</div>
-          <div class="contact-v">032-677-9930</div>
+          <div class="contact-v">052)968-8804</div>
         </div>
       </div>
 
