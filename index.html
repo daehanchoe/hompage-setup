@@ -2,13 +2,14 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/jpeg" href="./images/logo.jpeg">
   <title>신우레미콘그룹 | 레미콘 · 콘크리트 · 건설자재 종합기업</title>
-  <meta name="description" content="신우래미콘그룹운 레미콘, 콘크리트, 아스콘, 건설자재, 물류/환경 등 건설산업 전반의 제조·공급을 수행하는 기업그룹입니다.">
+  <meta name="description" content="신우레미콘그룹운 레미콘, 콘크리트, 아스콘, 건설자재, 물류/환경 등 건설산업 전반의 제조·공급을 수행하는 기업그룹입니다.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- 네이버 서치어드바이저 -->
   <meta name="naver-site-verification" content="여기에_네이버_코드">
-
+  <link rel="stylesheet" href="./css/style.css">
   <style>
     body {
       margin: 0;
@@ -36,7 +37,7 @@
 
     .logo {
       display: flex;
-      align-items: baseline;
+      align-items: center;
       gap: 10px;
       white-space: nowrap;
     }
@@ -44,7 +45,7 @@
     .logo-text {
       font-size: 26px;
       font-weight: 800;
-      color: #f57c00;
+      color: #333333;
       letter-spacing: -1px;
     }
 
@@ -84,7 +85,7 @@
     .main {
       width: 100%;
       height: 420px;
-      background: url("./images/main.png") center center / cover no-repeat;
+      background: url("./images/main.jpeg") center center / contain no-repeat;
       position: relative;
       display: flex;
       align-items: center;
@@ -298,16 +299,6 @@
       color: #444;
     }
 
-    /* ================== Footer ================== */
-    footer {
-      background: #f4f4f4;
-      border-top: 1px solid #e9e9e9;
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 14px;
-      color: #777;
-    }
-
     /* ================== Responsive ================== */
     @media (max-width: 1066px) {
       .menu-toggle {
@@ -336,6 +327,10 @@
         display: block;
       }
     }
+
+    .logo-img {
+      height: 32px;
+    }
   </style>
 </head>
 
@@ -345,21 +340,20 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="logo">
-        <a href="./index.html" class="logo-text">신우래미콘그룹</a>
-        <div class="logo-sub">건설자재·제조·공급 기업그룹</div>
+        <img src="./images/logo.jpeg" class="logo-img">
+        <a href="./index.html" class="logo-text">신우레미콘그룹</a>
+        <!-- <div class="logo-sub">건설의 기반을 만드는 기업</div> -->
       </div>
 
       <button class="menu-toggle" type="button" onclick="toggleMenu()">☰</button>
 
       <nav class="main-nav" id="mainNav">
+        <a href="./ceo.html">CEO 안사말</a>
+        <a href="./index.html#sites">사업소안내</a>
         <a href="./philosophy.html">경영이념</a>
         <a href="./year.html">연혁</a>
         <a href="./product.html">제품정보</a>
         <a href="./recruit.html">채용안내</a>
-        <a href="./ceo.html">CEO 소개</a>
-        <a href="./index.html#sites">사업소안내</a>
-        <a href="./index.html#services">주요사업</a>
-        <a href="./index.html#contact">고객지원</a>
       </nav>
     </div>
   </header>
@@ -367,11 +361,13 @@
   <!-- ================== Main banner ================== -->
   <section class="main">
     <div class="main-text">
-      <h1>신우레미콘그룹</h1>
-      <p>
+
+      <h1>"단단한 기초의 시작, 신우레미콘그룹이 만드는 신뢰의 가치"</h1>
+      <!-- <p>
         레미콘 · 콘크리트 · 아스콘 · 건설자재 등 건설산업 전반의 제조·공급을 수행하는
         신뢰할 수 있는 기업그룹입니다.
-      </p>
+      </p> -->
+
     </div>
   </section>
 
@@ -385,7 +381,7 @@
     </div>
 
     <div class="about-box">
-      신우래미콘그룹은 레미콘 및 콘크리트, 아스콘, 건설자재 공급 등 건설 현장에 필요한
+      신우레미콘그룹은 레미콘 및 콘크리트, 아스콘, 건설자재 공급 등 건설 현장에 필요한
       제품과 서비스를 안정적으로 제공하기 위해 설립되었습니다.<br>
       철저한 품질 관리와 신속한 납품, 고객 중심의 운영을 통해 현장의 신뢰를 쌓아가고 있습니다.
     </div>
@@ -415,9 +411,9 @@
       </a>
 
       <!-- 카드 2 -->
-      <a class="site-card" href="./sinwoo-detail.html" aria-label="인천사업소 자세히 보기">
+      <a class="site-card" href="./sinwoo-samdong-detail.html" aria-label="인천사업소 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/신우레미콘(주)_ 울산2.jpg" alt="인천사업소 전경" onerror="this.remove();">
+          <img src="./images/신우레미콘(주)_울산.jpg" alt="인천사업소 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우레미콘(주) 울산공장(삼동)</h3>
@@ -428,9 +424,9 @@
       </a>
 
       <!-- 카드 3 -->
-      <a class="site-card" href="./sinwoo-detail.html" aria-label="파주사업소 자세히 보기">
+      <a class="site-card" href="./yeonghwa-detail.html" aria-label="파주사업소 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/영화레미콘_주식회사.jpg" alt="파주사업소 전경" onerror="this.remove();">
+          <img src="./images/3.jpg" alt="파주사업소 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">영화레미콘(주) 경주공장</h3>
@@ -441,9 +437,9 @@
       </a>
 
       <!-- 카드 4 -->
-      <a class="site-card" href="#contact" aria-label="영종도사업소 자세히 보기">
+      <a class="site-card" href="./hongjin-detail.html" aria-label="영종도사업소 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/흥진레미콘_주식회사.jpg" alt="영종도사업소 전경" onerror="this.remove();">
+          <img src="./images/4.jpg" alt="영종도사업소 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">흥진레미콘(주) 경주공장</h3>
@@ -454,9 +450,9 @@
       </a>
 
       <!-- 카드 5 -->
-      <a class="site-card" href="#contact" aria-label="성남사업소 자세히 보기">
+      <a class="site-card" href="./yeongjin.html" aria-label="성남사업소 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/영진레미콘아스콘(주).jpg" alt="성남사업소 전경" onerror="this.remove();">
+          <img src="./images/5.jpg" alt="성남사업소 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">영진레미콘아스콘(주) 울산공장</h3>
@@ -467,9 +463,9 @@
       </a>
 
       <!-- 카드 6 -->
-      <a class="site-card" href="#contact" aria-label="광주사업소(경기) 자세히 보기">
+      <a class="site-card" href="./woojin.html" aria-label="광주사업소(경기) 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/우진레미콘_최종보정본.jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
+          <img src="./images/6.jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">우진레미콘(주) 경주공장</h3>
@@ -479,9 +475,9 @@
         </div>
       </a>
       <!--  -->
-      <a class="site-card" href="#contact" aria-label="광주사업소(경기) 자세히 보기">
+      <a class="site-card" href="./sinwoo-yeongcheon.html" aria-label="신우레미콘아스콘(주) 영천공장 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/신우레미콘(주)영천.jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
+          <img src="./images/7.jpg" alt="신우레미콘아스콘(주) 영천공장" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우레미콘아스콘(주) 영천공장</h3>
@@ -491,22 +487,22 @@
         </div>
       </a>
       <!-- 8 -->
-      <a class="site-card" href="#contact" aria-label="광주사업소(경기) 자세히 보기">
+      <a class="site-card" href="./sina.html" aria-label="광주사업소(경기) 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/신아레미콘(주)_ 울산.jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
+          <img src="./images/신아레미콘(주).jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신아레미콘(주) 울산공장</h3>
           <div class="site-label">소재지</div>
-          <p class="site-address">경상북도 영천시 고경면 거곡로 41-52</p>
+          <p class="site-address">울산광역시 울주군 온산읍 당월로126</p>
           <div class="site-arrow">→</div>
         </div>
       </a>
 
-      <!--  -->
-      <a class="site-card" href="#contact" aria-label="광주사업소(경기) 자세히 보기">
+      <!-- 9 -->
+      <a class="site-card" href="./sinwooremiconindustry.html" aria-label="광주사업소(경기) 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/신우레미콘산업(주).jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
+          <img src="./images/9.jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우레미콘산업(주) 울산공장</h3>
@@ -517,7 +513,7 @@
       </a>
 
       <!--  -->
-      <a class="site-card" href="#contact" aria-label="광주사업소(경기) 자세히 보기">
+      <a class="site-card" href="./sinwoo-development.html" aria-label="신우개발 자세히 보기">
         <div class="site-thumb">
           <img src="./images/신우개발_보정본.png" alt="광주사업소(경기) 전경" onerror="this.remove();">
         </div>
@@ -562,35 +558,42 @@
 
   <hr class="divider">
 
-  <!-- ================== Contact ================== -->
-  <section id="contact" class="section">
-    <div class="section-title">
-      <h2>고객 지원</h2>
-      <p class="desc">문의 및 오시는 길</p>
-    </div>
-
-    <div class="contact-grid">
-      <div class="contact-card">
-        <strong>그룹 본사</strong><br>
-        회사명: 신우래미콘그룹<br>
-        주소: 울산 울주군 삼동면 삼동로1345<br>
-        전화: 052)225-9828<br>
-        이메일: (이메일 입력)
-      </div>
-
-      <div class="contact-card">
-        <strong>영업/납품 문의</strong><br>
-        레미콘/콘크리트: (연락처)<br>
-        아스콘: (연락처)<br>
-        자재/기타: (연락처)<br>
-        운영시간: (예: 09:00~18:00)
-      </div>
-    </div>
-  </section>
-
   <!-- ================== Footer ================== -->
-  <footer>
-    © 2026 신우래미콘그룹. All rights reserved.
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">신우레미콘그룹</div>
+          <div class="footer-desc">건설자재·제조·공급 기업그룹</div>
+        </div>
+
+        <nav class="footer-nav">
+          <a href="./index.html#about">그룹소개</a>
+          <a href="./index.html#sites">사업소안내</a>
+          <a href="./index.html#services">주요사업</a>
+        </nav>
+      </div>
+
+      <div class="footer-mid">
+        <div class="footer-info">
+          <!-- <div class="info-row">
+            <span class="info-label">본사</span>
+            <span class="info-value">울산광역시 울주군 웅촌면 웅촌로 607-31</span>
+          </div> -->
+          <div class="info-row">
+            <span class="info-label">대표전화</span>
+            <span class="info-value">052-225-9830</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Copyright ⓒ 2026 SHINWOO REMICON GROUP. All Rights Reserved.
+      </div>
+
+    </div>
   </footer>
 
   <script>

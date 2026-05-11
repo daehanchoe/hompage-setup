@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>신우래미콘그룹 | 사업소 안내 - 부천사업소</title>
+  <title>신우레미콘그룹 | 사업소 안내 - 부천사업소</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -49,14 +49,6 @@
       font-size: 14px;
       color: #666;
       font-weight: 600;
-    }
-
-    .menu-toggle {
-      display: none;
-      font-size: 28px;
-      background: none;
-      border: none;
-      cursor: pointer;
     }
 
     .main-nav {
@@ -254,27 +246,15 @@
     }
 
     /* ================== Responsive ================== */
-    @media (max-width: 1066px) {
-      .menu-toggle {
-        display: block;
-      }
-
+    @media (max-width: 720px) {
       .header-inner {
-        flex-wrap: wrap;
-      }
-
-      .main-nav {
-        display: none;
         flex-direction: column;
-        width: 100%;
-        margin-top: 12px;
-        border-top: 1px solid #eee;
-        padding-top: 12px;
-        gap: 16px;
+        align-items: flex-start;
       }
-
-      .main-nav.active {
-        display: flex;
+      .main-nav {
+        gap: 16px;
+        width: 100%;
+        justify-content: flex-start;
       }
 
       .detail-list li,
@@ -286,9 +266,7 @@
         grid-template-columns: 1fr;
       }
 
-      .actions {
-        justify-content: flex-start;
-      }
+      .actions { justify-content: flex-start; }
     }
   </style>
 </head>
@@ -299,24 +277,17 @@
   <header class="site-header">
     <div class="header-inner">
       <div class="logo">
-        <a href="./index.html" class="logo-text">신우래미콘그룹</a>
+        <a href="./index.html" class="logo-text">신우레미콘그룹</a>
         <div class="logo-sub">건설자재·제조·공급 기업그룹</div>
       </div>
 
-       <!-- 햄버거 버튼 -->
-      <button class="menu-toggle" onclick="toggleMenu()">
-        ☰
-      </button>
-
-      <nav class="main-nav">
+      <nav class="main-nav" id="mainNav">
+        <a href="./ceo.html">CEO 안사말</a>
+        <a href="./index.html#sites">사업소안내</a>
         <a href="./philosophy.html">경영이념</a>
         <a href="./year.html">연혁</a>
         <a href="./product.html">제품정보</a>
         <a href="./recruit.html">채용안내</a>
-        <a href="./ceo.html">CEO 소개</a>
-        <a href="./index.html#sites">사업소안내</a>
-        <a href="./index.html#services">주요사업</a>
-        <a href="./index.html#contact">고객지원</a>
       </nav>
     </div>
   </header>
@@ -325,17 +296,16 @@
 
   <!-- Detail -->
   <main class="section">
-    <div class="page-top">
+    <!-- <div class="page-top">
       <p class="page-label">사 업 장 안 내</p>
       <h1 class="page-title">사업장 안내</h1>
-    </div>
+    </div> -->
 
-    <h2 class="site-title">부천사업소</h2>
+    <h2 class="site-title">홍진레미콘(주)</h2>
 
     <p class="site-intro">
-      문화, 창의도시 부천에 위치한 당 부천사업소는<br>
-      부천, 서울, 경기권역내에 최고의 시스템과 기술력으로 양질의 레미콘을 공급하고자 최선을 다하고 있습니다.<br>
-      고객감동을 최우선으로 삼는 신우래미콘그룹은 항상 여러분곁에 있습니다.
+      경주권역내에 최고의 시스템과 기술력으로 양질의 레미콘을 공급하고자 최선을 다하고 있습니다.<br>
+      고객감동을 최우선으로 삼는 신우레미콘그룹은 항상 여러분곁에 있습니다.
     </p>
 
     <!-- 사업장 상세정보 -->
@@ -345,7 +315,7 @@
       <ul class="detail-list">
         <li>
           <div class="detail-k">소재지</div>
-          <div class="detail-v">경상북도 경주시 외동읍 관문로 957-21</div>
+          <div class="detail-v">경상북도 경주시 산업로 4773-10</div>
         </li>
         <li>
           <div class="detail-k">공장가동</div>
@@ -354,16 +324,15 @@
         <li>
           <div class="detail-k">생산설비</div>
           <div class="detail-v">
-            B/P *1 믹서트럭 차량수 : 22대<br>
-            사일로 톤수 포틀랜트시멘트: 450t<br>
-            슬래그: 350t<br>
-            특수시멘트: 350t<br>
+            B/P *1 믹서트럭 차량수 : 16대<br>
+            사일로 톤수 포틀랜트시멘트: 360t<br>
+            슬래그: 540t<br>
             플라이애시: 250t  <br>
           </div>
         </li>
         <li>
           <div class="detail-k">생산능력</div>
-          <div class="detail-v">210 ㎥/h</div>
+          <div class="detail-v">210 ㎥/h X 2기</div>
         </li>
       </ul>
     </section>
@@ -375,10 +344,7 @@
       <div class="factory-grid">
         <div class="factory-img">
           <!-- 이미지 파일 없으면 회색 박스 그대로 보여도 됨 -->
-          <img src="./images/sites/bucheon-factory-1.jpg" alt="부천사업소 공장 전경 1" onerror="this.remove();">
-        </div>
-        <div class="factory-img">
-          <img src="./images/sites/bucheon-factory-2.jpg" alt="부천사업소 공장 전경 2" onerror="this.remove();">
+          <img src="./images/4.jpg" alt="부천사업소 공장 전경 1" onerror="this.remove();">
         </div>
       </div>
     </section>
@@ -390,15 +356,15 @@
       <div class="contact-box">
         <div class="contact-row">
           <div class="contact-k">영업</div>
-          <div class="contact-v">054)775-9151</div>
+          <div class="contact-v">054)774-1336</div>
         </div>
         <div class="contact-row">
           <div class="contact-k">출하</div>
-          <div class="contact-v">052)968-8803 </div>
+          <div class="contact-v">054)744-1139 </div>
         </div>
         <div class="contact-row">
           <div class="contact-k">팩스</div>
-          <div class="contact-v">052)968-8804</div>
+          <div class="contact-v">054)741-6564</div>
         </div>
       </div>
 
@@ -410,7 +376,7 @@
   </main>
 
   <footer>
-    © 2026 신우래미콘그룹. All rights reserved.
+    © 2026 신우레미콘그룹. All rights reserved.
   </footer>
 
 </body>

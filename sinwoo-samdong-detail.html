@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>신우래미콘그룹 | 사업소 안내 - 부천사업소</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Noto Sans KR", Arial, sans-serif;
+      color: #222;
+      background: #fff;
+    }
+
+    a { color: inherit; }
+
+    /* ================== Header (기존 그대로) ================== */
+    .site-header {
+      background: linear-gradient(to bottom, #ffffff, #f0f7fb);
+      border-bottom: 1px solid #dbe3ea;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      white-space: nowrap;
+    }
+
+    .logo-text {
+      font-size: 26px;
+      font-weight: 800;
+      color: #f57c00;
+      letter-spacing: -1px;
+    }
+
+    .logo-sub {
+      font-size: 14px;
+      color: #666;
+      font-weight: 600;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 34px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      color: #333;
+    }
+    .main-nav a:hover { color: #f57c00; }
+
+    /* ================== Common ================== */
+    .divider { height: 1px; background: #eee; margin: 0; }
+
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 52px 24px 70px;
+    }
+
+    /* ================== Detail Header ================== */
+    .page-top {
+      padding: 30px 0 18px;
+    }
+
+    .page-label {
+      font-size: 14px;
+      color: #777;
+      margin: 0 0 8px 0;
+      font-weight: 700;
+    }
+
+    .page-title {
+      font-size: 30px;
+      margin: 0;
+      letter-spacing: -0.4px;
+      font-weight: 900;
+    }
+
+    .site-title {
+      font-size: 28px;
+      margin: 26px 0 12px 0;
+      letter-spacing: -0.4px;
+      font-weight: 900;
+    }
+
+    .site-intro {
+      margin: 0;
+      font-size: 15px;
+      color: #444;
+      line-height: 1.85;
+      max-width: 860px;
+    }
+
+    /* ================== Blocks ================== */
+    .block {
+      margin-top: 34px;
+      border-top: 1px solid #eee;
+      padding-top: 24px;
+    }
+
+    .block h3 {
+      margin: 0 0 14px 0;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+    }
+
+    /* ================== Detail List ================== */
+    .detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border: 1px solid #eee;
+      background: #fafafa;
+    }
+
+    .detail-list li {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 12px;
+      padding: 14px 16px;
+      border-top: 1px solid #eee;
+      font-size: 14px;
+      line-height: 1.65;
+      color: #333;
+    }
+
+    .detail-list li:first-child { border-top: 0; }
+
+    .detail-k {
+      font-weight: 900;
+      color: #111;
+      white-space: nowrap;
+    }
+
+    .detail-v {
+      color: #444;
+      word-break: keep-all;
+    }
+
+    /* ================== Factory Images ================== */
+    .factory-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .factory-img {
+      border: 1px solid #eee;
+      background: #f6f6f6;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    .factory-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ================== Contact ================== */
+    .contact-box {
+      border: 1px solid #eee;
+      background: #fff;
+      padding: 18px;
+    }
+
+    .contact-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 12px;
+      padding: 10px 0;
+      border-top: 1px dashed #eee;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .contact-row:first-child { border-top: 0; }
+
+    .contact-k {
+      font-weight: 900;
+      color: #111;
+      white-space: nowrap;
+    }
+    .contact-v { color: #444; }
+
+    /* ================== Bottom Actions ================== */
+    .actions {
+      margin-top: 26px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid #ddd;
+      background: #fff;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      border-color: #f1c08b;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+    }
+
+    .btn.primary {
+      border-color: #f57c00;
+      color: #f57c00;
+      background: #fff;
+    }
+
+    /* ================== Footer (기존 그대로) ================== */
+    footer {
+      background: #f4f4f4;
+      border-top: 1px solid #e9e9e9;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    /* ================== Responsive ================== */
+    @media (max-width: 720px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .main-nav {
+        gap: 16px;
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .detail-list li,
+      .contact-row {
+        grid-template-columns: 1fr;
+      }
+
+      .factory-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .actions { justify-content: flex-start; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="./index.html" class="logo-text">신우래미콘그룹</a>
+        <div class="logo-sub">건설자재·제조·공급 기업그룹</div>
+      </div>
+
+      <nav class="main-nav">
+        <a href="./philosophy.html">경영이념</a>
+        <a href="./year.html">연혁</a>
+        <a href="./product.html">제품정보</a>
+        <a href="./recruit.html">채용안내</a>
+        <a href="./ceo.html">CEO 소개</a>
+        <a href="./index.html#sites">사업소안내</a>
+        <a href="./index.html#services">주요사업</a>
+        <a href="./index.html#contact">고객지원</a>
+      </nav>
+    </div>
+  </header>
+
+  <hr class="divider">
+
+  <!-- Detail -->
+  <main class="section">
+    <!-- <div class="page-top">
+      <p class="page-label">사 업 장 안 내</p>
+      <h1 class="page-title">사업장 안내</h1>
+    </div> -->
+
+    <h2 class="site-title">신우레미콘(주) 울산공장(삼동)</h2>
+
+    <p class="site-intro">
+      울산내의 최고의 시스템과 기술력으로 양질의 레미콘을 공급하고자 최선을 다하고 있습니다.<br>
+      고객감동을 최우선으로 삼는 신우래미콘그룹은 항상 여러분곁에 있습니다.
+    </p>
+
+    <!-- 사업장 상세정보 -->
+    <section class="block">
+      <h3>사업장 상세정보</h3>
+
+      <ul class="detail-list">
+        <li>
+          <div class="detail-k">소재지</div>
+          <div class="detail-v">울산 울주군 삼동면 삼동로1345</div>
+        </li>
+        <li>
+          <div class="detail-k">공장가동</div>
+          <div class="detail-v">1984.01.13</div>
+        </li>
+        <li>
+          <div class="detail-k">생산설비</div>
+          <div class="detail-v">
+            B/P *1 믹서트럭 차량수 : 25대<br>
+            사일로 톤수 포틀랜트시멘트: 250t<br>
+            슬래그: 250t<br>
+            특수시멘트: 300t<br>
+            플라이애시: 150t  <br>
+          </div>
+        </li>
+        <li>
+          <div class="detail-k">생산능력</div>
+          <div class="detail-v">210 ㎥/h</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 공장전경 -->
+    <section class="block">
+      <h3>공장전경</h3>
+
+      <div class="factory-grid">
+        <div class="factory-img">
+          <!-- 이미지 파일 없으면 회색 박스 그대로 보여도 됨 -->
+          <img src="./images/신우레미콘(주)_울산.jpg" alt="부천사업소 공장 전경 1" onerror="this.remove();">
+        </div>
+        <div class="factory-img">
+          <img src="./images/신우레미콘(주)_ 울산2.jpg" alt="부천사업소 공장 전경 2" onerror="this.remove();">
+        </div>
+      </div>
+    </section>
+
+    <!-- 연락처 -->
+    <section class="block">
+      <h3>연락처</h3>
+
+      <div class="contact-box">
+        <div class="contact-row">
+          <div class="contact-k">영업</div>
+          <div class="contact-v">052)225-9828</div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-k">출하</div>
+          <div class="contact-v">052)225-7926 </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-k">팩스</div>
+          <div class="contact-v">052)225-9831</div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="btn" href="./index.html#sites">← 목록으로</a>
+        <a class="btn primary" href="./index.html#contact">문의하기 →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 신우래미콘그룹. All rights reserved.
+  </footer>
+
+</body>
+</html>
