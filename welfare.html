@@ -44,10 +44,6 @@
       font-weight: 600;
     }
 
-    .logo-img {
-      height: 32px;
-    }
-
     .menu-toggle {
       display: none;
       font-size: 28px;
@@ -71,6 +67,8 @@
       font-weight: 700;
       color: #333;
     }
+
+    .main-nav a:hover { color: #f57c00; }
 
     .greeting-section{
       padding: 60px 24px 40px;
@@ -147,9 +145,116 @@
       margin-bottom:40px;
     }
 
+  .welfare-section {
+    background: #f8f9fb;
+    padding: 120px 20px;
+  }
+
+  .welfare-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .welfare-title {
+    text-align: center;
+    font-size: 38px;
+    font-weight: 300;
+    color: #555;
+    margin-bottom: 100px;
+    line-height: 1.5;
+    word-break: keep-all;
+  }
+
+  .welfare-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px 40px;
+  }
+
+  .welfare-item {
+    text-align: center;
+  }
+
+  .welfare-item img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    margin-bottom: 30px;
+  }
+
+  .welfare-item p {
+    font-size: 28px;
+    color: #555;
+    margin: 0;
+    word-break: keep-all;
+  }
+
+  @media (max-width: 900px) {
+    .welfare-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .welfare-title {
+      font-size: 30px;
+      margin-bottom: 70px;
+    }
+
+    .welfare-item img {
+      width: 140px;
+      height: 140px;
+    }
+
+    .welfare-item p {
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .welfare-grid {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+
+    .welfare-title {
+      font-size: 24px;
+    }
+  }
+
     /* =========================
        반응형
     ========================== */
+    /* ================== Responsive ================== */
+    @media (max-width: 1066px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .header-inner {
+        flex-wrap: wrap;
+      }
+
+      .main-nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 12px;
+        border-top: 1px solid #eee;
+        padding-top: 12px;
+        gap: 16px;
+      }
+
+      .main-nav.active {
+        display: flex;
+      }
+
+      .main-nav a {
+        display: block;
+      }
+    }
+
+    .logo-img {
+      height: 32px;
+    }
 
     @media (max-width: 980px){
 
@@ -186,6 +291,15 @@
       }
     }
 
+    .sub-visual {
+  width: 100%;
+  height: 360px;
+  background-image: url("./images/white_ shirt.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
   </style>
 </head>
 
@@ -212,87 +326,49 @@
     </div>
   </header>
 
+    <section>
+      <div class="sub-visual"></div>
+    </section>
 
-  <!-- ================= 대표이사 인사말 비주얼 ================= -->
-  <!-- <section class="greeting-section">
-    <div class="section-title">
-      <span>대표이사 인사말</span>
-    </div>
+    <section class="welfare-section">
+      <div class="welfare-inner">
+        <h2 class="welfare-title">
+          신우레미콘에서는 아래와 같이 다양한 복리후생제도를 운영하고 있습니다.
+        </h2>
 
-    <div class="greeting-wrap">
+        <div class="welfare-grid">
+          <div class="welfare-item">
+            <img src="./images/four-insurances.png" alt="4대보험 가입">
+            <p>4대보험 가입</p>
+          </div>
 
-      <figure class="ceo-figure">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="대표이사 사진">
-      </figure>
+          <div class="welfare-item">
+            <img src="./images/restaurant.png" alt="구내식당 운영">
+            <p>구내식당 운영</p>
+          </div>
 
-      <div>
-        <p class="lead">
-          신우레미콘그룹은 지속적인 혁신으로
-          <span class="em">레미콘</span>과
-          <span class="em">기초 건자재</span>를 넘어<br>
-          대한민국 건설 산업의 새로운 가치를 창출하는
-          대표기업으로 자리매김해왔습니다.
-        </p>
+          <div class="welfare-item">
+            <img src="./images/dormitory.png" alt="장거리 근무자 숙소 운영">
+            <p>장거리 근무자 숙소 운영</p>
+          </div>
 
-        <div class="sign">
-          대표이사 홍 길 동
+          <div class="welfare-item">
+            <img src="./images/scholarship.png" alt="자녀 장학금 지원">
+            <p>자녀 장학금 지원</p>
+          </div>
+
+          <div class="welfare-item">
+            <img src="./images/vacation_expenses.png" alt="경조비, 하계 휴가비 지원">
+            <p>경조비, 하계 휴가비 지원</p>
+          </div>
+
+          <div class="welfare-item">
+            <img src="./images/health_checkup.png" alt="종합건강검진 지원">
+            <p>종합건강검진 지원</p>
+          </div>
         </div>
       </div>
-
-    </div>
-  </section> -->
-
-
-  <!-- ================= 인사말 본문 ================= -->
-  <section class="greeting-body">
-    <div class="greeting-container">
-
-      <p class="greeting-lead">
-        안녕하십니까.
-      </p>
-
-      <p>
-        신우레미콘 그룹은 2006년 창업 이래 
-        '기업은 지역민과 함께 성장해야 한다'는 일념으로 달려왔습니다. 
-        건설의 뼈대를 만드는 레미콘 기업으로서 저희가 가장 소중히 여기는 가치는 
-        눈앞의 손익보다 사람 사이의 '의리'와 '신뢰'입니다.
-      </p>
-
-      <p>
-        현장을 직접 발로 뛰며 고객의 목소리에 귀를 기울이고, 
-        '한솥밥'먹는 직원들과 격의 없이 소통하는 진정한 현장 경영이야말로 
-        우량 제품을 생산하는 우리 신우그룹만의 원동력입니다. 
-      </p>
-
-      <p>
-        또한, 기업의 이익은 반드시 사회에 환원되어야 한다는 저의 철학을 바탕으로, 
-        지역 인재 양성을 위한 장학금 기탁과 재난 지원 등 지역사회의 대소사에 
-        언제나 가장 먼저 팔을 걷어붙이고 있습니다.
-      </p>
-
-      <p>
-        현재 우리 그룹은 경주와 울산을 잇는 거점 네트워크를 통해 
-        연 매출 200억 원 이상의 성과를 이루며 내실을 다져가고 있습니다. 
-        앞으로도 지속적인 기술 개발을 통해 고품질 콘크리트 시대를 선도하며, 
-        대한민국 건설의 표준을 세우는 전국 제일의 레미콘 회사로 도약하겠습니다.
-      </p>
-
-      <p>
-        단순한 제조사를 넘어, 지역사회에 헌신하며 존경받는 기업인으로서 여러분 곁에 늘 함께하겠습니다.
-      </p>
-
-      <p>
-        신뢰와 배려로 고객 여러분의 성원에 보답하겠습니다.
-      </p>
-      <p>
-        감사합니다.
-      </p>
-
-      <p>
-        신우레미콘그룹 회장 윤영식
-      </p>
-    </div>
-  </section>
+    </section>
 
 
   <!-- ================= FOOTER ================= -->

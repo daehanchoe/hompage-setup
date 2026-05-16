@@ -187,6 +187,155 @@
     }
 
   </style>
+
+  <style>
+  :root{
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --line:#e9eef5;
+    --soft:#f8f9fb;
+    --brand:#0b4ea2;
+  }
+
+  .page-hero{
+    padding: 56px 24px 34px;
+    background: linear-gradient(to bottom, #ffffff, #f6f8fb);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .page-hero-inner{
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb{
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .breadcrumb span{
+    opacity: .6;
+  }
+
+  .breadcrumb b{
+    color: var(--ink);
+    font-weight: 900;
+  }
+
+  .page-title{
+    margin: 0 0 10px;
+    font-size: 44px;
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    color: var(--ink);
+  }
+
+  .page-sub{
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+    max-width: 920px;
+  }
+
+  .esg-wrap{
+    padding: 60px 24px 90px;
+    background: #fff;
+  }
+
+  .esg-inner{
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .esg-intro{
+    margin-bottom: 40px;
+  }
+
+  .esg-intro h2{
+    margin: 0 0 14px;
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--ink);
+    letter-spacing: -0.5px;
+  }
+
+  .esg-intro p{
+    margin: 0;
+    color: #475569;
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  .esg-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .esg-card{
+    border: 1px solid var(--line);
+    background: #fff;
+    padding: 36px 30px;
+  }
+
+  .esg-icon{
+    font-size: 42px;
+    margin-bottom: 18px;
+  }
+
+  .esg-label{
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--brand);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+
+  .esg-card h3{
+    margin: 0 0 16px;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--ink);
+    letter-spacing: -0.5px;
+  }
+
+  .esg-card p{
+    margin: 0;
+    color: #475569;
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .esg-summary{
+    margin-top: 28px;
+    background: var(--soft);
+    border: 1px solid var(--line);
+    padding: 22px;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #475569;
+  }
+
+  .esg-summary strong{
+    color: var(--brand);
+  }
+
+  @media (max-width: 980px){
+    .page-title{
+      font-size: 34px;
+    }
+
+    .esg-grid{
+      grid-template-columns: 1fr;
+    }
+
+    .esg-card h3{
+      font-size: 24px;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -212,87 +361,77 @@
     </div>
   </header>
 
+  <section class="esg-wrap">
+  <div class="esg-inner">
 
-  <!-- ================= 대표이사 인사말 비주얼 ================= -->
-  <!-- <section class="greeting-section">
-    <div class="section-title">
-      <span>대표이사 인사말</span>
+    <div class="esg-intro">
+      <h2>지속가능한 기업을 위한 책임 경영</h2>
+
+      <p>
+        신우레미콘그룹은 건설 산업의 책임 있는 기업으로서 환경 보호와 안전,
+        윤리적 경영을 기반으로 지속 가능한 성장을 실천하고 있습니다.
+      </p>
     </div>
 
-    <div class="greeting-wrap">
+    <div class="esg-grid">
 
-      <figure class="ceo-figure">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="대표이사 사진">
-      </figure>
-
-      <div>
-        <p class="lead">
-          신우레미콘그룹은 지속적인 혁신으로
-          <span class="em">레미콘</span>과
-          <span class="em">기초 건자재</span>를 넘어<br>
-          대한민국 건설 산업의 새로운 가치를 창출하는
-          대표기업으로 자리매김해왔습니다.
-        </p>
-
-        <div class="sign">
-          대표이사 홍 길 동
+      <!-- E -->
+      <article class="esg-card">
+        <div class="esg-icon">
+          🌱
         </div>
-      </div>
+
+        <div class="esg-label">Environment</div>
+
+        <h3>환경경영</h3>
+
+        <p>
+          친환경 생산 공정과 효율적인 자원 관리를 통해
+          환경 영향을 최소화하고 지속 가능한 산업 환경 조성에 기여합니다.
+        </p>
+      </article>
+
+      <!-- S -->
+      <article class="esg-card">
+        <div class="esg-icon">
+          🤝
+        </div>
+
+        <div class="esg-label">Social</div>
+
+        <h3>사회적 책임</h3>
+
+        <p>
+          임직원 안전과 복지를 우선하며,
+          지역사회와 함께 성장하는 기업 문화를 만들어가고 있습니다.
+        </p>
+      </article>
+
+      <!-- G -->
+      <article class="esg-card">
+        <div class="esg-icon">
+          ⚖️
+        </div>
+
+        <div class="esg-label">Governance</div>
+
+        <h3>윤리경영</h3>
+
+        <p>
+          투명하고 책임 있는 경영 시스템을 바탕으로
+          신뢰받는 기업 운영 체계를 구축하고 있습니다.
+        </p>
+      </article>
 
     </div>
-  </section> -->
 
-
-  <!-- ================= 인사말 본문 ================= -->
-  <section class="greeting-body">
-    <div class="greeting-container">
-
-      <p class="greeting-lead">
-        안녕하십니까.
-      </p>
-
-      <p>
-        신우레미콘 그룹은 2006년 창업 이래 
-        '기업은 지역민과 함께 성장해야 한다'는 일념으로 달려왔습니다. 
-        건설의 뼈대를 만드는 레미콘 기업으로서 저희가 가장 소중히 여기는 가치는 
-        눈앞의 손익보다 사람 사이의 '의리'와 '신뢰'입니다.
-      </p>
-
-      <p>
-        현장을 직접 발로 뛰며 고객의 목소리에 귀를 기울이고, 
-        '한솥밥'먹는 직원들과 격의 없이 소통하는 진정한 현장 경영이야말로 
-        우량 제품을 생산하는 우리 신우그룹만의 원동력입니다. 
-      </p>
-
-      <p>
-        또한, 기업의 이익은 반드시 사회에 환원되어야 한다는 저의 철학을 바탕으로, 
-        지역 인재 양성을 위한 장학금 기탁과 재난 지원 등 지역사회의 대소사에 
-        언제나 가장 먼저 팔을 걷어붙이고 있습니다.
-      </p>
-
-      <p>
-        현재 우리 그룹은 경주와 울산을 잇는 거점 네트워크를 통해 
-        연 매출 200억 원 이상의 성과를 이루며 내실을 다져가고 있습니다. 
-        앞으로도 지속적인 기술 개발을 통해 고품질 콘크리트 시대를 선도하며, 
-        대한민국 건설의 표준을 세우는 전국 제일의 레미콘 회사로 도약하겠습니다.
-      </p>
-
-      <p>
-        단순한 제조사를 넘어, 지역사회에 헌신하며 존경받는 기업인으로서 여러분 곁에 늘 함께하겠습니다.
-      </p>
-
-      <p>
-        신뢰와 배려로 고객 여러분의 성원에 보답하겠습니다.
-      </p>
-      <p>
-        감사합니다.
-      </p>
-
-      <p>
-        신우레미콘그룹 회장 윤영식
-      </p>
+    <div class="esg-summary">
+      <strong>신우레미콘그룹</strong>은 ESG 경영 실천을 통해
+      고객과 사회로부터 신뢰받는 지속 가능한 기업으로 성장해 나가겠습니다.
     </div>
-  </section>
+
+  </div>
+</section>
 
 
   <!-- ================= FOOTER ================= -->
