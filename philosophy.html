@@ -25,134 +25,90 @@
       margin: 0 auto;
     }
 
-    .intro{
-      display:flex;
-      align-items:flex-end;
-      justify-content:space-between;
-      gap: 18px;
-      margin-bottom: 22px;
+    .philo-tabs{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-bottom: 58px;
+      border: 1px solid var(--line);
     }
-    .intro h2{
-      margin: 0;
-      font-size: 22px;
+
+    .philo-tab{
+      border: 0;
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 800;
+      color: #111;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .philo-tab.active{
+      color: #fff;
+      background: #0f172a;
+    }
+
+    .philo-tab:focus-visible{
+      outline: 3px solid rgba(11,78,162,.28);
+      outline-offset: -3px;
+    }
+
+    .philo-content{
+      max-width: 780px;
+      margin: 0 auto;
+      text-align: center;
+      color: #111;
+    }
+
+    .philo-panel{
+      display: none;
+    }
+
+    .philo-panel.active{
+      display: block;
+    }
+
+    .philo-section + .philo-section{
+      margin-top: 44px;
+    }
+
+    .philo-title{
+      margin: 0 0 18px;
+      font-size: 30px;
+      line-height: 1.35;
       font-weight: 900;
       letter-spacing: -0.4px;
-      color: var(--ink);
-    }
-    .intro p{
-      margin: 0;
-      font-size: 13px;
-      color: var(--muted);
     }
 
-    .cards{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card{
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: #fff;
-      padding: 22px 20px;
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.06);
-      transition: transform .15s ease, box-shadow .15s ease;
-    }
-    .card:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.10);
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 900;
-      color: var(--brand);
-      background: rgba(11,78,162,.08);
-      border: 1px solid rgba(11,78,162,.18);
-      padding: 6px 10px;
-      border-radius: 999px;
-      margin-bottom: 12px;
-    }
-    .badge .dot{
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: var(--brand);
-    }
-
-    .card-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
-      margin-bottom: 12px;
-    }
-    .card-title{
-      margin: 0;
-      font-size: 22px;
-      font-weight: 900;
-      letter-spacing: -0.3px;
-      color: var(--ink);
-    }
-    .card-sub{
-      margin: 6px 0 0;
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 700;
-    }
-
-    .icon{
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
-      background: rgba(11,78,162,.08);
-      border: 1px solid rgba(11,78,162,.14);
-      display:grid;
-      place-items:center;
-      flex: 0 0 46px;
-    }
-    .icon svg{ display:block; }
-
-    .desc{
-      margin: 12px 0 0;
-      color: #334155;
+    .philo-copy{
+      margin: 0 auto;
+      max-width: 640px;
       font-size: 15px;
-      line-height: 1.85;
+      line-height: 1.9;
+      color: #333;
       font-weight: 600;
+      word-break: keep-all;
     }
 
-    /* 아래 강조 박스 */
-    .summary{
-      margin-top: 22px;
-      background: var(--soft);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 18px 18px;
-      display:flex;
-      gap: 14px;
-      align-items:flex-start;
-    }
-    .summary strong{
-      color: var(--brand);
+    .philo-letter{
+      margin: 0 0 12px;
+      font-size: 44px;
+      line-height: 1;
       font-weight: 900;
-    }
-    .summary p{
-      margin: 0;
-      color: #475569;
-      font-size: 14px;
-      line-height: 1.8;
-      font-weight: 600;
+      color: #111;
     }
 
     /* 반응형 */
     @media (max-width: 980px){
       .page-title{ font-size: 34px; }
-      .cards{ grid-template-columns: 1fr; }
-      .intro{ flex-direction: column; align-items:flex-start; }
+      .philo-wrap{ padding-top: 34px; }
+      .philo-tabs{
+        grid-template-columns: 1fr;
+        margin-bottom: 42px;
+      }
+      .philo-title{ font-size: 26px; }
     }
   </style>
 </head>
@@ -192,7 +148,6 @@
           <a href="#">제품정보</a>
 
           <div class="sub-menu">
-            <a href="./product.html">사업안내</a>
             <a href="./product.html">제품정보</a>
           </div>
         </div>
@@ -216,15 +171,11 @@
     </div>
   </header>
 
-  <section class="sub-visual sub-visual-company">
+  <section class="sub-visual sub-visual-philosophy">
     <div class="sub-visual-overlay"></div>
 
     <div class="sub-visual-content">
       <h1>경영이념</h1>
-
-      <p>
-        신우레미콘그룹은 어떠한 환경에서도 지속가능한 성장을 이어가기 위해 기업 활동의 기준이 되는 핵심 가치를 수립하고 실천합니다.
-      </p>
     </div>
   </section>
 
@@ -232,94 +183,69 @@
   <section class="philo-wrap">
     <div class="philo-inner">
 
-      <div class="intro">
-        <h2>핵심 가치</h2>
-        <p>신뢰 · 혁신 · 인화</p>
+      <div class="philo-tabs" role="tablist" aria-label="경영이념 메뉴">
+        <button class="philo-tab active" type="button" role="tab" aria-selected="true" aria-controls="trust-panel" id="trust-tab" data-tab="trust">
+          신뢰 경영
+        </button>
+        <button class="philo-tab" type="button" role="tab" aria-selected="false" aria-controls="coexist-panel" id="coexist-tab" data-tab="coexist">
+          상생 경영
+        </button>
+        <button class="philo-tab" type="button" role="tab" aria-selected="false" aria-controls="responsibility-panel" id="responsibility-tab" data-tab="responsibility">
+          책임 경영
+        </button>
       </div>
 
-      <div class="cards">
-        <!-- 1. 신뢰 -->
-        <article class="card">
-          <div class="badge"><span class="dot" aria-hidden="true"></span> VALUE 01</div>
-
-          <div class="card-head">
-            <div>
-              <h3 class="card-title">신뢰</h3>
-              <div class="card-sub">Reliability</div>
-            </div>
-            <div class="icon" aria-hidden="true">
-              <!-- Shield -->
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2l7 4v6c0 5-3.5 9.5-7 10-3.5-.5-7-5-7-10V6l7-4z" stroke="#0b4ea2" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M9 12l2 2 4-5" stroke="#0b4ea2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </div>
-
-          <p class="desc">
-            고객과 파트너, 그리고 사회로부터 믿음을 얻는 것을 최우선 가치로 삼습니다.
-            약속을 지키는 운영과 투명한 기준을 통해 “믿을 수 있는 기업”으로 책임을 다합니다.
+      <div class="philo-content">
+        <div class="philo-panel active" id="trust-panel" role="tabpanel" aria-labelledby="trust-tab" data-panel="trust">
+        <section class="philo-section">
+          <div class="philo-letter">信</div>
+          <h2 class="philo-title">신뢰 경영</h2>
+          <p class="philo-copy">
+            "원칙을 지키는 정직한 품질로, 건설의 기초를 단단히 다집니다."
           </p>
-        </article>
+        </section>
 
-        <!-- 2. 혁신 -->
-        <article class="card">
-          <div class="badge"><span class="dot" aria-hidden="true"></span> VALUE 02</div>
-
-          <div class="card-head">
-            <div>
-              <h3 class="card-title">혁신</h3>
-              <div class="card-sub">Innovation</div>
-            </div>
-            <div class="icon" aria-hidden="true">
-              <!-- Spark -->
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2l1.2 6.2L20 12l-6.8 3.8L12 22l-1.2-6.2L4 12l6.8-3.8L12 2z" stroke="#0b4ea2" stroke-width="2" stroke-linejoin="round"/>
-              </svg>
-            </div>
-          </div>
-
-          <p class="desc">
-            더 나은 품질과 서비스를 위해 끊임없이 탐구하고 개선합니다.
-            변화의 신호를 먼저 읽고, 실행력과 도전정신으로 새로운 기회를 선점합니다.
+        <section class="philo-section">
+          <p class="philo-copy">
+            레미콘의 생명인 '정직한 배합'과 '철저한 품질관리'를 통해 현장의 안전을 책임지고,
+            고객이 언제나 믿고 선택할 수 있는 품질의 기준이 됩니다.
           </p>
-        </article>
+        </section>
+        </div>
 
-        <!-- 3. 인화 -->
-        <article class="card">
-          <div class="badge"><span class="dot" aria-hidden="true"></span> VALUE 03</div>
-
-          <div class="card-head">
-            <div>
-              <h3 class="card-title">인화</h3>
-              <div class="card-sub">Harmony</div>
-            </div>
-            <div class="icon" aria-hidden="true">
-              <!-- People -->
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3z" stroke="#0b4ea2" stroke-width="2"/>
-                <path d="M8 11a3 3 0 1 0-3-3 3 3 0 0 0 3 3z" stroke="#0b4ea2" stroke-width="2"/>
-                <path d="M2.5 20c.7-3.2 3.2-5 5.5-5" stroke="#0b4ea2" stroke-width="2" stroke-linecap="round"/>
-                <path d="M21.5 20c-.7-3.2-3.2-5-5.5-5" stroke="#0b4ea2" stroke-width="2" stroke-linecap="round"/>
-                <path d="M7 20c.8-3.6 3-6 5-6s4.2 2.4 5 6" stroke="#0b4ea2" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-          </div>
-
-          <p class="desc">
-            사람을 존중하고, 조직의 팀워크와 협력을 통해 공동 목표를 달성합니다.
-            서로의 강점을 연결해 시너지를 만들고, 건강한 소통 문화로 함께 성장합니다.
+        <div class="philo-panel" id="coexist-panel" role="tabpanel" aria-labelledby="coexist-tab" data-panel="coexist">
+        <section class="philo-section">
+          <div class="philo-letter">友</div>
+          <h2 class="philo-title">상생 경영</h2>
+          <p class="philo-copy">
+            "고객의 성공을 돕는 든든한 벗으로서, 함께 지속 가능한 미래를 채웁니다."
           </p>
-        </article>
-      </div>
+        </section>
 
-      <div class="summary">
-        <div style="min-width:78px; font-weight:900; color:#0b4ea2;">요약</div>
-        <p>
-          <strong>신우레미콘그룹</strong>은 <strong>신뢰</strong>를 바탕으로 고객과 사회의 기대에 부응하고,
-          <strong>혁신</strong>을 통해 품질과 서비스를 고도화하며, <strong>인화</strong>로 조직의 역량을 하나로 모아
-          지속 가능한 가치를 만들어갑니다.
-        </p>
+        <section class="philo-section">
+          <p class="philo-copy">
+            단순한 공급사를 넘어 현장의 어려움을 먼저 고민하는 동반자가 되며,
+            파트너사 및 지역사회와 신의를 바탕으로 오래도록 함께 성장합니다.
+          </p>
+        </section>
+        </div>
+
+        <div class="philo-panel" id="responsibility-panel" role="tabpanel" aria-labelledby="responsibility-tab" data-panel="responsibility">
+        <section class="philo-section">
+          <div class="philo-letter">責</div>
+          <h2 class="philo-title">책임 경영</h2>
+          <p class="philo-copy">
+            "약속을 거르는 법이 없는 투명함으로, 사회적 책임을 다합니다."
+          </p>
+        </section>
+
+        <section class="philo-section">
+          <p class="philo-copy">
+            정확한 납기, 안전 운행, 친환경 공정 등 안팎의 모든 약속을 철저히 이행하여
+            사회와 현장으로부터 가장 존경받는 기업이 됩니다.
+          </p>
+        </section>
+        </div>
       </div>
 
     </div>
@@ -368,6 +294,25 @@
       const nav = document.getElementById("mainNav");
       nav.classList.toggle("active");
     }
+
+    const philoTabs = document.querySelectorAll(".philo-tab");
+    const philoPanels = document.querySelectorAll(".philo-panel");
+
+    philoTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.tab;
+
+        philoTabs.forEach((item) => {
+          const isActive = item === tab;
+          item.classList.toggle("active", isActive);
+          item.setAttribute("aria-selected", String(isActive));
+        });
+
+        philoPanels.forEach((panel) => {
+          panel.classList.toggle("active", panel.dataset.panel === target);
+        });
+      });
+    });
   </script>
 </body>
 </html>
