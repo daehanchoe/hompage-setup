@@ -150,22 +150,72 @@
       width: 100%;
       height: 720px;
 
-      background:
-        linear-gradient(
-          rgba(0, 0, 0, 0.38),
-          rgba(0, 0, 0, 0.38)
-        ),
-        url("./images/main.jpeg") center center / cover no-repeat;
-
       position: relative;
       display: flex;
       align-items: center;
       overflow: hidden;
     }
 
+    .main::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.38);
+      z-index: 1;
+    }
+
+    .main-slide {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0;
+      animation: mainBannerFade 20s infinite;
+      transform: scale(1.04);
+    }
+
+    .main-slide:nth-child(1) {
+      background-image: url("./images/banner1.jpeg");
+      animation-delay: 0s;
+    }
+
+    .main-slide:nth-child(2) {
+      background-image: url("./images/banner2.jpeg");
+      animation-delay: 5s;
+    }
+
+    .main-slide:nth-child(3) {
+      background-image: url("./images/banner3.jpeg");
+      animation-delay: 10s;
+    }
+
+    .main-slide:nth-child(4) {
+      background-image: url("./images/banner4.jpeg");
+      animation-delay: 15s;
+    }
+
+    @keyframes mainBannerFade {
+      0% {
+        opacity: 0;
+      }
+      5% {
+        opacity: 1;
+      }
+      25% {
+        opacity: 1;
+      }
+      30% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
     .main-text {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px;
@@ -492,7 +542,6 @@
           <a href="#">제품정보</a>
 
           <div class="sub-menu">
-            <a href="./product.html">사업안내</a>
             <a href="./product.html">제품정보</a>
           </div>
         </div>
@@ -518,6 +567,11 @@
 
   <!-- ================== Main banner ================== -->
   <section class="main">
+    <div class="main-slide" aria-hidden="true"></div>
+    <div class="main-slide" aria-hidden="true"></div>
+    <div class="main-slide" aria-hidden="true"></div>
+    <div class="main-slide" aria-hidden="true"></div>
+
     <div class="main-text">
 
       <h1>단단한 기초의 시작, 신우레미콘그룹이 만드는 신뢰의 가치</h1>
@@ -551,7 +605,7 @@
           <img src="./images/신우레미콘_주식회사_경주.jpg" alt="부천관계사 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
-          <h3 class="site-name">신우레미콘(주) 경주공장</h3>
+          <h3 class="site-name">신우레미콘</h3>
           <div class="site-label">소재지</div>
           <p class="site-address">경상북도 경주시 외동읍 관문로 957-21</p>
           <div class="site-arrow">→</div>
@@ -605,7 +659,7 @@
         <div class="site-body">
           <h3 class="site-name">영진레미콘아스콘(주) 울산공장</h3>
           <div class="site-label">소재지</div>
-          <p class="site-address">울산광역시 울주군 삼동면 삼동로 1343</p>
+          <p class="site-address">경상북도 경주시 외동읍 관문로 957-21</p>
           <div class="site-arrow">→</div>
         </div>
       </a>

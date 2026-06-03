@@ -109,14 +109,12 @@
 
     .section-text {
       margin: 0;
-      font-size: 16px;
-      line-height: 1.9;
+      font-size: 20px;
+      line-height: 1.8;
       color: #444;
     }
 
     .content-box {
-      border: 1px solid #ececec;
-      background: #fafafa;
       padding: 26px;
     }
 
@@ -144,7 +142,7 @@
     }
 
     th {
-      background: #f8f8f8;
+      background: #fff;
       color: #222;
       font-weight: 800;
     }
@@ -169,9 +167,25 @@
     }
 
     .quality-card {
-      border: 1px solid #ececec;
       background: #fff;
       padding: 24px;
+    }
+
+    .quality-card .table-wrap {
+      border: 0;
+    }
+
+    .quality-card table {
+      border: 1px solid #d8d8d8;
+    }
+
+    .quality-card th,
+    .quality-card td {
+      border: 1px solid #d8d8d8;
+    }
+
+    .quality-card th {
+      background: #fff;
     }
 
     .quality-title {
@@ -190,9 +204,7 @@
     .emphasis-box {
       margin-top: 16px;
       padding: 18px 20px;
-      background: #fff8f1;
-      border: 1px solid #f4d7b5;
-      color: #5a4630;
+      color: #444;
       line-height: 1.8;
       font-size: 15px;
     }
@@ -261,7 +273,6 @@
           <a href="#">제품정보</a>
 
           <div class="sub-menu">
-            <a href="./product.html">사업안내</a>
             <a href="./product.html">제품정보</a>
           </div>
         </div>
@@ -290,18 +301,14 @@
 
     <div class="sub-visual-content">
       <h1>제품정보</h1>
-
-      <p>
-        신우레미콘그룹의 제품정보 페이지입니다. 레디믹스트 콘크리트의 개요와 종류, 품질기준을 한눈에 확인할 수 있도록 정리했습니다.
-      </p>
     </div>
   </section>
 
   <main class="container">
-    <div class="product-tabs">
+    <!-- <div class="product-tabs">
       <a href="#" class="product-tab active">레디믹스트 콘크리트</a>
-      <!-- <a href="#" class="product-tab">특수콘크리트</a> -->
-    </div>
+      <a href="#" class="product-tab">특수콘크리트</a>
+    </div> -->
 
     <section class="section-block">
       <h2 class="section-heading">레디믹스트 콘크리트</h2>
@@ -533,11 +540,11 @@
     </div>
   </footer>
 
-  <!-- <script>
+  <script>
     function toggleMenu() {
       const nav = document.getElementById("mainNav");
       nav.classList.toggle("active");
     }
-  </script> -->
+  </script>
 </body>
 </html>

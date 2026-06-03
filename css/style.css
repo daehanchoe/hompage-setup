@@ -183,7 +183,7 @@ a {
 }
 
 .site-header .logo-text {
-  font-size: 28px !important;
+  font-size: 30px !important;
   font-weight: 800 !important;
   color: #333333 !important;
   letter-spacing: -1px !important;
@@ -207,14 +207,14 @@ a {
   display: block !important;
   text-decoration: none !important;
   color: #111 !important;
-  font-size: 16px !important;
+  font-size: 18px !important;
   font-weight: 700 !important;
 }
 
 .site-header .sub-menu a {
   text-decoration: none !important;
   color: #333 !important;
-  font-size: 14px !important;
+  font-size: 15px !important;
   white-space: nowrap !important;
 }
 
@@ -466,6 +466,53 @@ a {
     center center / cover no-repeat;
 }
 
+.sub-visual-company {
+  background:
+    url("../images/company.png")
+    center center / cover no-repeat;
+}
+
+/* ceo */
+.sub-visual-ceo {
+  background:
+    url("../images/ceo.png")
+    center center / cover no-repeat;
+}
+
+/* 경영 이념 */
+.sub-visual-philosophy {
+  background:
+    url("../images/philosophy.png")
+    center center / cover no-repeat;
+}
+
+/* 연혁 */
+.sub-visual-year {
+  background:
+    url("../images/year.png")
+    center center / cover no-repeat;
+}
+
+/*  */
+.sub-visual-product {
+  background:
+    url("../images/product.png")
+    center center / cover no-repeat;
+}
+
+/* esg */
+.sub-visual-esg {
+  background:
+    url("../images/esg.png")
+    center center / cover no-repeat;
+}
+
+/* 인재 채용 */
+.sub-visual-recruit {
+  background:
+    url("../images/recruit.png")
+    center center / cover no-repeat;
+}
 
 /* =========================================
    RESPONSIVE
