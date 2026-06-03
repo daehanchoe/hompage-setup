@@ -311,7 +311,6 @@
 </head>
 
 <body>
-
   <!-- ================== Header ================== -->
   <header class="site-header">
     <div class="header-inner">
@@ -338,8 +337,7 @@
           <a href="#">관계사 안내</a>
 
           <div class="sub-menu">
-            <a href="./index.html#sites">관계사 안내</a>
-            <a href="./index.html#sites">출하가능 지역</a>
+            <a href="./company-list.html">관계사 안내</a>
           </div>
         </div>
 
@@ -415,7 +413,7 @@
               <tr>
                 <td data-label="지원부문"><b>관리직</b></td>
                 <td data-label="상세업무">기획 · 재무 · 인사 · 총무</td>
-                <td data-label="근무지역">본사 및 전국 사업장</td>
+                <td data-label="근무지역">본사 및 전국 관계사</td>
                 <td data-label="비고"><span class="tag">신입/경력</span></td>
               </tr>
 
@@ -429,14 +427,14 @@
               <tr>
                 <td data-label="지원부문"><b>품질관리직</b></td>
                 <td data-label="상세업무">레미콘 품질관리 · 원자재/공정 품질관리</td>
-                <td data-label="근무지역">전국 사업장</td>
+                <td data-label="근무지역">전국 관계사</td>
                 <td data-label="비고"><span class="tag">신입/경력</span></td>
               </tr>
 
               <tr>
                 <td data-label="지원부문"><b>공무직</b></td>
                 <td data-label="상세업무">제조 설비 관리 · 유지보수 · 안전 점검</td>
-                <td data-label="근무지역">전국 사업장</td>
+                <td data-label="근무지역">전국 관계사</td>
                 <td data-label="비고"><span class="tag">경력 우대</span></td>
               </tr>
             </tbody>
@@ -563,6 +561,13 @@
 
     </div>
   </footer>
+
+  <script>
+  function toggleMenu() {
+    const nav = document.getElementById("mainNav");
+    nav.classList.toggle("active");
+  }
+  </script>
 
 </body>
 </html>

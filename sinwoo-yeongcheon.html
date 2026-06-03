@@ -2,8 +2,9 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>신우래미콘그룹 | 사업소 안내 - 부천사업소</title>
+  <title>신우래미콘그룹 | 관계사 안내 - 신우레미콘 영천공장</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
 
   <style>
     body {
@@ -12,59 +13,6 @@
       color: #222;
       background: #fff;
     }
-
-    a { color: inherit; }
-
-    /* ================== Header (기존 그대로) ================== */
-    .site-header {
-      background: linear-gradient(to bottom, #ffffff, #f0f7fb);
-      border-bottom: 1px solid #dbe3ea;
-    }
-
-    .header-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: baseline;
-      gap: 10px;
-      white-space: nowrap;
-    }
-
-    .logo-text {
-      font-size: 26px;
-      font-weight: 800;
-      color: #f57c00;
-      letter-spacing: -1px;
-    }
-
-    .logo-sub {
-      font-size: 14px;
-      color: #666;
-      font-weight: 600;
-    }
-
-    .main-nav {
-      display: flex;
-      gap: 34px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .main-nav a {
-      text-decoration: none;
-      font-size: 16px;
-      font-weight: 700;
-      color: #333;
-    }
-    .main-nav a:hover { color: #f57c00; }
 
     /* ================== Common ================== */
     .divider { height: 1px; background: #eee; margin: 0; }
@@ -225,13 +173,13 @@
     }
 
     .btn:hover {
-      border-color: #f1c08b;
+      border-color: rgba(0,0,0,0.06);
       box-shadow: 0 8px 18px rgba(0,0,0,0.06);
     }
 
     .btn.primary {
-      border-color: #f57c00;
-      color: #f57c00;
+      border-color: rgba(58, 84, 128, 0.92);
+      color: rgba(58, 84, 128, 0.92);
       background: #fff;
     }
 
@@ -272,35 +220,69 @@
 </head>
 
 <body>
-
-  <!-- Header -->
+  <!-- ================== Header ================== -->
   <header class="site-header">
     <div class="header-inner">
+
       <div class="logo">
-        <a href="./index.html" class="logo-text">신우래미콘그룹</a>
-        <div class="logo-sub">건설자재·제조·공급 기업그룹</div>
+        <img src="./images/logo.jpeg" class="logo-img" alt="신우레미콘그룹 로고">
+        <a href="./index.html" class="logo-text">신우레미콘그룹</a>
       </div>
 
-      <nav class="main-nav">
-        <a href="./philosophy.html">경영이념</a>
-        <a href="./year.html">연혁</a>
-        <a href="./product.html">제품정보</a>
-        <a href="./recruit.html">채용안내</a>
-        <a href="./ceo.html">CEO 소개</a>
-        <a href="./index.html#sites">사업소안내</a>
-        <a href="./index.html#services">주요사업</a>
-        <a href="./index.html#contact">고객지원</a>
+      <button class="menu-toggle" type="button" onclick="toggleMenu()">☰</button>
+
+      <nav class="main-nav" id="mainNav">
+        <div class="nav-item">
+          <a href="#">회사소개</a>
+
+          <div class="sub-menu">
+            <a href="./ceo.html">CEO 인사말</a>
+            <a href="./philosophy.html">경영이념</a>
+            <a href="./year.html">연혁</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#">관계사 안내</a>
+
+          <div class="sub-menu">
+            <a href="./company-list.html">관계사 안내</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#">제품정보</a>
+
+          <div class="sub-menu">
+            <a href="./product.html">사업안내</a>
+            <a href="./product.html">제품정보</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#">인재채용</a>
+
+          <div class="sub-menu">
+            <a href="./recruit.html">채용안내</a>
+            <a href="./recruit.html">절차</a>
+            <a href="./recruit.html">상시채용</a>
+            <!-- <a href="./welfare.html">복리후생</a> -->
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="./esg.html">윤리경영</a>
+        </div>
       </nav>
+
     </div>
   </header>
-
-  <hr class="divider">
 
   <!-- Detail -->
   <main class="section">
     <!-- <div class="page-top">
       <p class="page-label">사 업 장 안 내</p>
-      <h1 class="page-title">사업장 안내</h1>
+      <h1 class="page-title">관계사 안내</h1>
     </div> -->
 
     <h2 class="site-title">신우레미콘아스콘(주) 영천공장</h2>
@@ -310,9 +292,9 @@
       고객감동을 최우선으로 삼는 신우래미콘그룹은 항상 여러분곁에 있습니다.
     </p>
 
-    <!-- 사업장 상세정보 -->
+    <!-- 관계사 상세정보 -->
     <section class="block">
-      <h3>사업장 상세정보</h3>
+      <h3>관계사 상세정보</h3>
 
       <ul class="detail-list">
         <li>
@@ -346,7 +328,7 @@
       <div class="factory-grid">
         <div class="factory-img">
           <!-- 이미지 파일 없으면 회색 박스 그대로 보여도 됨 -->
-          <img src="./images/7.jpg" alt="부천사업소 공장 전경 1" onerror="this.remove();">
+          <img src="./images/7.jpg" alt="부천관계사 공장 전경 1" onerror="this.remove();">
         </div>
       </div>
     </section>
@@ -375,15 +357,47 @@
       </div>
 
       <div class="actions">
-        <a class="btn" href="./index.html#sites">← 목록으로</a>
+        <a class="btn" href="./company-list.html">← 목록으로</a>
         <a class="btn primary" href="./index.html#contact">문의하기 →</a>
       </div>
     </section>
   </main>
 
-  <footer>
-    © 2026 신우래미콘그룹. All rights reserved.
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">신우레미콘그룹</div>
+          <div class="footer-desc">건설자재·제조·공급 기업그룹</div>
+        </div>
+
+        <nav class="footer-nav">
+          <a href="./index.html#about">그룹소개</a>
+          <a href="./index.html#sites">관계사안내</a>
+          <a href="./index.html#services">주요사업</a>
+        </nav>
+      </div>
+
+      <div class="footer-mid">
+        <div class="footer-info">
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Copyright © Sinwoo Remicon Group Co., Ltd. All Rights Reserved
+      </div>
+
+    </div>
   </footer>
+
+  <script>
+  function toggleMenu() {
+    const nav = document.getElementById("mainNav");
+    nav.classList.toggle("active");
+  }
+  </script>
 
 </body>
 </html>

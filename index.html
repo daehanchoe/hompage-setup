@@ -16,23 +16,52 @@
       font-family: "Noto Sans KR", Arial, sans-serif;
       color: #222;
       background: #fff;
+      overflow-x: hidden;
     }
 
     a { color: inherit; }
 
+    .menu-toggle {
+      display: none;
+    }
+
     .site-header {
-      background: linear-gradient(to bottom, #ffffff, #f0f7fb);
-      border-bottom: 1px solid #dbe3ea;
+      background: #ffffff;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .site-header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 86px;
+      width: 100%;
+      height: 0;
+      background: #ffffff;
+      border-bottom: 1px solid #eee;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+      transition: height 0.2s ease;
+      z-index: 1000;
+    }
+
+    .site-header:has(.main-nav:hover)::after {
+      height: 150px;
     }
 
     .header-inner {
       max-width: 1200px;
+      min-height: 86px;
       margin: 0 auto;
-      padding: 14px 24px;
+      padding: 0 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 40px;
+      position: relative;
+      z-index: 1002;
     }
 
     .logo {
@@ -55,47 +84,83 @@
       font-weight: 600;
     }
 
-    .menu-toggle {
-      display: none;
-      font-size: 28px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      color: #333;
-    }
-
     .main-nav {
       display: flex;
-      gap: 34px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      align-items: center;
+      gap: 64px;
+      position: relative;
     }
 
-    .main-nav a {
+    .nav-item {
+      position: relative;
+      padding: 34px 0;
+    }
+
+    .nav-item > a {
+      display: block;
       text-decoration: none;
-      font-size: 16px;
+      color: #111;
+      font-size: 15px;
       font-weight: 700;
-      color: #333;
     }
 
-    .main-nav a:hover { color: #f57c00; }
+    .sub-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      min-width: 140px;
+      padding: 22px 0;
+
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+
+      transition: 0.2s ease;
+      z-index: 1001;
+    }
+
+    .main-nav:hover .sub-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .sub-menu a {
+      text-decoration: none;
+      color: #333;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .sub-menu a:hover {
+      color: #1f3a5f;
+    }
+
+    .nav-item:hover > a {
+      font-weight: 900;
+    }
 
     /* ================== Main banner ================== */
     .main {
       width: 100%;
-      height: 420px;
-      background: url("./images/main.jpeg") center center / contain no-repeat;
+      height: 720px;
+
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.38),
+          rgba(0, 0, 0, 0.38)
+        ),
+        url("./images/main.jpeg") center center / cover no-repeat;
+
       position: relative;
       display: flex;
       align-items: center;
-    }
-
-    .main::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.45);
+      overflow: hidden;
     }
 
     .main-text {
@@ -122,11 +187,44 @@
       max-width: 820px;
     }
 
+    .main-buttons {
+  display: flex;
+  gap: 14px;
+  margin-top: 34px;
+}
+
+.main-btn {
+  min-width: 150px;
+  height: 52px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 28px;
+
+  border-radius: 999px;
+
+  background: rgba(36, 59, 99, 0.78);
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  transition: 0.2s ease;
+}
+
+.main-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(58, 84, 128, 0.92);
+}
+
     /* ================== Section ================== */
     .section {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 70px 24px;
+      padding: 70px 0px;
     }
 
     .section-title {
@@ -135,6 +233,7 @@
       justify-content: space-between;
       gap: 12px;
       margin-bottom: 18px;
+      padding: 0px 24px;
     }
 
     .section-title h2 {
@@ -166,13 +265,20 @@
 
     /* ================== Site List (요청한 리스트 화면) ================== */
     .site-list {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: flex;
       gap: 18px;
       margin-top: 22px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      padding-bottom: 12px;
     }
 
     .site-card {
+      flex: 0 0 360px;
+    }
+
+    /* .site-card {
       display: block;
       text-decoration: none;
       border: 1px solid #e5e5e5;
@@ -181,7 +287,7 @@
       box-shadow: 0 0 0 rgba(0,0,0,0);
       transform: translateY(0);
       transition: 0.18s ease;
-    }
+    } */
 
     .site-card:hover {
       border-color: #f1c08b;
@@ -272,7 +378,8 @@
       margin: 0 0 10px 0;
       font-size: 18px;
       font-weight: 900;
-      color: #f57c00;
+      color: rgba(58, 84, 128);
+      /* color: rgba(58, 84, 128, 0.92); */
     }
 
     .service p {
@@ -301,32 +408,47 @@
 
     /* ================== Responsive ================== */
     @media (max-width: 1066px) {
-      .menu-toggle {
-        display: block;
-      }
+  .menu-toggle {
+    display: block;
+  }
 
-      .header-inner {
-        flex-wrap: wrap;
-      }
+  .main-nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 0;
+    gap: 0;
+    background: #ffffff;
+  }
 
-      .main-nav {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        margin-top: 12px;
-        border-top: 1px solid #eee;
-        padding-top: 12px;
-        gap: 16px;
-      }
+  .main-nav.active {
+    display: flex;
+  }
 
-      .main-nav.active {
-        display: flex;
-      }
+  .nav-item {
+    width: 100%;
+    border-bottom: 1px solid #f1f1f1;
+  }
 
-      .main-nav a {
-        display: block;
-      }
+  .nav-item > a {
+    padding: 18px 0;
+    margin: 0;
+  }
+
+  .sub-menu {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    padding: 0 0 18px 14px;
+    gap: 10px;
+  }
+
+    .site-nav::after {
+      display: none;
     }
+  }
 
     .logo-img {
       height: 32px;
@@ -339,22 +461,58 @@
   <!-- ================== Header ================== -->
   <header class="site-header">
     <div class="header-inner">
+
       <div class="logo">
-        <img src="./images/logo.jpeg" class="logo-img">
+        <img src="./images/logo.jpeg" class="logo-img" alt="신우레미콘그룹 로고">
         <a href="./index.html" class="logo-text">신우레미콘그룹</a>
-        <!-- <div class="logo-sub">건설의 기반을 만드는 기업</div> -->
       </div>
 
       <button class="menu-toggle" type="button" onclick="toggleMenu()">☰</button>
 
       <nav class="main-nav" id="mainNav">
-        <a href="./ceo.html">CEO 인사말</a>
-        <a href="./index.html#sites">사업소안내</a>
-        <a href="./philosophy.html">경영이념</a>
-        <a href="./year.html">연혁</a>
-        <a href="./product.html">제품정보</a>
-        <a href="./recruit.html">채용안내</a>
+        <div class="nav-item">
+          <a href="#">회사소개</a>
+
+          <div class="sub-menu">
+            <a href="./ceo.html">CEO 인사말</a>
+            <a href="./philosophy.html">경영이념</a>
+            <a href="./year.html">연혁</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#">관계사 안내</a>
+
+          <div class="sub-menu">
+            <a href="./company-list.html">관계사 안내</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#">제품정보</a>
+
+          <div class="sub-menu">
+            <a href="./product.html">사업안내</a>
+            <a href="./product.html">제품정보</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#">인재채용</a>
+
+          <div class="sub-menu">
+            <a href="./recruit.html">채용안내</a>
+            <a href="./recruit.html">절차</a>
+            <a href="./recruit.html">상시채용</a>
+            <!-- <a href="./welfare.html">복리후생</a> -->
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="./esg.html">윤리경영</a>
+        </div>
       </nav>
+
     </div>
   </header>
 
@@ -367,25 +525,15 @@
         레미콘 · 콘크리트 · 아스콘 · 건설자재 등 건설산업 전반의 제조·공급을 수행하는
         신뢰할 수 있는 기업그룹입니다.
       </p> -->
-
+      <div class="main-buttons">
+        <div class="main-buttons">
+          <a href="./ceo.html" class="main-btn">
+            회사소개
+          </a>
+        </div>
+      </div>
     </div>
   </section>
-
-  <hr class="divider">
-
-  <!-- ================== About ================== -->
-  <!-- <section id="about" class="section">
-    <div class="section-title">
-      <h2>그룹 소개</h2>
-      <p class="desc">기업 개요 및 운영 방향</p>
-    </div>
-
-    <div class="about-box">
-      신우레미콘그룹은 레미콘 및 콘크리트, 아스콘, 건설자재 공급 등 건설 현장에 필요한
-      제품과 서비스를 안정적으로 제공하기 위해 설립되었습니다.<br>
-      철저한 품질 관리와 신속한 납품, 고객 중심의 운영을 통해 현장의 신뢰를 쌓아가고 있습니다.
-    </div>
-  </section> -->
 
   <hr class="divider">
 
@@ -393,14 +541,14 @@
   <section id="sites" class="section">
     <div class="section-title">
       <h2>관계사 안내</h2>
-      <p class="desc">사업소 위치 및 주소</p>
+      <p class="desc">관계사 위치 및 주소</p>
     </div>
 
     <div class="site-list">
       <!-- 카드 1 -->
-      <a class="site-card" href="./sinwoo-gyeongju-detail.html" aria-label="부천사업소 자세히 보기">
+      <a class="site-card" href="./sinwoo-gyeongju-detail.html" aria-label="부천관계사 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/신우레미콘_주식회사_경주.jpg" alt="부천사업소 전경" onerror="this.remove();">
+          <img src="./images/신우레미콘_주식회사_경주.jpg" alt="부천관계사 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우레미콘(주) 경주공장</h3>
@@ -411,9 +559,9 @@
       </a>
 
       <!-- 카드 2 -->
-      <a class="site-card" href="./sinwoo-samdong-detail.html" aria-label="인천사업소 자세히 보기">
+      <a class="site-card" href="./sinwoo-samdong-detail.html" aria-label="인천관계사 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/신우레미콘(주)_울산.jpg" alt="인천사업소 전경" onerror="this.remove();">
+          <img src="./images/신우레미콘(주)_울산.jpg" alt="인천관계사 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우레미콘(주) 울산공장(삼동)</h3>
@@ -424,9 +572,9 @@
       </a>
 
       <!-- 카드 3 -->
-      <a class="site-card" href="./yeonghwa-detail.html" aria-label="파주사업소 자세히 보기">
+      <a class="site-card" href="./yeonghwa-detail.html" aria-label="파주관계사 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/3.jpg" alt="파주사업소 전경" onerror="this.remove();">
+          <img src="./images/3.jpg" alt="파주관계사 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">영화레미콘(주) 경주공장</h3>
@@ -437,9 +585,9 @@
       </a>
 
       <!-- 카드 4 -->
-      <a class="site-card" href="./hongjin-detail.html" aria-label="영종도사업소 자세히 보기">
+      <a class="site-card" href="./hongjin-detail.html" aria-label="영종도관계사 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/4.jpg" alt="영종도사업소 전경" onerror="this.remove();">
+          <img src="./images/4.jpg" alt="영종도관계사 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">흥진레미콘(주) 경주공장</h3>
@@ -450,9 +598,9 @@
       </a>
 
       <!-- 카드 5 -->
-      <a class="site-card" href="./yeongjin.html" aria-label="성남사업소 자세히 보기">
+      <a class="site-card" href="./yeongjin.html" aria-label="성남관계사 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/5.jpg" alt="성남사업소 전경" onerror="this.remove();">
+          <img src="./images/5.jpg" alt="성남관계사 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">영진레미콘아스콘(주) 울산공장</h3>
@@ -463,9 +611,9 @@
       </a>
 
       <!-- 카드 6 -->
-      <a class="site-card" href="./woojin.html" aria-label="광주사업소(경기) 자세히 보기">
+      <a class="site-card" href="./woojin.html" aria-label="광주관계사(경기) 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/6.jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
+          <img src="./images/6.jpg" alt="광주관계사(경기) 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">우진레미콘(주) 경주공장</h3>
@@ -487,9 +635,9 @@
         </div>
       </a>
       <!-- 8 -->
-      <a class="site-card" href="./sina.html" aria-label="광주사업소(경기) 자세히 보기">
+      <a class="site-card" href="./sina.html" aria-label="광주관계사(경기) 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/신아레미콘(주).jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
+          <img src="./images/sina.jpg" alt="광주관계사(경기) 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신아레미콘(주) 울산공장</h3>
@@ -500,9 +648,9 @@
       </a>
 
       <!-- 9 -->
-      <a class="site-card" href="./sinwooremiconindustry.html" aria-label="광주사업소(경기) 자세히 보기">
+      <a class="site-card" href="./sinwooremiconindustry.html" aria-label="광주관계사(경기) 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/9.jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
+          <img src="./images/9.jpg" alt="광주관계사(경기) 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우레미콘산업(주) 울산공장</h3>
@@ -515,7 +663,7 @@
       <!--  -->
       <a class="site-card" href="./sinwoo-development.html" aria-label="신우개발 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/신우개발_보정본.png" alt="광주사업소(경기) 전경" onerror="this.remove();">
+          <img src="./images/신우개발_보정본.png" alt="광주관계사(경기) 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우개발(주) 울산</h3>
@@ -570,7 +718,7 @@
 
         <nav class="footer-nav">
           <a href="./index.html#about">그룹소개</a>
-          <a href="./index.html#sites">사업소안내</a>
+          <a href="./index.html#sites">관계사안내</a>
           <a href="./index.html#services">주요사업</a>
         </nav>
       </div>
@@ -581,15 +729,21 @@
             <span class="info-label">본사</span>
             <span class="info-value">울산광역시 울주군 웅촌면 웅촌로 607-31</span>
           </div> -->
-          <div class="info-row">
-            <span class="info-label">대표전화</span>
+          <!-- <div class="info-row">
+            <span class="info-label">회장 윤영식</span>
             <span class="info-value">052-225-9830</span>
           </div>
+          <div class="info-row">
+            <span class="info-label">회사 주소 울산광역시 울주군 웅촌면 웅촌로 607-31</span>
+          </div>
+          <div class="info-row">
+            <span class="info-label">대표전화 052)225-9830</span>
+          </div> -->
         </div>
       </div>
 
       <div class="footer-bottom">
-        Copyright ⓒ 2026 SHINWOO REMICON GROUP. All Rights Reserved.
+        Copyright © Sinwoo Remicon Group Co., Ltd. All Rights Reserved
       </div>
 
     </div>
@@ -601,5 +755,53 @@
     nav.classList.toggle("active");
   }
 </script>
+
+  <script>
+    const siteList = document.querySelector('.site-list');
+
+    let scrollDirection = 0;
+    let animationId = null;
+
+    function scrollLoop() {
+      if (scrollDirection !== 0) {
+        siteList.scrollLeft += scrollDirection;
+        animationId = requestAnimationFrame(scrollLoop);
+      }
+    }
+
+    function startScroll(direction) {
+      scrollDirection = direction;
+
+      if (!animationId) {
+        animationId = requestAnimationFrame(scrollLoop);
+      }
+    }
+
+    function stopScroll() {
+      scrollDirection = 0;
+
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    }
+
+    siteList.addEventListener('mousemove', function (event) {
+      const rect = siteList.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const edgeSize = 120;
+      const scrollSpeed = 8;
+
+      if (x < edgeSize) {
+        startScroll(-scrollSpeed);
+      } else if (x > rect.width - edgeSize) {
+        startScroll(scrollSpeed);
+      } else {
+        stopScroll();
+      }
+    });
+
+    siteList.addEventListener('mouseleave', stopScroll);
+  </script>
 </body>
 </html>

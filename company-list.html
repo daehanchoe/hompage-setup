@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>대표이사 인사말 | 신우레미콘그룹</title>
+
+  <!-- 공통 CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=55049c29360ff742a9bc28838ec75557"></script> -->
+
+    <style>
+    body {
+      margin: 0;
+    }
+
+    .map-wrap {
+      max-width: 900px;
+      margin: 70px auto 80px;
+    }
+
+    #map {
+      width: 100%;
+      height: 400px;
+    }
+
+    .map-section {
+      padding: 0px 24px;
+    }
+  </style>
+  <style>
+
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 70px 24px;
+    }
+
+    .site-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .site-card {
+      display: block;
+      text-decoration: none;
+      border: 1px solid #e5e5e5;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+      transform: translateY(0);
+      transition: 0.18s ease;
+    }
+
+    .site-card:hover {
+      border-color: #f1c08b;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+
+    .site-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, #f7f7f7, #efefef);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .site-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .site-body {
+      padding: 18px 18px 14px 18px;
+      position: relative;
+      min-height: 142px;
+    }
+
+    .site-name {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.4px;
+      margin: 0 0 14px 0;
+      color: #111;
+    }
+
+    .site-label {
+      font-size: 14px;
+      font-weight: 900;
+      color: #111;
+      margin: 0 0 6px 0;
+    }
+
+    .site-address {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.55;
+      margin: 0;
+      padding-right: 44px; /* 화살표 공간 확보 */
+      word-break: keep-all;
+    }
+
+    .site-arrow {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: #fff;
+      border: 1px solid #eee;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .site-card:hover .site-arrow {
+      border-color: #f1c08b;
+    }
+
+    /* =========================
+       반응형
+    ========================== */
+
+    @media (max-width: 980px){
+
+      .greeting-wrap{
+        grid-template-columns:1fr;
+        gap:30px;
+      }
+
+      /* 🔥 텍스트 위 / 이미지 아래 */
+      .greeting-wrap > div{
+        order:1;
+      }
+
+      .ceo-figure{
+        order:2;
+        text-align:center;
+      }
+
+      .ceo-figure img{
+        max-width:320px;
+        margin:0 auto;
+      }
+
+      .section-title span{
+        font-size:32px;
+      }
+
+      .lead{
+        font-size:22px;
+      }
+
+      .sign{
+        font-size:18px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- ================== Header ================== -->
+  <header class="site-header">
+    <div class="header-inner">
+
+      <div class="logo">
+        <img src="./images/logo.jpeg" class="logo-img" alt="신우레미콘그룹 로고">
+        <a href="./index.html" class="logo-text">신우레미콘그룹</a>
+      </div>
+
+      <button class="menu-toggle" type="button" onclick="toggleMenu()">☰</button>
+
+      <nav class="main-nav" id="mainNav">
+        <div class="nav-item">
+          <a href="#">회사소개</a>
+
+          <div class="sub-menu">
+            <a href="./ceo.html">CEO 인사말</a>
+            <a href="./philosophy.html">경영이념</a>
+            <a href="./year.html">연혁</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#">관계사 안내</a>
+
+          <div class="sub-menu">
+            <a href="./company-list.html">관계사 안내</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#">제품정보</a>
+
+          <div class="sub-menu">
+            <a href="./product.html">사업안내</a>
+            <a href="./product.html">제품정보</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="#">인재채용</a>
+
+          <div class="sub-menu">
+            <a href="./recruit.html">채용안내</a>
+            <a href="./recruit.html">절차</a>
+            <a href="./recruit.html">상시채용</a>
+            <!-- <a href="./welfare.html">복리후생</a> -->
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="./esg.html">윤리경영</a>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <section class="sub-visual sub-visual-company">
+    <div class="sub-visual-overlay"></div>
+
+    <div class="sub-visual-content">
+      <h1>관계사 안내</h1>
+
+      <p>
+        관계사 안내 내용
+      </p>
+    </div>
+  </section>
+
+  <section class="map-section">
+    <h2>관계사 위치</h2>
+    <p>신우레미콘그룹의 주요 관계사 위치입니다.</p>
+    <div id="map">
+        <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=55049c29360ff742a9bc28838ec75557"></script> -->
+    </div>
+  </section>
+
+  <!-- ================= 본문 ================= -->
+  <section id="sites" class="section">
+    <div class="section-title">
+      <h2>관계사 안내</h2>
+      <p class="desc">사업소 위치 및 주소</p>
+    </div>
+
+    <div class="site-list">
+      <!-- 카드 1 -->
+      <a class="site-card" href="./sinwoo-gyeongju-detail.html" aria-label="부천사업소 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/신우레미콘_주식회사_경주.jpg" alt="부천사업소 전경" onerror="this.remove();">
+        </div>
+        <div class="site-body">
+          <h3 class="site-name">신우레미콘(주) 경주공장</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">경상북도 경주시 외동읍 관문로 957-21</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
+
+      <!-- 카드 2 -->
+      <a class="site-card" href="./sinwoo-samdong-detail.html" aria-label="인천사업소 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/신우레미콘(주)_울산.jpg" alt="인천사업소 전경" onerror="this.remove();">
+        </div>
+        <div class="site-body">
+          <h3 class="site-name">신우레미콘(주) 울산공장(삼동)</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">울산 울주군 삼동면 삼동로1345</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
+
+      <!-- 카드 3 -->
+      <a class="site-card" href="./yeonghwa-detail.html" aria-label="파주사업소 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/3.jpg" alt="파주사업소 전경" onerror="this.remove();">
+        </div>
+        <div class="site-body">
+          <h3 class="site-name">영화레미콘(주) 경주공장</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">경북 경주시 반구대로 2882-10</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
+
+      <!-- 카드 4 -->
+      <a class="site-card" href="./hongjin-detail.html" aria-label="영종도사업소 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/4.jpg" alt="영종도사업소 전경" onerror="this.remove();">
+        </div>
+        <div class="site-body">
+          <h3 class="site-name">흥진레미콘(주) 경주공장</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">경북 경주시 산업로 4773-10</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
+
+      <!-- 카드 5 -->
+      <a class="site-card" href="./yeongjin.html" aria-label="성남사업소 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/5.jpg" alt="성남사업소 전경" onerror="this.remove();">
+        </div>
+        <div class="site-body">
+          <h3 class="site-name">영진레미콘아스콘(주) 울산공장</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">울산광역시 울주군 삼동면 삼동로 1343</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
+
+      <!-- 카드 6 -->
+      <a class="site-card" href="./woojin.html" aria-label="광주사업소(경기) 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/6.jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
+        </div>
+        <div class="site-body">
+          <h3 class="site-name">우진레미콘(주) 경주공장</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">경북 경주시 산업로 4773-9(우진레미콘)</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
+      <!--  -->
+      <a class="site-card" href="./sinwoo-yeongcheon.html" aria-label="신우레미콘아스콘(주) 영천공장 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/7.jpg" alt="신우레미콘아스콘(주) 영천공장" onerror="this.remove();">
+        </div>
+        <div class="site-body">
+          <h3 class="site-name">신우레미콘아스콘(주) 영천공장</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">경상북도 영천시 고경면 거곡로 41-52</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
+      <!-- 8 -->
+      <a class="site-card" href="./sina.html" aria-label="광주사업소(경기) 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/sina.jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
+        </div>
+        <div class="site-body">
+          <h3 class="site-name">신아레미콘(주) 울산공장</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">울산광역시 울주군 온산읍 당월로126</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
+
+      <!-- 9 -->
+      <a class="site-card" href="./sinwooremiconindustry.html" aria-label="광주사업소(경기) 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/9.jpg" alt="광주사업소(경기) 전경" onerror="this.remove();">
+        </div>
+        <div class="site-body">
+          <h3 class="site-name">신우레미콘산업(주) 울산공장</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">울산광역시 북구 대안1길 310</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
+
+      <!--  -->
+      <a class="site-card" href="./sinwoo-development.html" aria-label="신우개발 자세히 보기">
+        <div class="site-thumb">
+          <img src="./images/신우개발_보정본.png" alt="광주사업소(경기) 전경" onerror="this.remove();">
+        </div>
+        <div class="site-body">
+          <h3 class="site-name">신우개발(주) 울산</h3>
+          <div class="site-label">소재지</div>
+          <p class="site-address">울산광역시 북구 대안1길 300</p>
+          <div class="site-arrow">→</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">신우레미콘그룹</div>
+          <div class="footer-desc">건설자재·제조·공급 기업그룹</div>
+        </div>
+
+        <nav class="footer-nav">
+          <a href="./index.html#about">그룹소개</a>
+          <a href="./index.html#sites">관계사안내</a>
+          <a href="./index.html#services">주요사업</a>
+        </nav>
+      </div>
+
+      <div class="footer-mid">
+        <div class="footer-info">
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Copyright © Sinwoo Remicon Group Co., Ltd. All Rights Reserved
+      </div>
+
+    </div>
+  </footer>
+  <!-- <script>
+  const mapContainer = document.getElementById('map');
+
+  const map = new kakao.maps.Map(mapContainer, {
+    center: new kakao.maps.LatLng(37.5665, 126.9780),
+    level: 8
+  });
+
+  const positions = [
+  {
+    title: '신우레미콘(주) 경주공장',
+    lat: 35.7180,
+    lng: 129.3220
+  },
+  {
+    title: '신우레미콘(주) 울산공장',
+    lat: 35.5100,
+    lng: 129.1970
+  },
+  {
+    title: '영화레미콘(주) 경주공장',
+    lat: 35.8190,
+    lng: 129.2690
+  },
+  {
+    title: '흥진레미콘(주) 경주공장',
+    lat: 35.8300,
+    lng: 129.2300
+  },
+  {
+    title: '영진레미콘아스콘(주) 울산공장',
+    lat: 35.5098,
+    lng: 129.1966
+  },
+  {
+    title: '우진레미콘(주) 경주공장',
+    lat: 35.8305,
+    lng: 129.2305
+  },
+  {
+    title: '신우레미콘아스콘(주) 영천공장',
+    lat: 35.9730,
+    lng: 128.8510
+  },
+  {
+    title: '신아레미콘(주) 울산공장',
+    lat: 35.4320,
+    lng: 129.3080
+  },
+  {
+    title: '신우레미콘산업(주) 울산공장',
+    lat: 35.6400,
+    lng: 129.3550
+  },
+  {
+    title: '신우개발(주) 울산',
+    lat: 35.6390,
+    lng: 129.3540
+  }
+];
+
+  console.log(location.origin);
+  console.log(location.href);
+
+  const bounds = new kakao.maps.LatLngBounds();
+
+  positions.forEach((position) => {
+    const markerPosition = new kakao.maps.LatLng(position.lat, position.lng);
+
+    const marker = new kakao.maps.Marker({
+      map: map,
+      position: markerPosition
+    });
+
+    bounds.extend(markerPosition);
+  });
+
+  map.setBounds(bounds, 0, 0, 0, 0);
+</script> -->
+<!-- <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_KEY&autoload=false"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=55049c29360ff742a9bc28838ec75557&autoload=false"></script>
+  <script src="./kakaoMap.js"></script>
+  
+  <script>
+  function toggleMenu() {
+    const nav = document.getElementById("mainNav");
+    nav.classList.toggle("active");
+  }
+  </script>
+
+</body>
+</html>
