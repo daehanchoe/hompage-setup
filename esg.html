@@ -127,7 +127,7 @@
 
   <style>
   :root{
-    --ink:#1f2937;
+    --ink:#000000;
     --muted:#6b7280;
     --line:#e9eef5;
     --soft:#f8f9fb;
@@ -200,14 +200,13 @@
 
   .esg-intro p{
     margin: 0;
-    color: #475569;
+    color: #000000;
     font-size: 16px;
     line-height: 1.9;
   }
 
   .esg-grid{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: 22px;
   }
 
@@ -218,16 +217,16 @@
   }
 
   .esg-icon{
-    font-size: 42px;
+    width: 48px;
+    height: 48px;
     margin-bottom: 18px;
   }
 
-  .esg-label{
-    font-size: 13px;
-    font-weight: 800;
-    color: var(--brand);
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
+  .esg-icon svg{
+    width: 48px;
+    height: 48px;
+    display: block;
+    stroke: #0f172a;
   }
 
   .esg-card h3{
@@ -240,23 +239,21 @@
 
   .esg-card p{
     margin: 0;
-    color: #475569;
+    color: #000000;
     font-size: 15px;
     line-height: 1.9;
   }
 
   .esg-summary{
     margin-top: 28px;
-    background: var(--soft);
-    border: 1px solid var(--line);
     padding: 22px;
     font-size: 15px;
     line-height: 1.9;
-    color: #475569;
+    color: #000000;
   }
 
   .esg-summary strong{
-    color: var(--brand);
+    color: #000000;
   }
 
   @media (max-width: 980px){
@@ -310,7 +307,6 @@
           <a href="#">제품정보</a>
 
           <div class="sub-menu">
-            <a href="./product.html">사업안내</a>
             <a href="./product.html">제품정보</a>
           </div>
         </div>
@@ -356,13 +352,16 @@
 
     <div class="esg-grid">
 
-      <!-- E -->
+      <!-- Environment -->
       <article class="esg-card">
-        <div class="esg-icon">
-          🌱
+        <div class="esg-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 40V23" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M24 23C24 15 30 9 39 8C40 18 34 24 24 23Z" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M24 29C17 29 11 24 10 15C19 15 25 20 24 29Z" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M15 40H33" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
         </div>
-
-        <div class="esg-label">Environment</div>
 
         <h3>환경경영</h3>
 
@@ -372,13 +371,16 @@
         </p>
       </article>
 
-      <!-- S -->
+      <!-- Social -->
       <article class="esg-card">
-        <div class="esg-icon">
-          🤝
+        <div class="esg-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18 21C21.3137 21 24 18.3137 24 15C24 11.6863 21.3137 9 18 9C14.6863 9 12 11.6863 12 15C12 18.3137 14.6863 21 18 21Z" stroke-width="2.4"/>
+            <path d="M30 23C32.7614 23 35 20.7614 35 18C35 15.2386 32.7614 13 30 13" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M7 39C8.4 31.5 12.6 27 18 27C23.4 27 27.6 31.5 29 39" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M30 29C34.7 29.6 38.4 33.2 40 39" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
         </div>
-
-        <div class="esg-label">Social</div>
 
         <h3>사회적 책임</h3>
 
@@ -388,13 +390,14 @@
         </p>
       </article>
 
-      <!-- G -->
+      <!-- Governance -->
       <article class="esg-card">
-        <div class="esg-icon">
-          ⚖️
+        <div class="esg-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 7L39 14V24C39 33.5 32.8 39 24 42C15.2 39 9 33.5 9 24V14L24 7Z" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M17 24L22 29L32 18" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
-
-        <div class="esg-label">Governance</div>
 
         <h3>윤리경영</h3>
 
