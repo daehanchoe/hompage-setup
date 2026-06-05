@@ -464,7 +464,7 @@ a {
 /* =========================================
   화면별 배경 이미지
 ========================================= */
-.sub-visual-company {
+.sub-visual-main {
   background:
     url("../images/main.jpeg")
     center center / cover no-repeat;
