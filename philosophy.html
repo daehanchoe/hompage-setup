@@ -15,100 +15,252 @@
       --soft:#f8f9fb;
       --brand:#0b4ea2;
     }
-    /* 본문 */
     .philo-wrap{
-      padding: 46px 24px 90px;
+      width: 100%;
+      padding: 56px 24px 90px;
       background: #fff;
     }
-    .philo-inner{
+
+    .philo-stage{
+      position: relative;
       max-width: 1200px;
+      min-height: 620px;
       margin: 0 auto;
+      overflow: hidden;
+      border-radius: 46px;
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.38), rgba(15, 23, 42, 0.38)),
+        url("./images/philosophy.png") center center / cover no-repeat;
+      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.18);
     }
 
-    .philo-tabs{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      margin-bottom: 58px;
-      border: 1px solid var(--line);
+    .philo-stage::after{
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 46%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.82));
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .philo-tab{
-      border: 0;
-      min-height: 58px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 15px;
-      font-weight: 800;
+    .philo-slider{
+      position: relative;
+      z-index: 2;
+      height: 380px;
+      margin-top: 84px;
+    }
+
+    .philo-card{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(520px, 68vw);
+      min-height: 330px;
+      padding: 32px 44px 38px;
+      border-radius: 18px;
       color: #111;
-      background: #fff;
-      cursor: pointer;
-    }
-
-    .philo-tab.active{
-      color: #fff;
-      background: #0f172a;
-    }
-
-    .philo-tab:focus-visible{
-      outline: 3px solid rgba(11,78,162,.28);
-      outline-offset: -3px;
-    }
-
-    .philo-content{
-      max-width: 780px;
-      margin: 0 auto;
       text-align: center;
+      background: rgba(255,255,255,0.82);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.78);
+      transition: transform 0.45s ease, opacity 0.45s ease, background 0.45s ease, color 0.45s ease, box-shadow 0.45s ease;
+      pointer-events: none;
+    }
+
+    .philo-card.active{
+      opacity: 1;
       color: #111;
+      background: rgba(255, 255, 255, 0.84);
+      box-shadow: 0 0 42px rgba(232, 240, 255, 0.78), 0 24px 60px rgba(15, 23, 42, 0.24);
+      transform: translate(-50%, -50%) scale(1);
+      z-index: 3;
+      pointer-events: auto;
     }
 
-    .philo-panel{
-      display: none;
+    .philo-card.prev{
+      opacity: 0.56;
+      transform: translate(calc(-50% - 470px), -50%) scale(0.78);
+      z-index: 2;
     }
 
-    .philo-panel.active{
-      display: block;
+    .philo-card.next{
+      opacity: 0.56;
+      transform: translate(calc(-50% + 470px), -50%) scale(0.78);
+      z-index: 2;
     }
 
-    .philo-section + .philo-section{
-      margin-top: 44px;
+    .philo-label{
+      margin: -32px -44px 30px;
+      padding: 16px 20px;
+      border-radius: 18px 18px 0 0;
+      color: #111;
+      background: rgba(255, 255, 255, 0.72);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.12);
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .philo-letter{
+      margin-bottom: 12px;
+      font-size: 76px;
+      line-height: 1;
+      font-weight: 900;
     }
 
     .philo-title{
-      margin: 0 0 18px;
-      font-size: 22px;
-      line-height: 1.35;
+      margin: 0 0 24px;
+      font-size: 32px;
+      line-height: 1.3;
       font-weight: 900;
-      letter-spacing: -0.4px;
+      letter-spacing: -0.7px;
+    }
+
+    .philo-quote{
+      margin: 0 auto 18px;
+      max-width: 430px;
+      font-size: 15px;
+      line-height: 1.8;
+      font-weight: 800;
+      word-break: keep-all;
     }
 
     .philo-copy{
       margin: 0 auto;
-      max-width: 640px;
-      font-size: 15px;
-      line-height: 1.9;
-      color: #333;
-      font-weight: 600;
+      max-width: 440px;
+      font-size: 14px;
+      line-height: 1.85;
+      font-weight: 700;
       word-break: keep-all;
     }
 
-    .philo-letter{
-      margin: 0 0 12px;
-      font-size: 44px;
+    .philo-controls{
+      position: relative;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .philo-dot{
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.22);
+      cursor: pointer;
+    }
+
+    .philo-dot.active{
+      background: #0f172a;
+    }
+
+    .philo-progress{
+      position: relative;
+      z-index: 3;
+      width: 280px;
+      height: 5px;
+      margin: 16px auto 0;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.18);
+    }
+
+    .philo-progress-bar{
+      width: 33.333%;
+      height: 100%;
+      border-radius: inherit;
+      background: #0f172a;
+      transition: transform 0.45s ease;
+    }
+
+    .philo-arrow{
+      position: absolute;
+      z-index: 4;
+      bottom: 52px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 999px;
+      color: rgba(15, 23, 42, 0.5);
+      background: rgba(255,255,255,0.44);
+      cursor: pointer;
+      font-size: 28px;
       line-height: 1;
-      font-weight: 900;
-      color: #111;
+    }
+
+    .philo-arrow:hover{
+      color: #0f172a;
+      background: rgba(255,255,255,0.74);
+    }
+
+    .philo-arrow.prev{
+      left: 44px;
+    }
+
+    .philo-arrow.next{
+      right: 44px;
     }
 
     /* 반응형 */
     @media (max-width: 980px){
-      .page-title{ font-size: 34px; }
-      .philo-wrap{ padding-top: 34px; }
-      .philo-tabs{
-        grid-template-columns: 1fr;
-        margin-bottom: 42px;
+      .philo-wrap{
+        padding: 34px 16px 70px;
       }
-      .philo-title{ font-size: 20px; }
+
+      .philo-stage{
+        min-height: 620px;
+        border-radius: 28px;
+      }
+
+      .philo-slider{
+        height: 400px;
+        margin-top: 58px;
+      }
+
+      .philo-card{
+        width: min(360px, 82vw);
+        min-height: 350px;
+        padding: 28px 28px 34px;
+      }
+
+      .philo-card.prev{
+        transform: translate(calc(-50% - 320px), -50%) scale(0.72);
+      }
+
+      .philo-card.next{
+        transform: translate(calc(-50% + 320px), -50%) scale(0.72);
+      }
+
+      .philo-label{
+        margin: -28px -28px 26px;
+      }
+
+      .philo-letter{
+        font-size: 64px;
+      }
+
+      .philo-title{
+        font-size: 26px;
+      }
+
+      .philo-arrow{
+        bottom: 42px;
+      }
+
+      .philo-arrow.prev{
+        left: 18px;
+      }
+
+      .philo-arrow.next{
+        right: 18px;
+      }
     }
   </style>
 </head>
@@ -165,6 +317,10 @@
 
         <div class="nav-item">
           <a href="./esg.html">윤리경영</a>
+
+          <div class="sub-menu">
+            <a href="./esg.html">윤리경영</a>
+          </div>
         </div>
       </nav>
 
@@ -181,73 +337,60 @@
 
   <!-- CONTENT -->
   <section class="philo-wrap">
-    <div class="philo-inner">
-
-      <div class="philo-tabs" role="tablist" aria-label="경영이념 메뉴">
-        <button class="philo-tab active" type="button" role="tab" aria-selected="true" aria-controls="trust-panel" id="trust-tab" data-tab="trust">
-          신뢰 경영
-        </button>
-        <button class="philo-tab" type="button" role="tab" aria-selected="false" aria-controls="coexist-panel" id="coexist-tab" data-tab="coexist">
-          상생 경영
-        </button>
-        <button class="philo-tab" type="button" role="tab" aria-selected="false" aria-controls="responsibility-panel" id="responsibility-tab" data-tab="responsibility">
-          책임 경영
-        </button>
-      </div>
-
-      <div class="philo-content">
-        <div class="philo-panel active" id="trust-panel" role="tabpanel" aria-labelledby="trust-tab" data-panel="trust">
-        <section class="philo-section">
+    <div class="philo-stage" aria-label="경영이념 슬라이드">
+      <div class="philo-slider">
+        <article class="philo-card active">
+          <div class="philo-label">신뢰 경영</div>
           <div class="philo-letter">信</div>
           <h2 class="philo-title">신뢰 경영</h2>
-          <p class="philo-copy">
-            "원칙을 지키는 정직한 품질로, 건설의 기초를 단단히 다집니다." 
+          <p class="philo-quote">
+            "원칙을 지키는 정직한 품질로, 건설의 기초를 단단히 다집니다."
           </p>
-        </section>
-
-        <section class="philo-section">
           <p class="philo-copy">
             레미콘의 생명인 '정직한 배합'과 '철저한 품질관리'를 통해 현장의 안전을 책임지고,
             고객이 언제나 믿고 선택할 수 있는 품질의 기준이 됩니다.
           </p>
-        </section>
-        </div>
+        </article>
 
-        <div class="philo-panel" id="coexist-panel" role="tabpanel" aria-labelledby="coexist-tab" data-panel="coexist">
-        <section class="philo-section">
+        <article class="philo-card next">
+          <div class="philo-label">상생 경영</div>
           <div class="philo-letter">友</div>
           <h2 class="philo-title">상생 경영</h2>
-          <p class="philo-copy">
+          <p class="philo-quote">
             "고객의 성공을 돕는 든든한 벗으로서, 함께 지속 가능한 미래를 채웁니다."
           </p>
-        </section>
-
-        <section class="philo-section">
           <p class="philo-copy">
             단순한 공급사를 넘어 현장의 어려움을 먼저 고민하는 동반자가 되며,
             파트너사 및 지역사회와 신의를 바탕으로 오래도록 함께 성장합니다.
           </p>
-        </section>
-        </div>
+        </article>
 
-        <div class="philo-panel" id="responsibility-panel" role="tabpanel" aria-labelledby="responsibility-tab" data-panel="responsibility">
-        <section class="philo-section">
+        <article class="philo-card prev">
+          <div class="philo-label">책임 경영</div>
           <div class="philo-letter">責</div>
           <h2 class="philo-title">책임 경영</h2>
-          <p class="philo-copy">
+          <p class="philo-quote">
             "약속을 거르는 법이 없는 투명함으로, 사회적 책임을 다합니다."
           </p>
-        </section>
-
-        <section class="philo-section">
           <p class="philo-copy">
             정확한 납기, 안전 운행, 친환경 공정 등 안팎의 모든 약속을 철저히 이행하여
             사회와 현장으로부터 가장 존경받는 기업이 됩니다.
           </p>
-        </section>
-        </div>
+        </article>
       </div>
 
+      <button class="philo-arrow prev" type="button" aria-label="이전 경영이념">‹</button>
+      <button class="philo-arrow next" type="button" aria-label="다음 경영이념">›</button>
+
+      <div class="philo-controls" aria-label="경영이념 슬라이드 선택">
+        <button class="philo-dot active" type="button" aria-label="신뢰 경영 보기"></button>
+        <button class="philo-dot" type="button" aria-label="상생 경영 보기"></button>
+        <button class="philo-dot" type="button" aria-label="책임 경영 보기"></button>
+      </div>
+
+      <div class="philo-progress" aria-hidden="true">
+        <div class="philo-progress-bar"></div>
+      </div>
     </div>
   </section>
 
@@ -295,24 +438,59 @@
       nav.classList.toggle("active");
     }
 
-    const philoTabs = document.querySelectorAll(".philo-tab");
-    const philoPanels = document.querySelectorAll(".philo-panel");
+    const philoCards = document.querySelectorAll(".philo-card");
+    const philoDots = document.querySelectorAll(".philo-dot");
+    const philoProgress = document.querySelector(".philo-progress-bar");
+    const philoPrev = document.querySelector(".philo-arrow.prev");
+    const philoNext = document.querySelector(".philo-arrow.next");
+    let philoIndex = 0;
+    let philoTimer = null;
 
-    philoTabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const target = tab.dataset.tab;
+    function showPhiloSlide(index) {
+      const total = philoCards.length;
+      philoIndex = (index + total) % total;
+      const prevIndex = (philoIndex - 1 + total) % total;
+      const nextIndex = (philoIndex + 1) % total;
 
-        philoTabs.forEach((item) => {
-          const isActive = item === tab;
-          item.classList.toggle("active", isActive);
-          item.setAttribute("aria-selected", String(isActive));
-        });
+      philoCards.forEach((card, cardIndex) => {
+        card.classList.toggle("active", cardIndex === philoIndex);
+        card.classList.toggle("prev", cardIndex === prevIndex);
+        card.classList.toggle("next", cardIndex === nextIndex);
+      });
 
-        philoPanels.forEach((panel) => {
-          panel.classList.toggle("active", panel.dataset.panel === target);
-        });
+      philoDots.forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === philoIndex);
+      });
+
+      philoProgress.style.transform = `translateX(${philoIndex * 100}%)`;
+    }
+
+    function startPhiloAutoSlide() {
+      clearInterval(philoTimer);
+      philoTimer = setInterval(() => {
+        showPhiloSlide(philoIndex + 1);
+      }, 4500);
+    }
+
+    philoDots.forEach((dot, dotIndex) => {
+      dot.addEventListener("click", () => {
+        showPhiloSlide(dotIndex);
+        startPhiloAutoSlide();
       });
     });
+
+    philoPrev.addEventListener("click", () => {
+      showPhiloSlide(philoIndex - 1);
+      startPhiloAutoSlide();
+    });
+
+    philoNext.addEventListener("click", () => {
+      showPhiloSlide(philoIndex + 1);
+      startPhiloAutoSlide();
+    });
+
+    showPhiloSlide(0);
+    startPhiloAutoSlide();
   </script>
 </body>
 </html>
