@@ -207,41 +207,60 @@
 
   .esg-grid{
     display: grid;
-    gap: 22px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+    min-height: 380px;
+    overflow: hidden;
+    background: url("./images/esg.png") center center / cover no-repeat;
+    border: 1px solid var(--line);
+  }
+
+  .esg-grid::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
   }
 
   .esg-card{
-    border: 1px solid var(--line);
-    background: #fff;
-    padding: 36px 30px;
+    position: relative;
+    z-index: 1;
+    min-height: 380px;
+    padding: 46px 34px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-right: 1px solid rgba(255, 255, 255, 0.26);
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .esg-icon{
-    width: 48px;
-    height: 48px;
-    margin-bottom: 18px;
+  .esg-card:last-child{
+    border-right: 0;
   }
 
-  .esg-icon svg{
-    width: 48px;
-    height: 48px;
-    display: block;
-    stroke: #0f172a;
+  .esg-card:hover{
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.42);
   }
 
   .esg-card h3{
     margin: 0 0 16px;
     font-size: 28px;
     font-weight: 900;
-    color: var(--ink);
+    color: #ffffff;
     letter-spacing: -0.5px;
   }
 
   .esg-card p{
     margin: 0;
-    color: #000000;
+    color: #ffffff;
     font-size: 15px;
     line-height: 1.9;
+    font-weight: 600;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
   }
 
   .esg-summary{
@@ -263,10 +282,21 @@
 
     .esg-grid{
       grid-template-columns: 1fr;
+      min-height: auto;
     }
 
     .esg-card h3{
       font-size: 24px;
+    }
+
+    .esg-card{
+      min-height: 260px;
+      border-right: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+    }
+
+    .esg-card:last-child{
+      border-bottom: 0;
     }
   }
 </style>
@@ -324,6 +354,10 @@
 
         <div class="nav-item">
           <a href="./esg.html">윤리경영</a>
+
+          <div class="sub-menu">
+            <a href="./esg.html">윤리경영</a>
+          </div>
         </div>
       </nav>
 
@@ -334,7 +368,7 @@
     <div class="sub-visual-overlay"></div>
 
     <div class="sub-visual-content">
-      <h1>ESG</h1>
+      <h1>윤리경영</h1>
     </div>
   </section>
 
@@ -354,15 +388,6 @@
 
       <!-- Environment -->
       <article class="esg-card">
-        <div class="esg-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M24 40V23" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M24 23C24 15 30 9 39 8C40 18 34 24 24 23Z" stroke-width="2.4" stroke-linejoin="round"/>
-            <path d="M24 29C17 29 11 24 10 15C19 15 25 20 24 29Z" stroke-width="2.4" stroke-linejoin="round"/>
-            <path d="M15 40H33" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
-        </div>
-
         <h3>환경경영</h3>
 
         <p>
@@ -373,15 +398,6 @@
 
       <!-- Social -->
       <article class="esg-card">
-        <div class="esg-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18 21C21.3137 21 24 18.3137 24 15C24 11.6863 21.3137 9 18 9C14.6863 9 12 11.6863 12 15C12 18.3137 14.6863 21 18 21Z" stroke-width="2.4"/>
-            <path d="M30 23C32.7614 23 35 20.7614 35 18C35 15.2386 32.7614 13 30 13" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M7 39C8.4 31.5 12.6 27 18 27C23.4 27 27.6 31.5 29 39" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M30 29C34.7 29.6 38.4 33.2 40 39" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
-        </div>
-
         <h3>사회적 책임</h3>
 
         <p>
@@ -392,13 +408,6 @@
 
       <!-- Governance -->
       <article class="esg-card">
-        <div class="esg-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M24 7L39 14V24C39 33.5 32.8 39 24 42C15.2 39 9 33.5 9 24V14L24 7Z" stroke-width="2.4" stroke-linejoin="round"/>
-            <path d="M17 24L22 29L32 18" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-
         <h3>윤리경영</h3>
 
         <p>
