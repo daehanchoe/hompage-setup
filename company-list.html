@@ -62,6 +62,29 @@
       padding: 70px 24px;
     }
 
+    .section-title {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 900;
+      color: #111;
+      letter-spacing: -0.4px;
+    }
+
+    .section-title .desc {
+      margin: 0;
+      font-size: 15px;
+      color: #555;
+      text-align: right;
+    }
+
     .site-list {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -81,8 +104,8 @@
     }
 
     .site-card:hover {
-      border-color: #f1c08b;
-      box-shadow: 0 10px 26px rgba(0,0,0,0.08);
+      border-color: #111827;
+      box-shadow: 0 10px 26px rgba(17, 24, 39, 0.12);
       transform: translateY(-2px);
     }
 
@@ -123,7 +146,7 @@
     }
 
     .site-address {
-      font-size: 14px;
+      font-size: 16px;
       color: #555;
       line-height: 1.55;
       margin: 0;
@@ -140,15 +163,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 999px;
+      border-radius: 4px;
       background: #fff;
-      border: 1px solid #eee;
+      border: 1px solid transparent;
       font-size: 18px;
       line-height: 1;
     }
 
     .site-card:hover .site-arrow {
-      border-color: #f1c08b;
+      border-color: #111827;
+      color: #111827;
     }
 
     /* =========================
@@ -156,6 +180,15 @@
     ========================== */
 
     @media (max-width: 980px){
+      .section-title{
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .section-title .desc{
+        text-align: left;
+      }
 
       .greeting-wrap{
         grid-template-columns:1fr;
@@ -275,7 +308,7 @@
   <section id="sites" class="section">
     <div class="section-title">
       <h2>관계사 안내</h2>
-      <p class="desc">관계사 위치 및 주소</p>
+      <!-- <p class="desc">관계사 위치 및 주소</p> -->
     </div>
 
     <div class="site-list">
@@ -298,7 +331,7 @@
           <img src="./images/신우레미콘(주)_울산.jpg" alt="인천관계사 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
-          <h3 class="site-name">신우레미콘(주) 울산공장(삼동)</h3>
+          <h3 class="site-name">신우레미콘(주) 울산공장</h3>
           <div class="site-label">소재지</div>
           <p class="site-address">울산 울주군 삼동면 삼동로1345</p>
           <div class="site-arrow">→</div>

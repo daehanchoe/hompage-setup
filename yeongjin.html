@@ -303,7 +303,7 @@
       <ul class="detail-list">
         <li>
           <div class="detail-k">소재지</div>
-          <div class="detail-v">울산광역시 울주군 삼동면 삼동로 1343</div>
+          <div class="detail-v">경북 경주시 외동읍 관문로 957-21</div>
         </li>
         <li>
           <div class="detail-k">공장주소</div>
@@ -371,12 +371,17 @@
           <div class="contact-v">054)701-2784</div>
         </div>
       </div>
+    </section>
+  </main>
 
+  <section class="factory-map-section">
+    <h2>공장 위치</h2>
+    <p>경북 경주시 외동읍 관문로 957-21</p>
+    <div id="map" data-title="영진레미콘아스콘(주) 울산공장" data-lat="35.6641721" data-lng="129.2949612"></div>
       <div class="actions">
         <a class="btn" href="./company-list.html">목록으로</a>
       </div>
-    </section>
-  </main>
+  </section>
 
   <!-- ================= FOOTER ================= -->
   <footer class="site-footer">
@@ -406,6 +411,9 @@
 
     </div>
   </footer>
+
+  <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=55049c29360ff742a9bc28838ec75557&autoload=false"></script>
+  <script src="./kakaoMap.js"></script>
 
   <script>
   function toggleMenu() {

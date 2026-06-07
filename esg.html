@@ -201,7 +201,7 @@
   .esg-intro p{
     margin: 0;
     color: #000000;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.9;
   }
 
@@ -210,31 +210,54 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 0;
     position: relative;
-    min-height: 380px;
+    min-height: 440px;
     overflow: hidden;
-    background: url("./images/esg.png") center center / cover no-repeat;
+    background: #111;
     border: 1px solid var(--line);
   }
 
   .esg-grid::before{
     content: "";
     position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.3);
+    inset: -24px;
+    background: url("./images/esg_background.png") center center / cover no-repeat;
+    filter: blur(16px);
+    transform: scale(1.06);
     z-index: 0;
+  }
+
+  .esg-grid::after{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("./images/esg_background.png") center center / contain no-repeat;
+    z-index: 1;
   }
 
   .esg-card{
     position: relative;
-    z-index: 1;
-    min-height: 380px;
-    padding: 46px 34px;
+    z-index: 2;
+    min-height: 440px;
+    padding: 52px 38px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     border-right: 1px solid rgba(255, 255, 255, 0.26);
-    background: rgba(0, 0, 0, 0);
-    transition: background 0.2s ease, box-shadow 0.2s ease;
+    background: rgba(0, 0, 0, 0.38);
+    transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+
+  .esg-card::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 58%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0));
+    opacity: 0.9;
+    z-index: 0;
+    pointer-events: none;
   }
 
   .esg-card:last-child{
@@ -242,31 +265,39 @@
   }
 
   .esg-card:hover{
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.42);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow:
+      inset 0 0 0 2px rgba(255, 255, 255, 0.62),
+      inset 0 0 34px rgba(255, 255, 255, 0.18),
+      0 0 28px rgba(255, 255, 255, 0.22);
   }
 
   .esg-card h3{
-    margin: 0 0 16px;
-    font-size: 28px;
+    position: relative;
+    z-index: 2;
+    margin: 0 0 18px;
+    font-size: 36px;
     font-weight: 900;
     color: #ffffff;
     letter-spacing: -0.5px;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.48);
   }
 
   .esg-card p{
+    position: relative;
+    z-index: 2;
     margin: 0;
     color: #ffffff;
-    font-size: 15px;
-    line-height: 1.9;
-    font-weight: 600;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+    font-size: 20px;
+    line-height: 1.75;
+    font-weight: 700;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.56);
   }
 
   .esg-summary{
     margin-top: 28px;
     padding: 22px;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 1.9;
     color: #000000;
   }
@@ -286,13 +317,17 @@
     }
 
     .esg-card h3{
-      font-size: 24px;
+      font-size: 30px;
     }
 
     .esg-card{
-      min-height: 260px;
+      min-height: 320px;
       border-right: 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+    }
+
+    .esg-card p{
+      font-size: 18px;
     }
 
     .esg-card:last-child{

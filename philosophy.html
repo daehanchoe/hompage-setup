@@ -24,32 +24,23 @@
     .philo-stage{
       position: relative;
       max-width: 1200px;
-      min-height: 620px;
+      min-height: 690px;
       margin: 0 auto;
-      overflow: hidden;
-      border-radius: 46px;
-      background:
-        linear-gradient(rgba(15, 23, 42, 0.38), rgba(15, 23, 42, 0.38)),
-        url("./images/philosophy.png") center center / cover no-repeat;
-      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.18);
+      overflow: visible;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
     }
 
     .philo-stage::after{
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 46%;
-      background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.82));
-      pointer-events: none;
-      z-index: 0;
+      display: none;
     }
 
     .philo-slider{
       position: relative;
       z-index: 2;
-      height: 380px;
+      height: 450px;
       margin-top: 84px;
     }
 
@@ -58,13 +49,14 @@
       top: 50%;
       left: 50%;
       width: min(520px, 68vw);
-      min-height: 330px;
+      min-height: 390px;
       padding: 32px 44px 38px;
       border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.34);
       color: #111;
       text-align: center;
-      background: rgba(255,255,255,0.82);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 18px 42px rgba(15, 23, 42, 0.10);
       opacity: 0;
       transform: translate(-50%, -50%) scale(0.78);
       transition: transform 0.45s ease, opacity 0.45s ease, background 0.45s ease, color 0.45s ease, box-shadow 0.45s ease;
@@ -74,8 +66,11 @@
     .philo-card.active{
       opacity: 1;
       color: #111;
-      background: rgba(255, 255, 255, 0.84);
-      box-shadow: 0 0 42px rgba(232, 240, 255, 0.78), 0 24px 60px rgba(15, 23, 42, 0.24);
+      background: #ffffff;
+      border-color: rgba(107, 114, 128, 0.34);
+      box-shadow:
+        0 0 0 3px rgba(229, 231, 235, 0.64),
+        0 22px 58px rgba(15, 23, 42, 0.16);
       transform: translate(-50%, -50%) scale(1);
       z-index: 3;
       pointer-events: auto;
@@ -83,13 +78,13 @@
 
     .philo-card.prev{
       opacity: 0.56;
-      transform: translate(calc(-50% - 470px), -50%) scale(0.78);
+      transform: translate(calc(-50% - min(32vw, 390px)), -50%) scale(0.78);
       z-index: 2;
     }
 
     .philo-card.next{
       opacity: 0.56;
-      transform: translate(calc(-50% + 470px), -50%) scale(0.78);
+      transform: translate(calc(-50% + min(32vw, 390px)), -50%) scale(0.78);
       z-index: 2;
     }
 
@@ -100,20 +95,21 @@
       color: #111;
       background: rgba(255, 255, 255, 0.72);
       border-bottom: 1px solid rgba(15, 23, 42, 0.12);
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 900;
     }
 
     .philo-letter{
       margin-bottom: 12px;
+      font-family: "Gungsuh", "궁서", "STSong", "SimSun", "Songti SC", serif;
       font-size: 76px;
       line-height: 1;
-      font-weight: 900;
+      font-weight: 400;
     }
 
     .philo-title{
       margin: 0 0 24px;
-      font-size: 32px;
+      font-size: 36px;
       line-height: 1.3;
       font-weight: 900;
       letter-spacing: -0.7px;
@@ -122,7 +118,7 @@
     .philo-quote{
       margin: 0 auto 18px;
       max-width: 430px;
-      font-size: 15px;
+      font-size: 17px;
       line-height: 1.8;
       font-weight: 800;
       word-break: keep-all;
@@ -131,7 +127,7 @@
     .philo-copy{
       margin: 0 auto;
       max-width: 440px;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.85;
       font-weight: 700;
       word-break: keep-all;
@@ -161,53 +157,6 @@
       background: #0f172a;
     }
 
-    .philo-progress{
-      position: relative;
-      z-index: 3;
-      width: 280px;
-      height: 5px;
-      margin: 16px auto 0;
-      overflow: hidden;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.18);
-    }
-
-    .philo-progress-bar{
-      width: 33.333%;
-      height: 100%;
-      border-radius: inherit;
-      background: #0f172a;
-      transition: transform 0.45s ease;
-    }
-
-    .philo-arrow{
-      position: absolute;
-      z-index: 4;
-      bottom: 52px;
-      width: 44px;
-      height: 44px;
-      border: 0;
-      border-radius: 999px;
-      color: rgba(15, 23, 42, 0.5);
-      background: rgba(255,255,255,0.44);
-      cursor: pointer;
-      font-size: 28px;
-      line-height: 1;
-    }
-
-    .philo-arrow:hover{
-      color: #0f172a;
-      background: rgba(255,255,255,0.74);
-    }
-
-    .philo-arrow.prev{
-      left: 44px;
-    }
-
-    .philo-arrow.next{
-      right: 44px;
-    }
-
     /* 반응형 */
     @media (max-width: 980px){
       .philo-wrap{
@@ -215,27 +164,27 @@
       }
 
       .philo-stage{
-        min-height: 620px;
-        border-radius: 28px;
+        min-height: 700px;
+        border-radius: 0;
       }
 
       .philo-slider{
-        height: 400px;
+        height: 460px;
         margin-top: 58px;
       }
 
       .philo-card{
         width: min(360px, 82vw);
-        min-height: 350px;
+        min-height: 410px;
         padding: 28px 28px 34px;
       }
 
       .philo-card.prev{
-        transform: translate(calc(-50% - 320px), -50%) scale(0.72);
+        transform: translate(calc(-50% - min(30vw, 220px)), -50%) scale(0.72);
       }
 
       .philo-card.next{
-        transform: translate(calc(-50% + 320px), -50%) scale(0.72);
+        transform: translate(calc(-50% + min(30vw, 220px)), -50%) scale(0.72);
       }
 
       .philo-label{
@@ -247,20 +196,21 @@
       }
 
       .philo-title{
-        font-size: 26px;
+        font-size: 30px;
       }
 
-      .philo-arrow{
-        bottom: 42px;
+      .philo-label{
+        font-size: 17px;
       }
 
-      .philo-arrow.prev{
-        left: 18px;
+      .philo-quote{
+        font-size: 16px;
       }
 
-      .philo-arrow.next{
-        right: 18px;
+      .philo-copy{
+        font-size: 15px;
       }
+
     }
   </style>
 </head>
@@ -379,17 +329,10 @@
         </article>
       </div>
 
-      <button class="philo-arrow prev" type="button" aria-label="이전 경영이념">‹</button>
-      <button class="philo-arrow next" type="button" aria-label="다음 경영이념">›</button>
-
       <div class="philo-controls" aria-label="경영이념 슬라이드 선택">
         <button class="philo-dot active" type="button" aria-label="신뢰 경영 보기"></button>
         <button class="philo-dot" type="button" aria-label="상생 경영 보기"></button>
         <button class="philo-dot" type="button" aria-label="책임 경영 보기"></button>
-      </div>
-
-      <div class="philo-progress" aria-hidden="true">
-        <div class="philo-progress-bar"></div>
       </div>
     </div>
   </section>
@@ -440,9 +383,6 @@
 
     const philoCards = document.querySelectorAll(".philo-card");
     const philoDots = document.querySelectorAll(".philo-dot");
-    const philoProgress = document.querySelector(".philo-progress-bar");
-    const philoPrev = document.querySelector(".philo-arrow.prev");
-    const philoNext = document.querySelector(".philo-arrow.next");
     let philoIndex = 0;
     let philoTimer = null;
 
@@ -462,7 +402,6 @@
         dot.classList.toggle("active", dotIndex === philoIndex);
       });
 
-      philoProgress.style.transform = `translateX(${philoIndex * 100}%)`;
     }
 
     function startPhiloAutoSlide() {
@@ -477,16 +416,6 @@
         showPhiloSlide(dotIndex);
         startPhiloAutoSlide();
       });
-    });
-
-    philoPrev.addEventListener("click", () => {
-      showPhiloSlide(philoIndex - 1);
-      startPhiloAutoSlide();
-    });
-
-    philoNext.addEventListener("click", () => {
-      showPhiloSlide(philoIndex + 1);
-      startPhiloAutoSlide();
     });
 
     showPhiloSlide(0);

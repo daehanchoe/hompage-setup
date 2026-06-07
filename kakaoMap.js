@@ -2,6 +2,40 @@ function kakaoMap() {
 
   const mapContainer = document.getElementById('map');
 
+  if (!mapContainer) {
+    return;
+  }
+
+  const detailTitle = mapContainer.dataset.title;
+  const detailLat = Number(mapContainer.dataset.lat);
+  const detailLng = Number(mapContainer.dataset.lng);
+
+  if (detailTitle && Number.isFinite(detailLat) && Number.isFinite(detailLng)) {
+    const markerPosition = new kakao.maps.LatLng(detailLat, detailLng);
+    const map = new kakao.maps.Map(mapContainer, {
+      center: markerPosition,
+      level: 4
+    });
+
+    new kakao.maps.Marker({
+      map: map,
+      position: markerPosition
+    });
+
+    new kakao.maps.CustomOverlay({
+      map: map,
+      position: markerPosition,
+      yAnchor: 2.15,
+      content: `
+        <div class="map-info-window">
+          ${detailTitle}
+        </div>
+      `
+    });
+
+    return;
+  }
+
   const mapOption = {
     center: new kakao.maps.LatLng(35.789, 129.269),
     level: 9
@@ -32,8 +66,8 @@ function kakaoMap() {
     },
     {
       title: '영진레미콘아스콘',
-      lat: 35.5098229,
-      lng: 129.1967271
+      lat: 35.6641721,
+      lng: 129.2949612
     },
     {
       title: '우진레미콘(주) 경주공장',

@@ -58,7 +58,7 @@
       padding: 0 24px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 40px;
       position: relative;
       z-index: 1002;
@@ -69,6 +69,8 @@
       align-items: center;
       gap: 10px;
       white-space: nowrap;
+      position: absolute;
+      left: 24px;
     }
 
     .logo-text {
@@ -89,6 +91,7 @@
       align-items: center;
       gap: 64px;
       position: relative;
+      justify-content: center;
     }
 
     .nav-item {
@@ -171,77 +174,86 @@
       background-size: cover;
       background-repeat: no-repeat;
       opacity: 0;
-      animation: mainBannerFade 20s infinite;
       transform: scale(1.04);
+      transition: opacity 0.8s ease;
     }
 
     .main-slide:nth-child(1) {
       background-image: url("./images/banner1.jpeg");
       background-position: center bottom;
-      animation-delay: 0s;
     }
 
     .main-slide:nth-child(2) {
       background-image: url("./images/banner2.jpeg");
-      animation-delay: 5s;
     }
 
     .main-slide:nth-child(3) {
       background-image: url("./images/banner3.jpeg");
-      animation-delay: 10s;
     }
 
     .main-slide:nth-child(4) {
       background-image: url("./images/banner4.jpeg");
-      animation-delay: 15s;
     }
 
-    @keyframes mainBannerFade {
-      0% {
-        opacity: 0;
-      }
-      5% {
-        opacity: 1;
-      }
-      25% {
-        opacity: 1;
-      }
-      30% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 0;
-      }
+    .main-slide.active {
+      opacity: 1;
+    }
+
+    .main-indicators {
+      position: absolute;
+      left: 50%;
+      bottom: 34px;
+      z-index: 2;
+      display: flex;
+      gap: 12px;
+      transform: translateX(-50%);
+    }
+
+    .main-indicator {
+      appearance: none;
+      padding: 0;
+      width: 9px;
+      height: 9px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.38);
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.24);
+      cursor: pointer;
+    }
+
+    .main-indicator.active {
+      background: #111;
+    }
+
+    .main-indicator:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 4px;
     }
 
     .main-copy {
       position: absolute;
       z-index: 2;
       color: #fff;
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.38);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.52);
     }
 
-    .main-copy-top {
-      top: 86px;
+    .main-copy-left {
+      top: 50%;
       left: max(24px, calc((100vw - 1200px) / 2 + 24px));
+      transform: translateY(-50%);
+      text-align: left;
     }
 
-    .main-copy-bottom {
-      right: max(24px, calc((100vw - 1200px) / 2 + 24px));
-      bottom: 86px;
-      text-align: right;
-    }
-
-    .main-copy-top h1 {
-      font-size: 42px;
+    .main-copy-left h1 {
+      font-size: 72px;
       margin: 0;
       font-weight: 900;
       letter-spacing: -0.5px;
     }
 
-    .main-copy-bottom p {
-      font-size: 28px;
-      margin: 0;
+    .main-copy-left p {
+      font-size: 44px;
+      margin: 18px 0 0;
       line-height: 1.45;
       font-weight: 900;
       letter-spacing: -0.4px;
@@ -261,7 +273,7 @@
       justify-content: space-between;
       gap: 12px;
       margin-bottom: 18px;
-      padding: 0px 24px;
+      padding: 0;
     }
 
     .section-title h2 {
@@ -295,16 +307,14 @@
     .site-scroll-wrap {
       position: relative;
       margin-top: 22px;
+      overflow: hidden;
     }
 
     .site-list {
       display: flex;
       gap: 18px;
-      overflow-x: auto;
-      overflow-y: hidden;
-      overscroll-behavior-x: contain;
-      -webkit-overflow-scrolling: touch;
       padding-bottom: 12px;
+      will-change: transform;
     }
 
     .site-card {
@@ -454,10 +464,76 @@
       color: #444;
     }
 
+    @media (max-width: 1180px) and (min-width: 1067px) {
+      .main-nav {
+        gap: 40px;
+      }
+
+      .nav-item > a {
+        font-size: 16px;
+      }
+    }
+
+    .site-header {
+      position: fixed !important;
+      width: 100% !important;
+      background: transparent !important;
+      border-bottom: 0 !important;
+      border-bottom-color: transparent !important;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .site-header::after {
+      border-bottom: 0 !important;
+    }
+
+    .site-header:hover,
+    .site-header:has(.main-nav:hover),
+    .site-header.is-scrolled {
+      background: #ffffff !important;
+    }
+
+    .site-header.is-scrolled {
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .site-header .logo-text,
+    .site-header .nav-item > a,
+    .site-header .menu-toggle {
+      color: #ffffff !important;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.42);
+    }
+
+    .site-header:hover .logo-text,
+    .site-header:hover .nav-item > a,
+    .site-header:hover .menu-toggle,
+    .site-header:has(.main-nav:hover) .logo-text,
+    .site-header:has(.main-nav:hover) .nav-item > a,
+    .site-header:has(.main-nav:hover) .menu-toggle,
+    .site-header.is-scrolled .logo-text,
+    .site-header.is-scrolled .nav-item > a,
+    .site-header.is-scrolled .menu-toggle {
+      color: #111111 !important;
+      text-shadow: none;
+    }
+
+    .site-header .nav-item:hover > a,
+    .site-header .main-nav a:hover {
+      color: inherit !important;
+    }
+
     /* ================== Responsive ================== */
     @media (max-width: 1066px) {
   .menu-toggle {
     display: block;
+  }
+
+  .header-inner {
+    justify-content: space-between;
+  }
+
+  .logo {
+    position: static;
   }
 
   .main-nav {
@@ -469,26 +545,32 @@
     background: #ffffff;
   }
 
+  .site-header .main-nav .nav-item > a {
+    color: #111 !important;
+    text-shadow: none;
+  }
+
+  .site-header .main-nav .sub-menu a {
+    color: #333 !important;
+    text-shadow: none;
+  }
+
   .main-nav.active {
     display: flex;
   }
 
-  .main-copy-top {
-    top: 56px;
+  .main-copy-left {
+    top: 50%;
     left: 24px;
+    transform: translateY(-50%);
   }
 
-  .main-copy-bottom {
-    right: 24px;
-    bottom: 56px;
+  .main-copy-left h1 {
+    font-size: 48px;
   }
 
-  .main-copy-top h1 {
+  .main-copy-left p {
     font-size: 32px;
-  }
-
-  .main-copy-bottom p {
-    font-size: 22px;
   }
 
   .nav-item {
@@ -517,7 +599,7 @@
   }
 
     .logo-img {
-      height: 32px;
+      height: 40px;
     }
   </style>
 </head>
@@ -587,20 +669,23 @@
 
   <!-- ================== Main banner ================== -->
   <section class="main">
-    <div class="main-slide" aria-hidden="true"></div>
+    <div class="main-slide active" aria-hidden="true"></div>
     <div class="main-slide" aria-hidden="true"></div>
     <div class="main-slide" aria-hidden="true"></div>
     <div class="main-slide" aria-hidden="true"></div>
 
-    <div class="main-copy main-copy-top">
-      <h1>단단한 기초의 시작</h1>
+    <div class="main-copy main-copy-left">
+      <h1>건설의 기초, 신뢰로 다지는</h1>
+      <p>
+        신우레미콘그룹의 RMC 솔루션
+      </p>
     </div>
 
-    <div class="main-copy main-copy-bottom">
-      <p>
-        신우레미콘그룹이<br>
-        만드는 신뢰의 가치
-      </p>
+    <div class="main-indicators" aria-label="메인 배너 선택">
+      <button class="main-indicator active" type="button" aria-label="1번 배너 보기" aria-current="true"></button>
+      <button class="main-indicator" type="button" aria-label="2번 배너 보기"></button>
+      <button class="main-indicator" type="button" aria-label="3번 배너 보기"></button>
+      <button class="main-indicator" type="button" aria-label="4번 배너 보기"></button>
     </div>
   </section>
 
@@ -637,7 +722,7 @@
           <img src="./images/신우레미콘(주)_울산.jpg" alt="인천관계사 전경" onerror="this.remove();">
         </div>
         <div class="site-body">
-          <h3 class="site-name">신우레미콘(주) 울산공장(삼동)</h3>
+          <h3 class="site-name">신우레미콘(주) 울산공장</h3>
           <div class="site-label">소재지</div>
           <p class="site-address">울산 울주군 삼동면 삼동로1345</p>
           <div class="site-arrow">→</div>
@@ -828,6 +913,60 @@
     const nav = document.getElementById("mainNav");
     nav.classList.toggle("active");
   }
+
+  const siteHeader = document.querySelector('.site-header');
+
+  function updateHeaderState() {
+    siteHeader.classList.toggle('is-scrolled', window.scrollY > 12);
+  }
+
+  if (siteHeader) {
+    updateHeaderState();
+    window.addEventListener('scroll', updateHeaderState, { passive: true });
+  }
+
+  const mainSlides = document.querySelectorAll('.main-slide');
+  const mainIndicators = document.querySelectorAll('.main-indicator');
+  let currentMainSlide = 0;
+  let mainBannerTimer = null;
+
+  function showMainSlide(index) {
+    currentMainSlide = index;
+
+    mainSlides.forEach(function (slide, slideIndex) {
+      slide.classList.toggle('active', slideIndex === currentMainSlide);
+    });
+
+    mainIndicators.forEach(function (indicator, indicatorIndex) {
+      const isActive = indicatorIndex === currentMainSlide;
+
+      indicator.classList.toggle('active', isActive);
+
+      if (isActive) {
+        indicator.setAttribute('aria-current', 'true');
+      } else {
+        indicator.removeAttribute('aria-current');
+      }
+    });
+  }
+
+  function startMainBanner() {
+    clearInterval(mainBannerTimer);
+    mainBannerTimer = setInterval(function () {
+      showMainSlide((currentMainSlide + 1) % mainSlides.length);
+    }, 5000);
+  }
+
+  if (mainSlides.length && mainIndicators.length) {
+    mainIndicators.forEach(function (indicator, index) {
+      indicator.addEventListener('click', function () {
+        showMainSlide(index);
+        startMainBanner();
+      });
+    });
+
+    startMainBanner();
+  }
 </script>
 
   <script>
@@ -836,15 +975,26 @@
     const scrollZoneLeft = document.querySelector('.site-scroll-zone.left');
     const scrollZoneRight = document.querySelector('.site-scroll-zone.right');
 
-    let targetScrollSpeed = 0;
+    const autoScrollSpeed = 0.5;
+    let targetScrollSpeed = autoScrollSpeed;
     let currentScrollSpeed = 0;
     let animationId = null;
+    let scrollPosition = 0;
+    let scrollCycleWidth = 0;
 
     function scrollLoop() {
       currentScrollSpeed += (targetScrollSpeed - currentScrollSpeed) * 0.12;
 
       if (Math.abs(currentScrollSpeed) > 0.05 || targetScrollSpeed !== 0) {
-        siteList.scrollLeft += currentScrollSpeed;
+        scrollPosition += currentScrollSpeed;
+
+        if (scrollPosition >= scrollCycleWidth) {
+          scrollPosition -= scrollCycleWidth;
+        } else if (scrollPosition < 0) {
+          scrollPosition += scrollCycleWidth;
+        }
+
+        siteList.style.transform = 'translate3d(' + (-scrollPosition) + 'px, 0, 0)';
         animationId = requestAnimationFrame(scrollLoop);
       } else {
         currentScrollSpeed = 0;
@@ -858,24 +1008,39 @@
       }
     }
 
-    function stopScroll() {
-      targetScrollSpeed = 0;
+    function resumeAutoScroll() {
+      targetScrollSpeed = autoScrollSpeed;
       ensureScrollLoop();
     }
 
     if (siteList && scrollZoneLeft && scrollZoneRight) {
+      const originalCards = Array.from(siteList.children);
+
+      originalCards.forEach(function (card) {
+        const clonedCard = card.cloneNode(true);
+        clonedCard.setAttribute('aria-hidden', 'true');
+        clonedCard.setAttribute('tabindex', '-1');
+        siteList.appendChild(clonedCard);
+      });
+
+      scrollCycleWidth =
+        siteList.children[originalCards.length].offsetLeft -
+        siteList.children[0].offsetLeft;
+
       scrollZoneLeft.addEventListener('mouseenter', function () {
-        targetScrollSpeed = -4;
+        targetScrollSpeed = -6;
         ensureScrollLoop();
       });
 
       scrollZoneRight.addEventListener('mouseenter', function () {
-        targetScrollSpeed = 4;
+        targetScrollSpeed = 6;
         ensureScrollLoop();
       });
 
-      scrollZoneLeft.addEventListener('mouseleave', stopScroll);
-      scrollZoneRight.addEventListener('mouseleave', stopScroll);
+      scrollZoneLeft.addEventListener('mouseleave', resumeAutoScroll);
+      scrollZoneRight.addEventListener('mouseleave', resumeAutoScroll);
+
+      ensureScrollLoop();
     }
   </script>
 </body>
