@@ -190,6 +190,10 @@
         text-align: left;
       }
 
+      .site-list{
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
       .greeting-wrap{
         grid-template-columns:1fr;
         gap:30px;
@@ -220,6 +224,30 @@
 
       .sign{
         font-size:18px;
+      }
+    }
+
+    @media (max-width: 640px){
+      .section{
+        padding: 52px 16px;
+      }
+
+      .site-list{
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .site-body{
+        min-height: auto;
+        padding: 18px 16px 58px;
+      }
+
+      .site-name{
+        font-size: 20px;
+      }
+
+      .site-address{
+        padding-right: 0;
       }
     }
 
