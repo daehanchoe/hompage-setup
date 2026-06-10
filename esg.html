@@ -230,7 +230,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: url("./images/esg_background.png") center center / contain no-repeat;
+    background: url("./images/esg_background.png") center center / cover no-repeat;
     z-index: 1;
   }
 
@@ -241,7 +241,9 @@
     padding: 52px 38px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: flex-end;
+    text-align: center;
     border-right: 1px solid rgba(255, 255, 255, 0.26);
     background: rgba(0, 0, 0, 0.38);
     transition: background 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -288,7 +290,7 @@
     z-index: 2;
     margin: 0;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.75;
     font-weight: 700;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.56);
@@ -327,7 +329,7 @@
     }
 
     .esg-card p{
-      font-size: 18px;
+      font-size: 16px;
     }
 
     .esg-card:last-child{
@@ -343,7 +345,7 @@
     <div class="header-inner">
 
       <div class="logo">
-        <img src="./images/logo.jpeg" class="logo-img" alt="신우레미콘그룹 로고">
+        <img src="./images/logo.png" class="logo-img" alt="신우레미콘그룹 로고">
         <a href="./index.html" class="logo-text">신우레미콘그룹</a>
       </div>
 
@@ -426,8 +428,9 @@
         <h3>환경경영</h3>
 
         <p>
-          친환경 생산 공정과 효율적인 자원 관리를 통해
-          환경 영향을 최소화하고 지속 가능한 산업 환경 조성에 기여합니다.
+          친환경 생산 공정과 효율적인 자원 관리를 통해<br>
+          환경 영향을 최소화하고 지속 가능한<br>
+          산업 환경 조성에 기여합니다.
         </p>
       </article>
 
@@ -436,8 +439,9 @@
         <h3>사회적 책임</h3>
 
         <p>
-          임직원 안전과 복지를 우선하며,
-          지역사회와 함께 성장하는 기업 문화를 만들어가고 있습니다.
+          임직원 안전과 복지를 우선하며,<br>
+          지역사회와 함께 성장하는<br>
+          기업 문화를 만들어가고 있습니다.
         </p>
       </article>
 
@@ -446,7 +450,7 @@
         <h3>윤리경영</h3>
 
         <p>
-          투명하고 책임 있는 경영 시스템을 바탕으로
+          투명하고 책임 있는 경영 시스템을 바탕으로<br>
           신뢰받는 기업 운영 체계를 구축하고 있습니다.
         </p>
       </article>
