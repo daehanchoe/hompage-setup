@@ -188,15 +188,23 @@
       background: #fff;
     }
 
-    .quality-title {
+    .quality-head {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
       margin: 0 0 14px;
+      flex-wrap: wrap;
+    }
+
+    .quality-title {
+      margin: 0;
       font-size: 20px;
       font-weight: 900;
       color: #111;
     }
 
     .quality-unit {
-      margin: 0 0 10px;
+      margin: 0;
       font-size: 13px;
       color: #888;
     }
@@ -393,9 +401,10 @@
 
       <div class="quality-grid">
         <article class="quality-card">
-          <h4 class="quality-title">1) 슬럼프 및 슬럼프 플로</h4>
-
-          <p class="quality-unit">(단위 : mm)</p>
+          <div class="quality-head">
+            <h4 class="quality-title">1) 슬럼프 및 슬럼프 플로</h4>
+            <p class="quality-unit">(단위 : mm)</p>
+          </div>
           <div class="table-wrap">
             <table>
               <thead>
@@ -449,8 +458,10 @@
         </article>
 
         <article class="quality-card">
-          <h4 class="quality-title">2) 공기량</h4>
-          <p class="quality-unit">(단위 : %)</p>
+          <div class="quality-head">
+            <h4 class="quality-title">2) 공기량</h4>
+            <p class="quality-unit">(단위 : %)</p>
+          </div>
           <div class="table-wrap">
             <table>
               <thead>

@@ -3,309 +3,202 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>상시채용 | 신우레미콘그룹</title>
+  <title>인재채용 | 신우레미콘그룹</title>
 
   <!-- 공통 CSS (헤더/푸터 포함) -->
   <link rel="stylesheet" href="./css/style.css">
 
   <style>
 
-    :root{
-      --ink:#1f2937;
-      --muted:#6b7280;
-      --line:#e5e7eb;
-      --soft:#f8fafc;
-      --brand:#0b4ea2;
-      --hl:#bcd8ff;
-    }
-
-    /* ===== Page Hero ===== */
-    .page-hero{
-      padding: 56px 24px 34px;
-      background:
-        radial-gradient(1200px 420px at 70% -10%, rgba(11,78,162,.16), transparent 60%),
-        linear-gradient(to bottom, #ffffff, #f6f8fb);
-      border-bottom: 1px solid var(--line);
-    }
-    .page-hero-inner{
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .breadcrumb{
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 14px;
-    }
-    .breadcrumb b{ color: var(--ink); font-weight: 900; }
-
-    .page-title{
-      margin: 0 0 10px;
-      font-size: 44px;
-      font-weight: 900;
-      letter-spacing: -0.8px;
-      color: var(--ink);
-    }
-    .page-sub{
+    body {
       margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.75;
-      max-width: 920px;
-    }
-
-    /* ===== Layout ===== */
-    .wrap{
-      padding: 36px 24px 90px;
-      background:#fff;
-    }
-    .inner{
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .lead-box{
-      border: 1px solid var(--line);
+      font-family: "Noto Sans KR", Arial, sans-serif;
+      color: #222;
       background: #fff;
-      border-radius: 14px;
-      padding: 18px 18px;
-      display:flex;
-      gap: 14px;
-      align-items:flex-start;
-      box-shadow: 0 10px 26px rgba(15,23,42,.06);
-      margin-bottom: 18px;
     }
-    .lead-badge{
-      min-width: 82px;
-      font-weight: 900;
-      color: var(--brand);
-      background: rgba(11,78,162,.08);
-      border: 1px solid rgba(11,78,162,.18);
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      text-align:center;
-    }
-    .lead-text{
-      margin: 0;
-      color: #334155;
-      font-size: 14px;
-      line-height: 1.85;
-      font-weight: 650;
-    }
-    .lead-text strong{ color: var(--brand); font-weight: 900; }
 
-    /* ===== Table ===== */
-    .section{
-      margin-top: 18px;
-      border-top: 1px solid var(--line);
-      padding-top: 18px;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px 90px;
     }
-    .section-title{
-      margin: 0 0 12px;
-      font-size: 22px;
+
+    .section + .section {
+      margin-top: 52px;
+    }
+
+    .section-title {
+      margin: 0 0 18px;
+      font-size: 28px;
       font-weight: 900;
-      letter-spacing: -0.4px;
-      color: var(--ink);
+      color: #111;
+      letter-spacing: -0.3px;
     }
-    .section-desc{
+
+    .section-desc {
       margin: 0 0 16px;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555;
     }
 
-    .table-wrap{
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      overflow: hidden;
-      background:#fff;
+    .lead-box {
+      padding: 26px;
+      margin-bottom: 52px;
+      background: #fff;
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
     }
-    table{
+
+    .container > .lead-box:last-child {
+      margin-top: 52px;
+      margin-bottom: 0;
+      padding: 0;
+    }
+
+    .lead-badge {
+      display: inline-block;
+      flex-shrink: 0;
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.8;
+      color: #222;
+    }
+
+    .lead-text {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    .lead-text strong {
+      color: #222;
+      font-weight: 900;
+    }
+
+    .table-wrap {
+      margin-top: 18px;
+      overflow-x: auto;
+      border: 1px solid #e9e9e9;
+      background: #fff;
+    }
+
+    table {
       width: 100%;
+      min-width: 720px;
       border-collapse: collapse;
     }
-    thead th{
-      background: #f3f6fb;
-      color: #334155;
-      font-size: 13px;
-      font-weight: 900;
+
+    th,
+    td {
+      border-bottom: 1px solid #ededed;
+      padding: 16px 14px;
+      text-align: center;
+      font-size: 16px;
+      line-height: 1.6;
+      vertical-align: middle;
+      word-break: keep-all;
+    }
+
+    th {
+      background: #fff;
+      color: #222;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    td:first-child,
+    th:first-child {
       text-align: left;
-      padding: 14px 14px;
-      border-bottom: 1px solid var(--line);
+      padding-left: 18px;
     }
-    tbody td{
-      padding: 14px 14px;
-      border-bottom: 1px solid var(--line);
-      color: #334155;
-      font-weight: 650;
-      font-size: 14px;
-      vertical-align: top;
-      line-height: 1.7;
+
+    .table-wrap[aria-label="인재채용 지원부문 표"] th:nth-child(2),
+    .table-wrap[aria-label="인재채용 지원부문 표"] th:nth-child(3),
+    .table-wrap[aria-label="인재채용 지원부문 표"] td:nth-child(2),
+    .table-wrap[aria-label="인재채용 지원부문 표"] td:nth-child(3) {
+      text-align: left;
     }
-    tbody tr:last-child td{ border-bottom: 0; }
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      height: 24px;
-      padding: 0 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 900;
-      border: 1px solid rgba(11,78,162,.18);
-      color: var(--brand);
-      background: rgba(11,78,162,.06);
+
+    .tag {
+      font-weight: inherit;
+      color: inherit;
       white-space: nowrap;
     }
 
-    /* ===== Info Grid ===== */
-    .info-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 14px;
+    .info-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 20px;
     }
-    .card{
-      border: 1px solid var(--line);
-      border-radius: 14px;
+
+    .card {
       background: #fff;
-      padding: 18px;
-      box-shadow: 0 10px 26px rgba(15,23,42,.06);
+      padding: 0;
     }
-    .card h3{
-      margin: 0 0 10px;
-      font-size: 16px;
+
+    .card h3 {
+      margin: 0 0 18px;
+      font-size: 28px;
       font-weight: 900;
-      color: var(--ink);
-      letter-spacing: -0.2px;
+      color: #111;
+      letter-spacing: -0.3px;
     }
-    .card p{
-      margin: 0;
-      color: #475569;
-      font-size: 14px;
-      line-height: 1.85;
-      font-weight: 650;
-    }
-    .bullets{
+
+    .bullets {
       margin: 0;
       padding-left: 18px;
-      color: #475569;
-      font-size: 14px;
-      line-height: 1.85;
-      font-weight: 650;
-    }
-    .bullets li{ margin: 6px 0; }
-
-    /* ===== Process (steps) ===== */
-    .steps{
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .step{
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: #fff;
-      padding: 14px 14px;
-      position: relative;
-      min-height: 78px;
-    }
-    .step .num{
-      font-size: 12px;
-      font-weight: 900;
-      color: var(--brand);
-      background: rgba(11,78,162,.08);
-      border: 1px solid rgba(11,78,162,.18);
-      display:inline-flex;
-      align-items:center;
-      height: 24px;
-      padding: 0 10px;
-      border-radius: 999px;
-      margin-bottom: 10px;
-    }
-    .step .txt{
-      margin: 0;
-      font-size: 14px;
-      font-weight: 900;
-      color: #334155;
-      letter-spacing: -0.2px;
-      line-height: 1.35;
-    }
-
-    /* ===== Downloads / Contact ===== */
-    .actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      height: 40px;
-      padding: 0 14px;
-      border-radius: 10px;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: #334155;
-      font-weight: 900;
-      font-size: 13px;
-    }
-    .btn:hover{ border-color: rgba(11,78,162,.28); }
-    .btn.primary{
-      background: var(--brand);
-      border-color: var(--brand);
-      color: #fff;
-    }
-
-    .kv{
-      display:grid;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .kv-row{
-      display:flex;
-      gap: 12px;
-      align-items: baseline;
+      color: #444;
+      font-size: 18px;
       line-height: 1.8;
     }
-    .k{
-      min-width: 88px;
-      font-weight: 900;
-      color: rgba(31,41,55,.72);
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
     }
-    .v{
-      color:#334155;
-      font-weight: 750;
-      word-break: break-word;
+
+    .step {
+      border: 1px solid #e9e9e9;
+      background: #fff;
+      padding: 18px;
+      min-height: 96px;
+    }
+
+    .step .num {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #777;
+    }
+
+    .step .txt {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 900;
+      color: #222;
+      line-height: 1.5;
     }
 
     /* ===== Responsive ===== */
     @media (max-width: 980px){
-      .page-title{ font-size: 34px; }
-      .info-grid{ grid-template-columns: 1fr; }
-      .steps{ grid-template-columns: 1fr; }
-      .lead-box{ flex-direction: column; }
-      .lead-badge{ width: fit-content; }
-      thead{ display:none; }
-      table, tbody, tr, td{ display:block; width:100%; }
-      tbody td{
-        border-bottom: 0;
-        padding: 12px 14px;
+      .container {
+        padding: 44px 18px 72px;
       }
-      tbody tr{
-        border-bottom: 1px solid var(--line);
+
+      .lead-box,
+      .card {
+        padding: 0;
       }
-      tbody tr:last-child{ border-bottom: 0; }
-      tbody td::before{
-        content: attr(data-label);
-        display:block;
-        font-size: 12px;
-        font-weight: 900;
-        color: rgba(31,41,55,.6);
-        margin-bottom: 6px;
+
+      .steps {
+        grid-template-columns: 1fr;
       }
+
     }
   </style>
 </head>
@@ -373,28 +266,18 @@
     <div class="sub-visual-overlay"></div>
 
     <div class="sub-visual-content">
-      <h1>상시채용</h1>
+      <h1>인재채용</h1>
     </div>
   </section>
 
   <!-- ================= CONTENT ================= -->
-  <main class="wrap">
-    <div class="inner">
-
-      <div class="lead-box">
-        <div class="lead-badge">안내</div>
-        <p class="lead-text">
-          아래 모집 분야 중 관심 직무로 지원해 주세요. <strong>신입/경력</strong> 모두 지원 가능하며,
-          제출 서류는 채용 단계에 따라 추가 요청될 수 있습니다.
-        </p>
-      </div>
+  <main class="container">
 
       <!-- 지원부문 -->
       <section class="section" aria-labelledby="sec-jobs">
         <h2 class="section-title" id="sec-jobs">지원부문</h2>
-        <p class="section-desc">지원부문 / 상세업무 / 근무지역 / 비고</p>
 
-        <div class="table-wrap" role="region" aria-label="상시채용 지원부문 표">
+        <div class="table-wrap" role="region" aria-label="인재채용 지원부문 표">
           <table>
             <thead>
               <tr>
@@ -499,7 +382,14 @@
         </div>
       </section>
 
-    </div>
+      <div class="lead-box">
+        <div class="lead-badge">※</div>
+        <p class="lead-text">
+          아래 모집 분야 중 관심 직무로 지원해 주세요. <strong>신입/경력</strong> 모두 지원 가능하며,
+          제출 서류는 채용 단계에 따라 추가 요청될 수 있습니다.
+        </p>
+      </div>
+
   </main>
 
   <!-- ================= FOOTER ================= -->
