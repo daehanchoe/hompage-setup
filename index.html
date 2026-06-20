@@ -312,17 +312,31 @@
       position: relative;
       margin-top: 22px;
       overflow: hidden;
+      cursor: grab;
+      touch-action: pan-y;
+      user-select: none;
+    }
+
+    .site-scroll-wrap.is-dragging {
+      cursor: grabbing;
     }
 
     .site-list {
       display: flex;
       gap: 18px;
       padding-bottom: 12px;
-      will-change: transform;
     }
 
     .site-card {
       flex: 0 0 360px;
+      -webkit-user-drag: none;
+      user-drag: none;
+    }
+
+    .site-card img {
+      -webkit-user-drag: none;
+      user-drag: none;
+      pointer-events: none;
     }
 
     .site-scroll-zone {
@@ -331,6 +345,7 @@
       bottom: 12px;
       width: 120px;
       z-index: 5;
+      pointer-events: none;
     }
 
     .site-scroll-zone.left {
@@ -339,6 +354,40 @@
 
     .site-scroll-zone.right {
       right: 0;
+    }
+
+    .site-scroll-indicator {
+      position: relative;
+      height: 6px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: #eeeeee;
+      opacity: 0;
+      transform: translateY(-2px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      pointer-events: none;
+    }
+
+    .site-scroll-wrap:hover .site-scroll-indicator,
+    .site-scroll-wrap.is-dragging .site-scroll-indicator {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .site-scroll-thumb {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 120px;
+      height: 100%;
+      border-radius: inherit;
+      background: #1f3a5f;
+      transform: translateX(0);
+      transition: background 0.18s ease;
+    }
+
+    .site-scroll-wrap.is-dragging .site-scroll-thumb {
+      background: #111111;
     }
 
     /* .site-card {
@@ -834,6 +883,10 @@
         </div>
       </a>
     </div>
+
+      <div class="site-scroll-indicator" aria-hidden="true">
+        <div class="site-scroll-thumb"></div>
+      </div>
     </div>
   </section>
 
@@ -977,6 +1030,7 @@
 
     const scrollZoneLeft = document.querySelector('.site-scroll-zone.left');
     const scrollZoneRight = document.querySelector('.site-scroll-zone.right');
+    const siteScrollThumb = document.querySelector('.site-scroll-thumb');
 
     const autoScrollSpeed = 0.5;
     let targetScrollSpeed = autoScrollSpeed;
@@ -984,20 +1038,50 @@
     let animationId = null;
     let scrollPosition = 0;
     let scrollCycleWidth = 0;
+    let isPressingSiteList = false;
+    let isDraggingSiteList = false;
+    let dragStartX = 0;
+    let dragStartScrollPosition = 0;
+    let hasDraggedSiteList = false;
+
+    function normalizeScrollPosition() {
+      if (!scrollCycleWidth) return;
+
+      while (scrollPosition >= scrollCycleWidth) {
+        scrollPosition -= scrollCycleWidth;
+      }
+
+      while (scrollPosition < 0) {
+        scrollPosition += scrollCycleWidth;
+      }
+    }
+
+    function updateSiteListPosition() {
+      normalizeScrollPosition();
+      siteList.style.transform = 'translate3d(' + (-scrollPosition) + 'px, 0, 0)';
+      updateSiteScrollIndicator();
+    }
+
+    function updateSiteScrollIndicator() {
+      if (!siteScrollThumb || !scrollCycleWidth) return;
+
+      const indicator = siteScrollThumb.parentElement;
+      const indicatorWidth = indicator.offsetWidth;
+      const visibleRatio = Math.min(1, siteList.parentElement.offsetWidth / scrollCycleWidth);
+      const thumbWidth = Math.max(64, indicatorWidth * visibleRatio);
+      const movableWidth = Math.max(0, indicatorWidth - thumbWidth);
+      const scrollRatio = scrollPosition / scrollCycleWidth;
+
+      siteScrollThumb.style.width = thumbWidth + 'px';
+      siteScrollThumb.style.transform = 'translateX(' + (movableWidth * scrollRatio) + 'px)';
+    }
 
     function scrollLoop() {
       currentScrollSpeed += (targetScrollSpeed - currentScrollSpeed) * 0.12;
 
       if (Math.abs(currentScrollSpeed) > 0.05 || targetScrollSpeed !== 0) {
         scrollPosition += currentScrollSpeed;
-
-        if (scrollPosition >= scrollCycleWidth) {
-          scrollPosition -= scrollCycleWidth;
-        } else if (scrollPosition < 0) {
-          scrollPosition += scrollCycleWidth;
-        }
-
-        siteList.style.transform = 'translate3d(' + (-scrollPosition) + 'px, 0, 0)';
+        updateSiteListPosition();
         animationId = requestAnimationFrame(scrollLoop);
       } else {
         currentScrollSpeed = 0;
@@ -1017,12 +1101,19 @@
     }
 
     if (siteList && scrollZoneLeft && scrollZoneRight) {
+      const siteScrollWrap = siteList.parentElement;
       const originalCards = Array.from(siteList.children);
 
       originalCards.forEach(function (card) {
+        card.setAttribute('draggable', 'false');
+        card.querySelectorAll('img').forEach(function (image) {
+          image.setAttribute('draggable', 'false');
+        });
+
         const clonedCard = card.cloneNode(true);
         clonedCard.setAttribute('aria-hidden', 'true');
         clonedCard.setAttribute('tabindex', '-1');
+        clonedCard.setAttribute('draggable', 'false');
         siteList.appendChild(clonedCard);
       });
 
@@ -1030,18 +1121,108 @@
         siteList.children[originalCards.length].offsetLeft -
         siteList.children[0].offsetLeft;
 
-      scrollZoneLeft.addEventListener('mouseenter', function () {
-        targetScrollSpeed = -6;
+      updateSiteScrollIndicator();
+      window.addEventListener('resize', updateSiteScrollIndicator);
+
+      siteScrollWrap.addEventListener('mousemove', function (event) {
+        if (isDraggingSiteList) return;
+
+        const wrapRect = siteScrollWrap.getBoundingClientRect();
+        const pointerX = event.clientX - wrapRect.left;
+
+        if (pointerX <= 120) {
+          targetScrollSpeed = -6;
+        } else if (pointerX >= wrapRect.width - 120) {
+          targetScrollSpeed = 6;
+        } else {
+          targetScrollSpeed = autoScrollSpeed;
+        }
+
         ensureScrollLoop();
       });
 
-      scrollZoneRight.addEventListener('mouseenter', function () {
-        targetScrollSpeed = 6;
-        ensureScrollLoop();
+      siteScrollWrap.addEventListener('mouseleave', resumeAutoScroll);
+
+      siteScrollWrap.addEventListener('wheel', function (event) {
+        const wheelAmount = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+
+        if (!wheelAmount) return;
+
+        event.preventDefault();
+        scrollPosition += wheelAmount;
+        updateSiteListPosition();
+        resumeAutoScroll();
+      }, { passive: false });
+
+      siteScrollWrap.addEventListener('pointerdown', function (event) {
+        if (event.button !== undefined && event.button !== 0) return;
+
+        isPressingSiteList = true;
+        isDraggingSiteList = false;
+        hasDraggedSiteList = false;
+        dragStartX = event.clientX;
+        dragStartScrollPosition = scrollPosition;
       });
 
-      scrollZoneLeft.addEventListener('mouseleave', resumeAutoScroll);
-      scrollZoneRight.addEventListener('mouseleave', resumeAutoScroll);
+      siteScrollWrap.addEventListener('pointermove', function (event) {
+        if (!isPressingSiteList) return;
+
+        const dragDistance = event.clientX - dragStartX;
+
+        if (!isDraggingSiteList) {
+          if (Math.abs(dragDistance) <= 4) return;
+
+          isDraggingSiteList = true;
+          hasDraggedSiteList = true;
+          targetScrollSpeed = 0;
+          currentScrollSpeed = 0;
+          siteScrollWrap.classList.add('is-dragging');
+
+          if (!siteScrollWrap.hasPointerCapture(event.pointerId)) {
+            siteScrollWrap.setPointerCapture(event.pointerId);
+          }
+        }
+
+        scrollPosition = dragStartScrollPosition - dragDistance;
+        updateSiteListPosition();
+      });
+
+      function finishSiteListDrag(event) {
+        if (!isPressingSiteList && !isDraggingSiteList) return;
+
+        const wasDraggingSiteList = isDraggingSiteList;
+
+        isPressingSiteList = false;
+        isDraggingSiteList = false;
+        siteScrollWrap.classList.remove('is-dragging');
+
+        if (siteScrollWrap.hasPointerCapture(event.pointerId)) {
+          siteScrollWrap.releasePointerCapture(event.pointerId);
+        }
+
+        resumeAutoScroll();
+
+        if (wasDraggingSiteList) {
+          window.setTimeout(function () {
+            hasDraggedSiteList = false;
+          }, 0);
+        }
+      }
+
+      siteScrollWrap.addEventListener('pointerup', finishSiteListDrag);
+      siteScrollWrap.addEventListener('pointercancel', finishSiteListDrag);
+
+      siteList.addEventListener('dragstart', function (event) {
+        event.preventDefault();
+      });
+
+      siteList.addEventListener('click', function (event) {
+        if (!hasDraggedSiteList) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        hasDraggedSiteList = false;
+      }, true);
 
       ensureScrollLoop();
     }
