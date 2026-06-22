@@ -1151,7 +1151,7 @@
         if (!wheelAmount) return;
 
         event.preventDefault();
-        scrollPosition += wheelAmount;
+        scrollPosition -= wheelAmount;
         updateSiteListPosition();
         resumeAutoScroll();
       }, { passive: false });
@@ -1185,7 +1185,7 @@
           }
         }
 
-        scrollPosition = dragStartScrollPosition - dragDistance;
+        scrollPosition = dragStartScrollPosition + dragDistance;
         updateSiteListPosition();
       });
 
