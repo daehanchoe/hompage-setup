@@ -6,6 +6,7 @@
   <title>신우레미콘그룹 | 레미콘 · 콘크리트 · 건설자재 종합기업</title>
   <meta name="description" content="신우레미콘그룹은 레미콘, 콘크리트, 아스콘, 건설자재 제조와 공급을 수행하는 건설자재 전문 기업그룹입니다." />
   <meta name="robots" content="index, follow" />
+  <meta name="naver-site-verification" content="33a925168a9b8a803dd6e7e8890f150cb3ff2e37" />
   <meta name="author" content="신우레미콘그룹" />
   <link rel="canonical" href="https://shinwoormc.com/" />
   <link rel="icon" type="image/png" href="./images/logo.png" />
@@ -657,6 +658,31 @@
     font-size: 32px;
   }
 
+  #sites.section {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  #sites .section-title {
+    padding: 0;
+  }
+
+  .site-scroll-wrap {
+    overflow: hidden;
+  }
+
+  .site-list {
+    gap: 16px;
+  }
+
+  .site-card {
+    flex-basis: min(82vw, 360px);
+  }
+
+  .site-name {
+    font-size: 20px;
+  }
+
   .nav-item {
     width: 100%;
     border-bottom: 1px solid #f1f1f1;
@@ -684,6 +710,57 @@
 
     .logo-img {
       height: 40px;
+    }
+
+    @media (max-width: 640px) {
+      #sites.section {
+        padding-right: 20px;
+        padding-left: 20px;
+      }
+
+      .main-copy-left {
+        right: 20px;
+        left: 20px;
+        max-width: calc(100vw - 40px);
+      }
+
+      .main-copy-left h1 {
+        font-size: 36px;
+        line-height: 1.22;
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+
+      .main-copy-left p {
+        font-size: 24px;
+        line-height: 1.35;
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+
+      .section-title {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .site-body {
+        min-height: 136px;
+        padding: 16px 16px 14px;
+      }
+
+      .site-address {
+        padding-right: 38px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .main-copy-left h1 {
+        font-size: 32px;
+      }
+
+      .main-copy-left p {
+        font-size: 22px;
+      }
     }
   </style>
 </head>
@@ -1107,6 +1184,20 @@
       siteScrollThumb.style.transform = 'translateX(' + (movableWidth * scrollRatio) + 'px)';
     }
 
+    function recalculateSiteScroll() {
+      if (!siteList) return;
+
+      const originalCardCount = siteList.children.length / 2;
+      const firstCard = siteList.children[0];
+      const firstClonedCard = siteList.children[originalCardCount];
+
+      if (!firstCard || !firstClonedCard) return;
+
+      scrollCycleWidth = firstClonedCard.offsetLeft - firstCard.offsetLeft;
+      normalizeScrollPosition();
+      updateSiteListPosition();
+    }
+
     function scrollLoop() {
       currentScrollSpeed += (targetScrollSpeed - currentScrollSpeed) * 0.12;
 
@@ -1148,12 +1239,8 @@
         siteList.appendChild(clonedCard);
       });
 
-      scrollCycleWidth =
-        siteList.children[originalCards.length].offsetLeft -
-        siteList.children[0].offsetLeft;
-
-      updateSiteScrollIndicator();
-      window.addEventListener('resize', updateSiteScrollIndicator);
+      recalculateSiteScroll();
+      window.addEventListener('resize', recalculateSiteScroll);
 
       siteScrollWrap.addEventListener('mousemove', function (event) {
         if (isDraggingSiteList) return;
