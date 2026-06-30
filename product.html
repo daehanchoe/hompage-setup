@@ -234,6 +234,118 @@
       font-size: 16px;
     }
 
+    @media (max-width: 720px) {
+      .container {
+        padding: 42px 18px 68px;
+      }
+
+      .sub-visual {
+        height: 220px;
+      }
+
+      .sub-visual-content h1 {
+        font-size: 34px;
+      }
+
+      .section-block + .section-block {
+        margin-top: 42px;
+      }
+
+      .section-heading {
+        font-size: 24px;
+      }
+
+      .section-subheading,
+      .quality-title {
+        font-size: 20px;
+      }
+
+      .section-text {
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .content-box,
+      .quality-card {
+        padding: 0;
+      }
+
+      .table-wrap {
+        overflow-x: visible;
+        border: 0;
+        background: transparent;
+      }
+
+      table {
+        min-width: 0;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody,
+      tr,
+      td {
+        display: block;
+        width: 100%;
+      }
+
+      tr {
+        border: 1px solid #e7e7e7;
+        background: #fff;
+        padding: 12px 14px;
+      }
+
+      tr + tr {
+        margin-top: 12px;
+      }
+
+      th,
+      td,
+      td:first-child {
+        border: 0;
+        padding: 0;
+        text-align: left;
+      }
+
+      td {
+        display: grid;
+        grid-template-columns: minmax(104px, 38%) minmax(0, 1fr);
+        gap: 12px;
+        font-size: 15px;
+        line-height: 1.55;
+        overflow-wrap: anywhere;
+      }
+
+      td + td {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #f1f1f1;
+      }
+
+      td::before {
+        content: attr(data-label);
+        color: #666;
+        font-weight: 800;
+      }
+
+      .quality-card table {
+        border: 0;
+      }
+
+      .quality-card th,
+      .quality-card td {
+        border-left: 0;
+        border-right: 0;
+      }
+
+      .emphasis-box {
+        padding: 16px 0 0;
+        font-size: 15px;
+      }
+    }
+
     @media (max-width: 1066px) {
       .menu-toggle {
         display: block;
@@ -362,46 +474,46 @@
           </thead>
           <tbody>
             <tr>
-              <td>보통콘크리트</td>
-              <td>20, 25</td>
-              <td>18~35</td>
-              <td>80, 120, 150, 180, 210</td>
-              <td>500, 600</td>
+              <td data-label="구분">보통콘크리트</td>
+              <td data-label="굵은골재 최대치수">20, 25</td>
+              <td data-label="호칭강도">18~35</td>
+              <td data-label="슬럼프">80, 120, 150, 180, 210</td>
+              <td data-label="슬럼프 플로">500, 600</td>
             </tr>
             <tr>
-              <td>보통콘크리트</td>
-              <td>40</td>
-              <td>18~35</td>
-              <td>50, 80, 120, 150</td>
-              <td>-</td>
+              <td data-label="구분">보통콘크리트</td>
+              <td data-label="굵은골재 최대치수">40</td>
+              <td data-label="호칭강도">18~35</td>
+              <td data-label="슬럼프">50, 80, 120, 150</td>
+              <td data-label="슬럼프 플로">-</td>
             </tr>
             <tr>
-              <td>경량콘크리트</td>
-              <td>15, 20</td>
-              <td>18~40</td>
-              <td>80, 120, 150, 180, 210</td>
-              <td>-</td>
+              <td data-label="구분">경량콘크리트</td>
+              <td data-label="굵은골재 최대치수">15, 20</td>
+              <td data-label="호칭강도">18~40</td>
+              <td data-label="슬럼프">80, 120, 150, 180, 210</td>
+              <td data-label="슬럼프 플로">-</td>
             </tr>
             <tr>
-              <td>포장콘크리트</td>
-              <td>20, 25, 40</td>
-              <td>휨 4.0, 휨 4.5</td>
-              <td>25, 65</td>
-              <td>-</td>
+              <td data-label="구분">포장콘크리트</td>
+              <td data-label="굵은골재 최대치수">20, 25, 40</td>
+              <td data-label="호칭강도">휨 4.0, 휨 4.5</td>
+              <td data-label="슬럼프">25, 65</td>
+              <td data-label="슬럼프 플로">-</td>
             </tr>
             <tr>
-              <td>고강도 콘크리트</td>
-              <td>15, 20, 25</td>
-              <td>40, 45, 50</td>
-              <td>120, 150, 180, 210</td>
-              <td>-</td>
+              <td data-label="구분">고강도 콘크리트</td>
+              <td data-label="굵은골재 최대치수">15, 20, 25</td>
+              <td data-label="호칭강도">40, 45, 50</td>
+              <td data-label="슬럼프">120, 150, 180, 210</td>
+              <td data-label="슬럼프 플로">-</td>
             </tr>
             <tr>
-              <td>고강도 콘크리트</td>
-              <td>15, 20, 25</td>
-              <td>40, 45, 50, 55, 60</td>
-              <td>-</td>
-              <td>500, 600, 700</td>
+              <td data-label="구분">고강도 콘크리트</td>
+              <td data-label="굵은골재 최대치수">15, 20, 25</td>
+              <td data-label="호칭강도">40, 45, 50, 55, 60</td>
+              <td data-label="슬럼프">-</td>
+              <td data-label="슬럼프 플로">500, 600, 700</td>
             </tr>
           </tbody>
         </table>
@@ -432,16 +544,16 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>25</td>
-                  <td>±10</td>
+                  <td data-label="슬럼프">25</td>
+                  <td data-label="허용오차">±10</td>
                 </tr>
                 <tr>
-                  <td>50 및 65</td>
-                  <td>±15</td>
+                  <td data-label="슬럼프">50 및 65</td>
+                  <td data-label="허용오차">±15</td>
                 </tr>
                 <tr>
-                  <td>80 이상</td>
-                  <td>±25</td>
+                  <td data-label="슬럼프">80 이상</td>
+                  <td data-label="허용오차">±25</td>
                 </tr>
               </tbody>
             </table>
@@ -458,16 +570,16 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>500</td>
-                  <td>±75</td>
+                  <td data-label="슬럼프 플로">500</td>
+                  <td data-label="허용오차">±75</td>
                 </tr>
                 <tr>
-                  <td>600</td>
-                  <td>±100</td>
+                  <td data-label="슬럼프 플로">600</td>
+                  <td data-label="허용오차">±100</td>
                 </tr>
                 <tr>
-                  <td>700</td>
-                  <td>±100</td>
+                  <td data-label="슬럼프 플로">700</td>
+                  <td data-label="허용오차">±100</td>
                 </tr>
               </tbody>
             </table>
@@ -490,24 +602,24 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>보통 콘크리트</td>
-                  <td>4.5</td>
-                  <td>±1.5</td>
+                  <td data-label="구분">보통 콘크리트</td>
+                  <td data-label="공기량">4.5</td>
+                  <td data-label="허용오차">±1.5</td>
                 </tr>
                 <tr>
-                  <td>경량 콘크리트</td>
-                  <td>5.5</td>
-                  <td>-</td>
+                  <td data-label="구분">경량 콘크리트</td>
+                  <td data-label="공기량">5.5</td>
+                  <td data-label="허용오차">-</td>
                 </tr>
                 <tr>
-                  <td>포장 콘크리트</td>
-                  <td>4.5</td>
-                  <td>-</td>
+                  <td data-label="구분">포장 콘크리트</td>
+                  <td data-label="공기량">4.5</td>
+                  <td data-label="허용오차">-</td>
                 </tr>
                 <tr>
-                  <td>고강도 콘크리트</td>
-                  <td>3.5</td>
-                  <td>-</td>
+                  <td data-label="구분">고강도 콘크리트</td>
+                  <td data-label="공기량">3.5</td>
+                  <td data-label="허용오차">-</td>
                 </tr>
               </tbody>
             </table>

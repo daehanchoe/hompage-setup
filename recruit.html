@@ -217,6 +217,103 @@
       }
 
     }
+
+    @media (max-width: 720px) {
+      .sub-visual {
+        height: 220px;
+      }
+
+      .sub-visual-content h1 {
+        font-size: 34px;
+      }
+
+      .section + .section {
+        margin-top: 42px;
+      }
+
+      .section-title,
+      .card h3 {
+        font-size: 24px;
+      }
+
+      .lead-box {
+        align-items: flex-start;
+        gap: 10px;
+        margin-bottom: 42px;
+      }
+
+      .lead-badge,
+      .lead-text,
+      .bullets,
+      .step .txt {
+        font-size: 16px;
+      }
+
+      .table-wrap {
+        overflow-x: visible;
+        border: 0;
+        background: transparent;
+      }
+
+      table {
+        min-width: 0;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody,
+      tr,
+      td {
+        display: block;
+        width: 100%;
+      }
+
+      tr {
+        border: 1px solid #e7e7e7;
+        background: #fff;
+        padding: 12px 14px;
+      }
+
+      tr + tr {
+        margin-top: 12px;
+      }
+
+      th,
+      td,
+      td:first-child {
+        border: 0;
+        padding: 0;
+        text-align: left;
+      }
+
+      td {
+        display: grid;
+        grid-template-columns: minmax(86px, 32%) minmax(0, 1fr);
+        gap: 12px;
+        font-size: 15px;
+        line-height: 1.55;
+        overflow-wrap: anywhere;
+      }
+
+      td + td {
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #f1f1f1;
+      }
+
+      td::before {
+        content: attr(data-label);
+        color: #666;
+        font-weight: 800;
+      }
+
+      .step {
+        min-height: 0;
+        padding: 16px;
+      }
+    }
   </style>
 </head>
 
