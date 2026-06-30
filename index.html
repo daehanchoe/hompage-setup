@@ -343,13 +343,7 @@
       position: relative;
       margin-top: 22px;
       overflow: hidden;
-      cursor: grab;
       touch-action: pan-y;
-      user-select: none;
-    }
-
-    .site-scroll-wrap.is-dragging {
-      cursor: grabbing;
     }
 
     .site-list {
@@ -359,7 +353,15 @@
     }
 
     .site-card {
+      display: block;
       flex: 0 0 360px;
+      text-decoration: none;
+      border: 1px solid #e5e5e5;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+      transform: translateY(0);
+      transition: 0.18s ease;
       -webkit-user-drag: none;
       user-drag: none;
     }
@@ -386,51 +388,6 @@
     .site-scroll-zone.right {
       right: 0;
     }
-
-    .site-scroll-indicator {
-      position: relative;
-      height: 6px;
-      margin-top: 8px;
-      border-radius: 999px;
-      background: #eeeeee;
-      opacity: 0;
-      transform: translateY(-2px);
-      transition: opacity 0.18s ease, transform 0.18s ease;
-      pointer-events: none;
-    }
-
-    .site-scroll-wrap:hover .site-scroll-indicator,
-    .site-scroll-wrap.is-dragging .site-scroll-indicator {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .site-scroll-thumb {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 120px;
-      height: 100%;
-      border-radius: inherit;
-      background: #1f3a5f;
-      transform: translateX(0);
-      transition: background 0.18s ease;
-    }
-
-    .site-scroll-wrap.is-dragging .site-scroll-thumb {
-      background: #111111;
-    }
-
-    /* .site-card {
-      display: block;
-      text-decoration: none;
-      border: 1px solid #e5e5e5;
-      background: #fff;
-      overflow: hidden;
-      box-shadow: 0 0 0 rgba(0,0,0,0);
-      transform: translateY(0);
-      transition: 0.18s ease;
-    } */
 
     .site-card:hover {
       border-color: #f1c08b;
@@ -667,10 +624,6 @@
     padding: 0;
   }
 
-  .site-scroll-wrap {
-    overflow: hidden;
-  }
-
   .site-list {
     gap: 16px;
   }
@@ -862,7 +815,7 @@
       <div class="site-scroll-zone left" aria-hidden="true"></div>
       <div class="site-scroll-zone right" aria-hidden="true"></div>
 
-    <div class="site-list">
+      <div class="site-list">
       <!-- 카드 1 -->
       <a class="site-card" href="./sinwoo-gyeongju-detail.html" aria-label="부천관계사 자세히 보기">
         <div class="site-thumb">
@@ -990,10 +943,6 @@
           <div class="site-arrow">→</div>
         </div>
       </a>
-    </div>
-
-      <div class="site-scroll-indicator" aria-hidden="true">
-        <div class="site-scroll-thumb"></div>
       </div>
     </div>
   </section>
@@ -1132,13 +1081,10 @@
     startMainBanner();
   }
 </script>
-
   <script>
     const siteList = document.querySelector('.site-list');
-
     const scrollZoneLeft = document.querySelector('.site-scroll-zone.left');
     const scrollZoneRight = document.querySelector('.site-scroll-zone.right');
-    const siteScrollThumb = document.querySelector('.site-scroll-thumb');
 
     const autoScrollSpeed = 0.5;
     let targetScrollSpeed = autoScrollSpeed;
@@ -1146,11 +1092,6 @@
     let animationId = null;
     let scrollPosition = 0;
     let scrollCycleWidth = 0;
-    let isPressingSiteList = false;
-    let isDraggingSiteList = false;
-    let dragStartX = 0;
-    let dragStartScrollPosition = 0;
-    let hasDraggedSiteList = false;
 
     function normalizeScrollPosition() {
       if (!scrollCycleWidth) return;
@@ -1167,21 +1108,6 @@
     function updateSiteListPosition() {
       normalizeScrollPosition();
       siteList.style.transform = 'translate3d(' + (-scrollPosition) + 'px, 0, 0)';
-      updateSiteScrollIndicator();
-    }
-
-    function updateSiteScrollIndicator() {
-      if (!siteScrollThumb || !scrollCycleWidth) return;
-
-      const indicator = siteScrollThumb.parentElement;
-      const indicatorWidth = indicator.offsetWidth;
-      const visibleRatio = Math.min(1, siteList.parentElement.offsetWidth / scrollCycleWidth);
-      const thumbWidth = Math.max(64, indicatorWidth * visibleRatio);
-      const movableWidth = Math.max(0, indicatorWidth - thumbWidth);
-      const scrollRatio = scrollPosition / scrollCycleWidth;
-
-      siteScrollThumb.style.width = thumbWidth + 'px';
-      siteScrollThumb.style.transform = 'translateX(' + (movableWidth * scrollRatio) + 'px)';
     }
 
     function recalculateSiteScroll() {
@@ -1243,8 +1169,6 @@
       window.addEventListener('resize', recalculateSiteScroll);
 
       siteScrollWrap.addEventListener('mousemove', function (event) {
-        if (isDraggingSiteList) return;
-
         const wrapRect = siteScrollWrap.getBoundingClientRect();
         const pointerX = event.clientX - wrapRect.left;
 
@@ -1261,86 +1185,9 @@
 
       siteScrollWrap.addEventListener('mouseleave', resumeAutoScroll);
 
-      siteScrollWrap.addEventListener('wheel', function (event) {
-        const wheelAmount = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
-
-        if (!wheelAmount) return;
-
-        event.preventDefault();
-        scrollPosition -= wheelAmount;
-        updateSiteListPosition();
-        resumeAutoScroll();
-      }, { passive: false });
-
-      siteScrollWrap.addEventListener('pointerdown', function (event) {
-        if (event.button !== undefined && event.button !== 0) return;
-
-        isPressingSiteList = true;
-        isDraggingSiteList = false;
-        hasDraggedSiteList = false;
-        dragStartX = event.clientX;
-        dragStartScrollPosition = scrollPosition;
-      });
-
-      siteScrollWrap.addEventListener('pointermove', function (event) {
-        if (!isPressingSiteList) return;
-
-        const dragDistance = event.clientX - dragStartX;
-
-        if (!isDraggingSiteList) {
-          if (Math.abs(dragDistance) <= 4) return;
-
-          isDraggingSiteList = true;
-          hasDraggedSiteList = true;
-          targetScrollSpeed = 0;
-          currentScrollSpeed = 0;
-          siteScrollWrap.classList.add('is-dragging');
-
-          if (!siteScrollWrap.hasPointerCapture(event.pointerId)) {
-            siteScrollWrap.setPointerCapture(event.pointerId);
-          }
-        }
-
-        scrollPosition = dragStartScrollPosition + dragDistance;
-        updateSiteListPosition();
-      });
-
-      function finishSiteListDrag(event) {
-        if (!isPressingSiteList && !isDraggingSiteList) return;
-
-        const wasDraggingSiteList = isDraggingSiteList;
-
-        isPressingSiteList = false;
-        isDraggingSiteList = false;
-        siteScrollWrap.classList.remove('is-dragging');
-
-        if (siteScrollWrap.hasPointerCapture(event.pointerId)) {
-          siteScrollWrap.releasePointerCapture(event.pointerId);
-        }
-
-        resumeAutoScroll();
-
-        if (wasDraggingSiteList) {
-          window.setTimeout(function () {
-            hasDraggedSiteList = false;
-          }, 0);
-        }
-      }
-
-      siteScrollWrap.addEventListener('pointerup', finishSiteListDrag);
-      siteScrollWrap.addEventListener('pointercancel', finishSiteListDrag);
-
       siteList.addEventListener('dragstart', function (event) {
         event.preventDefault();
       });
-
-      siteList.addEventListener('click', function (event) {
-        if (!hasDraggedSiteList) return;
-
-        event.preventDefault();
-        event.stopPropagation();
-        hasDraggedSiteList = false;
-      }, true);
 
       ensureScrollLoop();
     }
