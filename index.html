@@ -728,6 +728,26 @@
         padding-left: 20px;
       }
 
+      .main {
+        height: 320px;
+        min-height: 0;
+        background: #111;
+      }
+
+      .main::after {
+        background: rgba(0, 0, 0, 0.32);
+      }
+
+      .main-slide {
+        background-size: cover;
+        background-position: center;
+        transform: none;
+      }
+
+      .main-slide:nth-child(1) {
+        background-position: center;
+      }
+
       .main-copy-left {
         right: 20px;
         left: 20px;
@@ -764,6 +784,10 @@
     }
 
     @media (max-width: 420px) {
+      .main {
+        height: 280px;
+      }
+
       .main-copy-left h1 {
         font-size: 32px;
       }
