@@ -371,10 +371,76 @@
       letter-spacing: -0.3px;
     }
 
+    .section-title h2 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .section-title h2 a:hover {
+      color: #1f3a5f;
+    }
+
     .section-title .desc {
       font-size: 14px;
       color: #777;
       margin: 0;
+    }
+
+    .site-section-title {
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .site-heading {
+      min-width: 0;
+    }
+
+    .site-heading .desc {
+      margin-top: 7px;
+    }
+
+    .site-controls {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      flex: 0 0 auto;
+      padding: 4px;
+      border: 1px solid rgba(17, 24, 39, 0.08);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
+    }
+
+    .site-control {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 999px;
+      background: #f4f6f8;
+      color: #334155;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: inset 0 0 0 1px rgba(17, 24, 39, 0.06);
+      transition: transform 0.16s ease, background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .site-control:focus-visible {
+      outline: 2px solid #111827;
+      outline-offset: 3px;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .site-control:hover {
+        transform: translateY(-1px);
+        background: #111827;
+        color: #fff;
+        box-shadow: 0 10px 18px rgba(17, 24, 39, 0.2);
+      }
+
     }
 
     .divider {
@@ -404,6 +470,8 @@
       display: flex;
       gap: 18px;
       padding-bottom: 12px;
+      will-change: transform;
+      backface-visibility: hidden;
     }
 
     .site-card {
@@ -415,9 +483,10 @@
       overflow: hidden;
       box-shadow: 0 0 0 rgba(0,0,0,0);
       transform: translateY(0);
-      transition: 0.18s ease;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
       -webkit-user-drag: none;
       user-drag: none;
+      contain: layout paint;
     }
 
     .site-card img {
@@ -455,6 +524,7 @@
       background: linear-gradient(135deg, #f7f7f7, #efefef);
       position: relative;
       overflow: hidden;
+      contain: paint;
     }
 
     .site-thumb img {
@@ -462,6 +532,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
+      backface-visibility: hidden;
     }
 
     .site-body {
@@ -773,6 +844,43 @@
         flex-direction: column;
       }
 
+      #sites .section-title {
+        align-items: flex-start;
+        flex-direction: row;
+      }
+
+      .site-controls {
+        display: flex;
+        margin-top: 2px;
+        gap: 5px;
+        padding: 3px;
+        box-shadow: 0 8px 18px rgba(17, 24, 39, 0.1);
+      }
+
+      .site-scroll-wrap {
+        touch-action: pan-y;
+      }
+
+      .site-scroll-zone {
+        display: none;
+      }
+
+      .site-list {
+        will-change: transform;
+      }
+
+      .site-card:hover {
+        border-color: #e5e5e5;
+        box-shadow: none;
+        transform: none;
+      }
+
+      .site-control {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+      }
+
       .site-body {
         min-height: 136px;
         padding: 16px 16px 14px;
@@ -887,9 +995,16 @@
 
   <!-- ================== Sites List (요청 스타일) ================== -->
   <section id="sites" class="section">
-    <div class="section-title">
-      <h2><a href="./company-list.html">관계사 안내</a></h2>
-      <p class="desc">관계사 위치 및 주소</p>
+    <div class="section-title site-section-title">
+      <div class="site-heading">
+        <h2><a href="./company-list.html">관계사 안내</a></h2>
+        <p class="desc">관계사 위치 및 주소</p>
+      </div>
+
+      <div class="site-controls" aria-label="관계사 카드 이동">
+        <button class="site-control site-control-prev" type="button" aria-label="이전 관계사 보기">&lt;</button>
+        <button class="site-control site-control-next" type="button" aria-label="다음 관계사 보기">&gt;</button>
+      </div>
     </div>
 
     <div class="site-scroll-wrap">
@@ -900,7 +1015,7 @@
       <!-- 카드 1 -->
       <a class="site-card" href="./sinwoo-gyeongju-detail.html" aria-label="부천관계사 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/신우레미콘_경주.jpg" alt="부천관계사 전경" loading="lazy" decoding="async" onerror="this.remove();">
+          <img src="./images/site-thumbs/sinwoo-gyeongju.jpg" alt="부천관계사 전경" width="720" height="480" loading="eager" decoding="async" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우레미콘(주) 경주공장</h3>
@@ -913,7 +1028,7 @@
       <!-- 카드 2 -->
       <a class="site-card" href="./sinwoo-samdong-detail.html" aria-label="인천관계사 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/신우레미콘(주)_울산.jpg" alt="인천관계사 전경" loading="lazy" decoding="async" onerror="this.remove();">
+          <img src="./images/site-thumbs/sinwoo-ulsan.jpg" alt="인천관계사 전경" width="720" height="480" loading="eager" decoding="async" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우레미콘(주) 울산공장</h3>
@@ -926,7 +1041,7 @@
       <!-- 카드 3 -->
       <a class="site-card" href="./yeonghwa-detail.html" aria-label="파주관계사 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/3.jpg" alt="파주관계사 전경" loading="lazy" decoding="async" onerror="this.remove();">
+          <img src="./images/site-thumbs/yeonghwa.jpg" alt="파주관계사 전경" width="720" height="480" loading="eager" decoding="async" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">영화레미콘(주) 경주공장</h3>
@@ -939,7 +1054,7 @@
       <!-- 카드 4 -->
       <a class="site-card" href="./hongjin-detail.html" aria-label="영종도관계사 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/4.jpg" alt="영종도관계사 전경" loading="lazy" decoding="async" onerror="this.remove();">
+          <img src="./images/site-thumbs/hongjin.jpg" alt="영종도관계사 전경" width="720" height="480" loading="eager" decoding="async" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">흥진레미콘(주) 경주공장</h3>
@@ -952,7 +1067,7 @@
       <!-- 카드 5 -->
       <a class="site-card" href="./yeongjin.html" aria-label="성남관계사 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/5.jpg" alt="성남관계사 전경" loading="lazy" decoding="async" onerror="this.remove();">
+          <img src="./images/site-thumbs/yeongjin.jpg" alt="성남관계사 전경" width="720" height="480" loading="eager" decoding="async" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">영진레미콘아스콘(주) 울산공장</h3>
@@ -965,7 +1080,7 @@
       <!-- 카드 6 -->
       <a class="site-card" href="./woojin.html" aria-label="광주관계사(경기) 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/6.jpg" alt="광주관계사(경기) 전경" loading="lazy" decoding="async" onerror="this.remove();">
+          <img src="./images/site-thumbs/woojin.jpg" alt="광주관계사(경기) 전경" width="720" height="483" loading="eager" decoding="async" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">우진레미콘(주) 경주공장</h3>
@@ -977,7 +1092,7 @@
       <!--  -->
       <a class="site-card" href="./sinwoo-yeongcheon.html" aria-label="신우레미콘아스콘(주) 영천공장 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/7.jpg" alt="신우레미콘아스콘(주) 영천공장" loading="lazy" decoding="async" onerror="this.remove();">
+          <img src="./images/site-thumbs/sinwoo-yeongcheon.jpg" alt="신우레미콘아스콘(주) 영천공장" width="720" height="483" loading="eager" decoding="async" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우레미콘아스콘(주) 영천공장</h3>
@@ -989,7 +1104,7 @@
       <!-- 8 -->
       <a class="site-card" href="./sina.html" aria-label="광주관계사(경기) 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/sina.png" alt="광주관계사(경기) 전경" loading="lazy" decoding="async" onerror="this.remove();">
+          <img src="./images/site-thumbs/sina.jpg" alt="광주관계사(경기) 전경" width="720" height="461" loading="eager" decoding="async" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신아레미콘(주) 울산공장</h3>
@@ -1002,7 +1117,7 @@
       <!-- 9 -->
       <a class="site-card" href="./sinwooremiconindustry.html" aria-label="광주관계사(경기) 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/9.jpg" alt="광주관계사(경기) 전경" loading="lazy" decoding="async" onerror="this.remove();">
+          <img src="./images/site-thumbs/sinwoo-industry.jpg" alt="광주관계사(경기) 전경" width="720" height="480" loading="eager" decoding="async" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우레미콘산업(주) 울산공장</h3>
@@ -1015,7 +1130,7 @@
       <!--  -->
       <a class="site-card" href="./sinwoo-development.html" aria-label="신우개발 자세히 보기">
         <div class="site-thumb">
-          <img src="./images/신우개발_보정본.png" alt="광주관계사(경기) 전경" loading="lazy" decoding="async" onerror="this.remove();">
+          <img src="./images/site-thumbs/sinwoo-development.jpg" alt="광주관계사(경기) 전경" width="720" height="720" loading="eager" decoding="async" onerror="this.remove();">
         </div>
         <div class="site-body">
           <h3 class="site-name">신우개발(주) 울산</h3>
@@ -1166,6 +1281,10 @@
     const siteList = document.querySelector('.site-list');
     const scrollZoneLeft = document.querySelector('.site-scroll-zone.left');
     const scrollZoneRight = document.querySelector('.site-scroll-zone.right');
+    const sitePrevButton = document.querySelector('.site-control-prev');
+    const siteNextButton = document.querySelector('.site-control-next');
+    const siteScrollWrap = siteList ? siteList.parentElement : null;
+    const isMobileSiteScroller = window.matchMedia('(max-width: 640px)').matches;
 
     const autoScrollSpeed = 0.5;
     let targetScrollSpeed = autoScrollSpeed;
@@ -1173,22 +1292,16 @@
     let animationId = null;
     let scrollPosition = 0;
     let scrollCycleWidth = 0;
+    let resumeAutoScrollTimer = null;
+    let lastSiteControlActionAt = 0;
     let touchStartX = 0;
     let touchStartY = 0;
     let lastTouchX = 0;
     let isTouchDragging = false;
-    let resumeAutoScrollTimer = null;
-
     function normalizeScrollPosition() {
       if (!scrollCycleWidth) return;
 
-      while (scrollPosition >= scrollCycleWidth) {
-        scrollPosition -= scrollCycleWidth;
-      }
-
-      while (scrollPosition < 0) {
-        scrollPosition += scrollCycleWidth;
-      }
+      scrollPosition = ((scrollPosition % scrollCycleWidth) + scrollCycleWidth) % scrollCycleWidth;
     }
 
     function updateSiteListPosition() {
@@ -1240,8 +1353,23 @@
       ensureScrollLoop();
     }
 
-    if (siteList && scrollZoneLeft && scrollZoneRight) {
-      const siteScrollWrap = siteList.parentElement;
+    function getSiteScrollStep() {
+      const firstCard = siteList.children[0];
+      const secondCard = siteList.children[1];
+
+      if (firstCard && secondCard) {
+        return secondCard.offsetLeft - firstCard.offsetLeft;
+      }
+
+      return firstCard ? firstCard.offsetWidth : 360;
+    }
+
+    function scheduleAutoScrollResume() {
+      clearTimeout(resumeAutoScrollTimer);
+      resumeAutoScrollTimer = setTimeout(resumeAutoScroll, 1800);
+    }
+
+    function cloneSiteCards() {
       const originalCards = Array.from(siteList.children);
 
       originalCards.forEach(function (card) {
@@ -1256,26 +1384,67 @@
         clonedCard.setAttribute('draggable', 'false');
         siteList.appendChild(clonedCard);
       });
+    }
 
-      recalculateSiteScroll();
-      window.addEventListener('resize', recalculateSiteScroll);
+    function moveDesktopSiteCards(direction) {
+      pauseAutoScroll();
+      currentScrollSpeed = 0;
+      scrollPosition += getSiteScrollStep() * direction;
+      updateSiteListPosition();
+      scheduleAutoScrollResume();
+    }
 
-      siteScrollWrap.addEventListener('mousemove', function (event) {
-        const wrapRect = siteScrollWrap.getBoundingClientRect();
-        const pointerX = event.clientX - wrapRect.left;
+    function moveMobileSiteCards(direction) {
+      moveDesktopSiteCards(direction);
+    }
 
-        if (pointerX <= 120) {
-          targetScrollSpeed = -6;
-        } else if (pointerX >= wrapRect.width - 120) {
-          targetScrollSpeed = 6;
-        } else {
-          targetScrollSpeed = autoScrollSpeed;
-        }
+    function bindSiteControls(moveCards) {
+      if (!sitePrevButton || !siteNextButton) return;
 
-        ensureScrollLoop();
+      sitePrevButton.addEventListener('pointerdown', function (event) {
+        event.preventDefault();
+        sitePrevButton.blur();
+        moveSiteCardsNow(-1, moveCards);
       });
 
-      siteScrollWrap.addEventListener('mouseleave', resumeAutoScroll);
+      siteNextButton.addEventListener('pointerdown', function (event) {
+        event.preventDefault();
+        siteNextButton.blur();
+        moveSiteCardsNow(1, moveCards);
+      });
+
+      sitePrevButton.addEventListener('click', function (event) {
+        if (shouldSkipDelayedSiteControlClick()) {
+          event.preventDefault();
+          return;
+        }
+
+        moveCards(-1);
+      });
+
+      siteNextButton.addEventListener('click', function (event) {
+        if (shouldSkipDelayedSiteControlClick()) {
+          event.preventDefault();
+          return;
+        }
+
+        moveCards(1);
+      });
+    }
+
+    function moveSiteCardsNow(direction, moveCards) {
+      lastSiteControlActionAt = Date.now();
+      moveCards(direction);
+    }
+
+    function shouldSkipDelayedSiteControlClick() {
+      return Date.now() - lastSiteControlActionAt < 700;
+    }
+
+    if (siteList && siteScrollWrap && isMobileSiteScroller) {
+      cloneSiteCards();
+      recalculateSiteScroll();
+      window.addEventListener('resize', recalculateSiteScroll);
 
       siteList.addEventListener('dragstart', function (event) {
         event.preventDefault();
@@ -1306,18 +1475,45 @@
         if (!isTouchDragging) return;
 
         event.preventDefault();
+        currentScrollSpeed = 0;
         scrollPosition -= currentTouchX - lastTouchX;
         lastTouchX = currentTouchX;
         updateSiteListPosition();
       }, { passive: false });
 
-      siteScrollWrap.addEventListener('touchend', function () {
-        resumeAutoScrollTimer = setTimeout(resumeAutoScroll, 1800);
+      siteScrollWrap.addEventListener('touchend', scheduleAutoScrollResume);
+      siteScrollWrap.addEventListener('touchcancel', scheduleAutoScrollResume);
+
+      bindSiteControls(moveMobileSiteCards);
+      ensureScrollLoop();
+    } else if (siteList && scrollZoneLeft && scrollZoneRight) {
+      cloneSiteCards();
+
+      recalculateSiteScroll();
+      window.addEventListener('resize', recalculateSiteScroll);
+
+      siteScrollWrap.addEventListener('mousemove', function (event) {
+        const wrapRect = siteScrollWrap.getBoundingClientRect();
+        const pointerX = event.clientX - wrapRect.left;
+
+        if (pointerX <= 120) {
+          targetScrollSpeed = -6;
+        } else if (pointerX >= wrapRect.width - 120) {
+          targetScrollSpeed = 6;
+        } else {
+          targetScrollSpeed = autoScrollSpeed;
+        }
+
+        ensureScrollLoop();
       });
 
-      siteScrollWrap.addEventListener('touchcancel', function () {
-        resumeAutoScrollTimer = setTimeout(resumeAutoScroll, 1800);
+      siteScrollWrap.addEventListener('mouseleave', resumeAutoScroll);
+
+      siteList.addEventListener('dragstart', function (event) {
+        event.preventDefault();
       });
+
+      bindSiteControls(moveDesktopSiteCards);
 
       ensureScrollLoop();
     }
