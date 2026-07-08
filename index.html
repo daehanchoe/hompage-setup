@@ -824,7 +824,7 @@
         </div>
 
         <div class="nav-item">
-          <a href="#">관계사 안내</a>
+          <a href="./company-list.html">관계사 안내</a>
 
           <div class="sub-menu">
             <a href="./company-list.html">관계사 안내</a>
@@ -888,7 +888,7 @@
   <!-- ================== Sites List (요청 스타일) ================== -->
   <section id="sites" class="section">
     <div class="section-title">
-      <h2>관계사 안내</h2>
+      <h2><a href="./company-list.html">관계사 안내</a></h2>
       <p class="desc">관계사 위치 및 주소</p>
     </div>
 
@@ -1173,6 +1173,11 @@
     let animationId = null;
     let scrollPosition = 0;
     let scrollCycleWidth = 0;
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let lastTouchX = 0;
+    let isTouchDragging = false;
+    let resumeAutoScrollTimer = null;
 
     function normalizeScrollPosition() {
       if (!scrollCycleWidth) return;
@@ -1229,6 +1234,12 @@
       ensureScrollLoop();
     }
 
+    function pauseAutoScroll() {
+      clearTimeout(resumeAutoScrollTimer);
+      targetScrollSpeed = 0;
+      ensureScrollLoop();
+    }
+
     if (siteList && scrollZoneLeft && scrollZoneRight) {
       const siteScrollWrap = siteList.parentElement;
       const originalCards = Array.from(siteList.children);
@@ -1268,6 +1279,44 @@
 
       siteList.addEventListener('dragstart', function (event) {
         event.preventDefault();
+      });
+
+      siteScrollWrap.addEventListener('touchstart', function (event) {
+        if (!event.touches.length) return;
+
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+        lastTouchX = touchStartX;
+        isTouchDragging = false;
+        pauseAutoScroll();
+      }, { passive: true });
+
+      siteScrollWrap.addEventListener('touchmove', function (event) {
+        if (!event.touches.length) return;
+
+        const currentTouchX = event.touches[0].clientX;
+        const currentTouchY = event.touches[0].clientY;
+        const totalDeltaX = currentTouchX - touchStartX;
+        const totalDeltaY = currentTouchY - touchStartY;
+
+        if (!isTouchDragging && Math.abs(totalDeltaX) > 8 && Math.abs(totalDeltaX) > Math.abs(totalDeltaY)) {
+          isTouchDragging = true;
+        }
+
+        if (!isTouchDragging) return;
+
+        event.preventDefault();
+        scrollPosition -= currentTouchX - lastTouchX;
+        lastTouchX = currentTouchX;
+        updateSiteListPosition();
+      }, { passive: false });
+
+      siteScrollWrap.addEventListener('touchend', function () {
+        resumeAutoScrollTimer = setTimeout(resumeAutoScroll, 1800);
+      });
+
+      siteScrollWrap.addEventListener('touchcancel', function () {
+        resumeAutoScrollTimer = setTimeout(resumeAutoScroll, 1800);
       });
 
       ensureScrollLoop();
